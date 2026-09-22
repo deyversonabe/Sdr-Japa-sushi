@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "functions": {
+    "api/manychat.js": {"maxDuration": 30,"includeFiles": "data/**"}
+  }
+}

@@ -1,0 +1,1678 @@
+{
+  "_meta": {
+    "fonte_pdf": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf",
+    "edicao": "2026-09-16",
+    "observacoes": [
+      "Rodízio: sobremesa e bebida NÃO inclusas, conforme confirmação de 22/09/2026.",
+      "Pratos Quentes foram confirmados ativos pelo usuário em 22/09/2026.",
+      "Combos promocionais e Dia dos Namorados aguardam confirmação de vigência."
+    ]
+  },
+  "catalogo": [
+    {
+      "id": "rodizios-rodizio-infantil-9-a-11-anos",
+      "categoria": "Rodízios",
+      "nome": "Rodízio Infantil (9 a 11 anos)",
+      "descricao": null,
+      "valor": "R$ 54,90",
+      "status": "ativo",
+      "fonte_pagina": 2
+    },
+    {
+      "id": "rodizios-rodizio-individual",
+      "categoria": "Rodízios",
+      "nome": "Rodízio Individual",
+      "descricao": null,
+      "valor": "R$ 114,90",
+      "status": "ativo",
+      "fonte_pagina": 2
+    },
+    {
+      "id": "rodizios-rodizio-casal",
+      "categoria": "Rodízios",
+      "nome": "Rodízio Casal",
+      "descricao": null,
+      "valor": "R$ 199,90",
+      "status": "ativo",
+      "fonte_pagina": 2
+    },
+    {
+      "id": "entradas-shimeji-na-manteiga",
+      "categoria": "Entradas",
+      "nome": "Shimeji na Manteiga",
+      "descricao": "Cogumelos salteados em manteiga, shoyu até dourar, finalizados com cebolinha fresca.",
+      "valor": "R$ 27,00",
+      "status": "ativo",
+      "fonte_pagina": 3
+    },
+    {
+      "id": "entradas-sunomono",
+      "categoria": "Entradas",
+      "nome": "Sunomono",
+      "descricao": "Pepino fatiado, temperado em molho agridoce suave e finalizado com gergelim. Refrescante!",
+      "valor": "R$ 14,99",
+      "status": "ativo",
+      "fonte_pagina": 3
+    },
+    {
+      "id": "entradas-tempura-de-legumes",
+      "categoria": "Entradas",
+      "nome": "Tempura de Legumes",
+      "descricao": "Mix de legumes empanados em massa leve e fritos até atingirem uma textura crocante.",
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 3
+    },
+    {
+      "id": "entradas-guioza-suina-4-unid",
+      "categoria": "Entradas",
+      "nome": "Guioza Suína - 4 unid.",
+      "descricao": "Massa recheada com carne suína e legumes. Crocante por fora e macia por dentro. Você pode escolher frita ou no vapor.",
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 3
+    },
+    {
+      "id": "entradas-ceviche-misto",
+      "categoria": "Entradas",
+      "nome": "Ceviche Misto",
+      "descricao": "Salmão, tilápia e camarão frescos, marinados no limão, com cebola roxa e finalizada com chips de batata doce. Um prato leve, cítrico e cheio de sabor.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 3
+    },
+    {
+      "id": "entradas-ceviche-salmao",
+      "categoria": "Entradas",
+      "nome": "Ceviche Salmão",
+      "descricao": "Salmão fresco em cubos, marinado no limão, com cebola roxa e finalizado com chips de batata doce. Um prato leve, cítrico e cheio de sabor.",
+      "valor": "R$ 54,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-ceviche-tilapia",
+      "categoria": "Entradas",
+      "nome": "Ceviche Tilápia",
+      "descricao": "Tilápia fresca em cubos, marinada no limão, com cebola roxa e finalizada com chips de batata doce. Um prato leve, cítrico e cheio de sabor.",
+      "valor": "R$ 49,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-carpaccio-de-salmao",
+      "categoria": "Entradas",
+      "nome": "Carpaccio de Salmão",
+      "descricao": "Finas fatias de salmão fresco que acompanha um molho a base de shoyu feito pelo chef. Um prato leve, delicado e cheio de sabor.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-carpaccio-misto",
+      "categoria": "Entradas",
+      "nome": "Carpaccio Misto",
+      "descricao": "Finas fatias de salmão e peixe branco fresco que acompanha um molho a base de shoyu feito pelo chef. Um prato leve, delicado e cheio de sabor.",
+      "valor": "R$ 54,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-carpaccio-de-peixe-branco",
+      "categoria": "Entradas",
+      "nome": "Carpaccio de Peixe Branco",
+      "descricao": "Finas fatias de peixe branco fresco que acompanha um molho a base de shoyu feito pelo chef. Um prato leve, delicado e cheio de sabor.",
+      "valor": "R$ 49,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-tartare-de-salmao",
+      "categoria": "Entradas",
+      "nome": "Tartare de Salmão",
+      "descricao": "Delicioso salmão fresco cortado em cubos, temperado na medida certa com molho especial e finalizado com chips de alho poró. Refrescante, leve e irresistível!",
+      "valor": "R$ 49,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-sassaki-de-salmao",
+      "categoria": "Entradas",
+      "nome": "Sassaki de Salmão",
+      "descricao": "Fatias de salmão levemente maçaricadas e finalizadas com molho especial a base de azeite e limão. Sabor marcante e irresistível!",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-harumaki-de-camarao-2-unid",
+      "categoria": "Entradas",
+      "nome": "Harumaki de Camarão - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com camarão, envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-harumaki-de-camarao-c-cream-cheese-2-unid",
+      "categoria": "Entradas",
+      "nome": "Harumaki de Camarão c/ Cream Cheese - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com camarão e cream cheese, envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-harumaki-de-frango-c-cream-cheese-2-unid",
+      "categoria": "Entradas",
+      "nome": "Harumaki de Frango c/ Cream Cheese - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com frango e cream cheese, envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-harumaki-de-legumes-2-unid",
+      "categoria": "Entradas",
+      "nome": "Harumaki de Legumes - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com legumes frescos e temperados, envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-harumaki-de-mucarela-2-unid",
+      "categoria": "Entradas",
+      "nome": "Harumaki de Muçarela - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com queijo muçarela, envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-meia-porcao-de-tilapia-empanada-250g",
+      "categoria": "Entradas",
+      "nome": "Meia Porção de Tilápia empanada - 250g",
+      "descricao": "Tilápia empanada crocante, dourada por fora e macia por dentro. Acompanha molho especial.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-porcao-de-tilapia-empanada-500g",
+      "categoria": "Entradas",
+      "nome": "Porção de Tilápia Empanada - 500g",
+      "descricao": "Tilápia empanada crocante, dourada por fora e macia por dentro. Acompanha molho especial.",
+      "valor": "R$ 99,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-meia-porcao-de-camarao-empanado-250g",
+      "categoria": "Entradas",
+      "nome": "Meia Porção de Camarão Empanado - 250g",
+      "descricao": "Camarões empanados, crocantes por fora e suculentos por dentro. Acompanha molho especial.",
+      "valor": "R$ 79,99",
+      "status": "ativo",
+      "fonte_pagina": 4
+    },
+    {
+      "id": "entradas-porcao-de-camarao-empanado-500g",
+      "categoria": "Entradas",
+      "nome": "Porção de Camarão Empanado - 500g",
+      "descricao": null,
+      "valor": "R$ 139,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "entradas-meia-porcao-de-frango-250g",
+      "categoria": "Entradas",
+      "nome": "Meia Porção de Frango - 250g",
+      "descricao": "Tiras de frango empanadas, dourada por fora e macia por dentro. Acompanha molho especial.",
+      "valor": "R$ 49,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "entradas-porcao-de-frango-empanado-500g",
+      "categoria": "Entradas",
+      "nome": "Porção de Frango empanado - 500g",
+      "descricao": "Tiras de frango empanadas, dourada por fora e macia por dentro. Acompanha molho especial.",
+      "valor": "R$ 79,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "novidades-macarrao-com-camarao-alho-e-oleo",
+      "categoria": "Novidades",
+      "nome": "macarrão com camarão alho e óleo",
+      "descricao": "300 g de macarrão com alho e óleo e 200 g de camarão. Peso total: 500 g. Serve 2 pessoas.",
+      "valor": "R$ 54,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "novidades-salmao-especial-do-chef-6-unid-c-queijo",
+      "categoria": "Novidades",
+      "nome": "Salmão Especial do chef - 6 unid. C/queijo",
+      "descricao": "Salmão com abacate envolto em queijo levemente maçaricado e finalizado com nosso molho especial e cebolinha fresca. Um sushi leve mas cheio de sabor e personalidade.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "novidades-joy-macaricado-c-camarao-6-unid-c-doritos",
+      "categoria": "Novidades",
+      "nome": "Joy Maçaricado C/ Camarão - 6 unid. C/ Doritos",
+      "descricao": "Joy de salmão maçaricado recheado com camarão e cream cheese, finalizado com doritos e cebolinha.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "novidades-joy-especial-de-shimeji-c-camarao-6-unid",
+      "categoria": "Novidades",
+      "nome": "Joy Especial de Shimeji C/ Camarão - 6 unid.",
+      "descricao": "Joy de salmão maçaricado recheado com shimeji e cream cheese, finalizado com camarão e cebolinha. Uma explosão de sabores!",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 5
+    },
+    {
+      "id": "sushi-a-la-carte-joy-salmao-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy Salmão - 6 unid",
+      "descricao": "6 unidades.",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-joy-geleia-de-amora-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy Geleia de Amora - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 36,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-joy-geleia-de-morango-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy Geleia de Morango - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 36,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-joy-geleia-de-pimenta-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy Geleia de Pimenta - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 36,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-joy-de-camarao-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy de Camarão - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-joy-de-shimeji-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy de Shimeji - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-joy-flambado-c-couve-crispy-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Joy Flambado C/ Couve Crispy - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 36,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-hot-joy-de-salmao-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Joy de Salmão - 6 unid.",
+      "descricao": "6 unidades.",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-camarao-especial-8-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Camarão Especial - 8 unid.",
+      "descricao": "Especialidade da casa. Uramaki de Camarão envolto com salmão maçaricado com kani e abacate. Finalizado com molho do chef.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-salmao-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Salmão - 5 unid.",
+      "descricao": "5 unidades.",
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-salmao-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Salmão - 10 unid.",
+      "descricao": "10 unidades.",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-salmao-grelhado-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Salmão Grelhado - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-salmao-grelhado-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Salmão Grelhado - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-california-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Califórnia - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 16,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-california-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Califórnia - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-camarao-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Camarão - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-camarao-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Camarão - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-camarao-frito-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Camarão Frito - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-camarao-frito-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Camarão Frito - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 6
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-skin-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Skin - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 16,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-uramaki-skin-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Uramaki Skin - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-niguiri-salmao-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Niguiri Salmão - 6 unid.",
+      "descricao": null,
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-niguiri-salmao-flambado-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Niguiri Salmão Flambado - 6 unid.",
+      "descricao": null,
+      "valor": "R$ 36,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-niguiri-tilapia-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Niguiri Tilápia - 6 unid.",
+      "descricao": null,
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-niguiri-camarao-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Niguiri Camarão - 6 unid.",
+      "descricao": null,
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-niguiri-skin-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Niguiri Skin - 6 unid.",
+      "descricao": null,
+      "valor": "R$ 27,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-salmao-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Salmão - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 21,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-salmao-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Salmão - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-camarao-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Camarão - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 27,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-camarao-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Camarão - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-kani-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Kani - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-de-kani-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki de Kani - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-shimeji-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Shimeji - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-de-shimeji-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki de Shimeji - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-pepino-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki Pepino - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 12,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hossomaki-de-pepino-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hossomaki de Pepino - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-joy-6-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Joy - 6 unid.",
+      "descricao": "Joy empanado e frito, recheado com salmão e cream cheese, finalizado com gergelim, raspas de limão e cebolinha.",
+      "valor": "R$ 37,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-roll-philadelphia-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Roll Philadelphia - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-roll-philadelfia-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Roll Philadelfia - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-roll-de-camarao-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Roll de Camarão - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-roll-de-camarao-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Roll de Camarão - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-roll-shimeji-5-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Roll Shimeji - 5 unid.",
+      "descricao": null,
+      "valor": "R$ 17,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "sushi-a-la-carte-hot-roll-shimeji-10-unid",
+      "categoria": "Sushi à La Carte",
+      "nome": "Hot Roll Shimeji - 10 unid.",
+      "descricao": null,
+      "valor": "R$ 31,99",
+      "status": "ativo",
+      "fonte_pagina": 7
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-salmao-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Salmão - 6 unid.",
+      "descricao": "Joy de salmão com cream cheese e salmão batido por cima. Leve e irresistível!",
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-geleia-de-amora-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Geleia de Amora - 6 unid.",
+      "descricao": "Joy de salmão com cream cheese finalizado com geleia de amora.",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-geleia-morango-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Geleia Morango - 6 unid.",
+      "descricao": "Joy de salmão com cream cheese finalizado com geleia de morango.",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-geleia-maracuja-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Geleia Maracujá - 6 unid.",
+      "descricao": "Joy de salmão com cream cheese finalizado com geleia de maracujá.",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-geleia-de-pimenta-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Geleia de Pimenta - 6 unid.",
+      "descricao": "Joy de salmão com cream cheese finalizado com geleia de pimenta.",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-amendoas-laminadas-c-mel-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Amêndoas Laminadas C/ Mel - 6 unid.",
+      "descricao": "Delicioso Joy de salmão com cream cheese, finalizado com amêndoas laminadas e toque especial de mel. Uma combinação sofisticada e cheia de sabor.",
+      "valor": "R$ 49,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-camarao-6-unidades",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Camarão - 6 Unidades",
+      "descricao": "Joy de salmão com recheio de cream cheese, finalizado com camarão e toque de cebolinha. Uma combinação leve e saborosa.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-camarao-c-couve-crispy-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Camarão C/ Couve Crispy - 6 unid.",
+      "descricao": "Salmão envolto no camarão empanado, cream cheese, finalizado com couve crispy e o molho especial do chef.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-flambado-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Flambado - 6 unid.",
+      "descricao": "Joy de salmão maçaricado com cream cheese. Sabor suave e marcante!",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-flambado-c-couve-crispy-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Flambado C/ Couve Crispy - 6 unid.",
+      "descricao": "Joy de salmão maçaricado com cream cheese e finalizado com couve crispy. Sabor suave e marcante!",
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "joy-especial-sem-arroz-joy-salmao-flambado-c-shimeji-6-unid",
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "nome": "Joy Salmão Flambado C/ Shimeji - 6 unid.",
+      "descricao": "Joy de salmão com shimeji e cream cheese. Sabor marcante, leve e irresistível!",
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "sashimis-sashimi-salmao-5-laminas",
+      "categoria": "Sashimis",
+      "nome": "Sashimi Salmão - 5 lâminas",
+      "descricao": "Deliciosas fatias de um salmão fresco e muito mas muito saboroso.",
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "sashimis-sashimi-salmao-10-laminas",
+      "categoria": "Sashimis",
+      "nome": "Sashimi Salmão - 10 lâminas",
+      "descricao": "Deliciosas fatias de um salmão fresco e muito mas muito saboroso.",
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "sashimis-sashimi-de-tilapia-5-laminas",
+      "categoria": "Sashimis",
+      "nome": "Sashimi de Tilápia - 5 lâminas",
+      "descricao": "Deliciosas fatias de uma Tilápia fresca e muito mas muito saborosa.",
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "sashimis-sashimi-tilapia-10-laminas",
+      "categoria": "Sashimis",
+      "nome": "Sashimi Tilápia - 10 lâminas",
+      "descricao": "Deliciosas fatias de uma tilápia fresca e muito mas muito saborosa.",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 8
+    },
+    {
+      "id": "temaki-individuais-temaki-tradicional",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Tradicional",
+      "descricao": "Temaki tradicional de salmão com arroz, alga e cream cheese, finalizado com cebolinha. Uma combinação clássica e irresistível!",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-salmao-empanado",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Salmão Empanado",
+      "descricao": "Temaki de salmão empanado com arroz, alga e cream cheese, finalizado com cebolinha. Crocante e saboroso!",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-salmao-grelhado",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Salmão Grelhado",
+      "descricao": "Temaki de salmão grelhado com arroz, alga e cream cheese, finalizado com cebolinha.",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-hot-roll",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Hot Roll",
+      "descricao": "Temaki com salmão grelhado, empanado e frito na medida certa, garantindo crocância por fora e suculência por dentro. Simplesmente irresistível!",
+      "valor": "R$ 37,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-cru-s-cream-cheese",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Cru S/ Cream Cheese",
+      "descricao": "Temaki de salmão sem cream cheese, destacando o sabor natural do peixe, com toque de cebolinha. Perfeito para quem prefere uma opção mais leve!",
+      "valor": "R$ 34,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-peixe-branco",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Peixe Branco",
+      "descricao": "Temaki de peixe branco fresco, com sabor suave e textura delicada, combinado com cream cheese e toque de cebolinha. Perfeito para quem busca leveza!",
+      "valor": "R$ 32,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-camarao",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Camarão",
+      "descricao": "Temaki de camarão suculento, combinado com cream cheese e toque de cebolinha. Perfeito para quem ama um sabor especial!",
+      "valor": "R$ 39,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-camarao-empanado",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Camarão Empanado",
+      "descricao": "Temaki de camarão empanado, crocante por fora e suculento por dentro, combinado com cream cheese e toque de cebolinha. Simplesmente perfeito!",
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-skin",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Skin",
+      "descricao": "Temaki skin (pele de salmão crocante), combinado com cream cheese e toque de cebolinha. Uma opção saborosa e diferenciada.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-california",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Califórnia",
+      "descricao": "Temaki com kani, manga e pepino, trazendo o equilíbrio perfeito entre o doce e o refrescante. Uma opção mais leve.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-salmao-mexico",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Salmão México",
+      "descricao": "Temaki de salmão fresco com cream cheese e toque picante na medida certa, finalizado com doritos. Perfeito para quem gosta de sabor marcante!",
+      "valor": "R$ 37,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-salmao-c-alho-poro",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Salmão C/ Alho Poró",
+      "descricao": "Temaki de salmão com cream cheese e alho-poró, combinação perfeita entre cremosidade e sabor marcante.",
+      "valor": "R$ 35,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-salmao-c-couve-crispy",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Salmão C/ Couve Crispy",
+      "descricao": "Temaki de salmão com cream cheese e couve crispy, combinação perfeita entre cremosidade e sabor marcante.",
+      "valor": "R$ 35,99",
+      "status": "ativo",
+      "fonte_pagina": 9
+    },
+    {
+      "id": "temaki-individuais-temaki-salmao-c-geleia-de-pimenta",
+      "categoria": "Temaki individuais",
+      "nome": "Temaki Salmão C/ Geleia de Pimenta",
+      "descricao": "Temaki de salmão com cream cheese e geleia de pimenta, combinando cremosidade com um toque agridoce e levemente picante. Simplesmente maravilhoso!",
+      "valor": "R$ 35,99",
+      "status": "ativo",
+      "fonte_pagina": 10
+    },
+    {
+      "id": "oniguiri-oniguiri-salmao-2-unid",
+      "categoria": "Oniguiri",
+      "nome": "Oniguiri Salmão - 2 unid.",
+      "descricao": "Arroz japonês moldado, recheado com salmão e envolto na alga.",
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 10
+    },
+    {
+      "id": "oniguiri-oniguiri-salmao-c-creem-cheese-2-unid",
+      "categoria": "Oniguiri",
+      "nome": "Oniguiri Salmão C/ Creem Cheese - 2 unid.",
+      "descricao": "Arroz japonês moldado, recheado com salmão e cream cheese, envolto na alga.",
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 10
+    },
+    {
+      "id": "oniguiri-oniguiri-camarao-2-unid",
+      "categoria": "Oniguiri",
+      "nome": "Oniguiri Camarão - 2 unid.",
+      "descricao": "Arroz japonês moldado, recheado com camarão e envolto na alga.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 10
+    },
+    {
+      "id": "oniguiri-oniguiri-camarao-c-creem-cheese-2-unid",
+      "categoria": "Oniguiri",
+      "nome": "Oniguiri Camarão C/ Creem Cheese - 2 unid.",
+      "descricao": "Arroz japonês moldado, recheado com camarão e cream cheese, envolto na alga.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 10
+    },
+    {
+      "id": "combos-combo-s-arroz-25-pecas",
+      "categoria": "Combos",
+      "nome": "Combo s/ arroz 25 peças",
+      "descricao": "5 Joy Especial Shimeji, 5 Joy Especial Amêndoa e Mel, 5 Joy Especial Camarão, 5 Joy Especial Salmão, 5 Joy Especial Salmão Flambado com Couve Crispy.",
+      "valor": "R$ 129,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-combo-dia-dos-namorados",
+      "categoria": "Combos",
+      "nome": "Combo dia dos namorados",
+      "descricao": null,
+      "valor": "R$ 199,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-combo-40-pecas",
+      "categoria": "Combos",
+      "nome": "Combo 40 peças",
+      "descricao": "10 Sashimi de Salmão, 10 Hot Roll, 5 Niguiri de Salmão, 5 Joy Geleia de Pimenta, 5 Joy de Salmão, 5 Joy de Camarão.",
+      "valor": "R$ 159,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-combo-casal",
+      "categoria": "Combos",
+      "nome": "Combo Casal",
+      "descricao": null,
+      "valor": "R$ 169,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-sr-japa",
+      "categoria": "Combos Individuais",
+      "nome": "Sr. Japa",
+      "descricao": "5 sashimi, 5 joy salmão, 5 hot roll, 5 uramaki camarão, 5 hossomaki salmão.",
+      "valor": "R$ 99,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-osaka",
+      "categoria": "Combos Individuais",
+      "nome": "Osaka",
+      "descricao": "5 sashimi salmão, 5 Uramaki Philadelphia, 5 joy salmão e 10 hot roll.",
+      "valor": "R$ 79,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-nara",
+      "categoria": "Combos Individuais",
+      "nome": "Nara",
+      "descricao": "5 sashimi salmão, 5 hossomaki salmão, 5 uramaki salmão, 5 joy salmão.",
+      "valor": "R$ 69,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-chiba",
+      "categoria": "Combos Individuais",
+      "nome": "Chiba",
+      "descricao": "5 sashimi salmão, 5 hossomaki salmão, 5 uramaki salmão e 10 hot roll.",
+      "valor": "R$ 74,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-nagoia",
+      "categoria": "Combos Individuais",
+      "nome": "Nagóia",
+      "descricao": "10 sashimi, 5 joy salmão, 10 hot roll Philadelphia.",
+      "valor": "R$ 84,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-yokohama",
+      "categoria": "Combos Individuais",
+      "nome": "Yokohama",
+      "descricao": "5 joy geleia de Amora, 5 Hot Joy, 5 nigiri salmão Flambado, 5 hot roll philadelfia.",
+      "valor": "R$ 79,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-individuais-combo-vegetariano",
+      "categoria": "Combos Individuais",
+      "nome": "Combo Vegetariano",
+      "descricao": "10 hossomaki shimeji, 10 uramaki pepino com manga, 10 hossomaki pepino e 10 hot roll shimeji.",
+      "valor": "R$ 99,99",
+      "status": "ativo",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-promocionais-combo-salmao-1",
+      "categoria": "Combos Promocionais",
+      "nome": "Combo Salmão 1",
+      "descricao": "1 Temaki de sua escolha, 5 sashimi, 2 joy salmão, 5 hot roll.",
+      "valor": "R$ 69,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-promocionais-combo-salmao-2",
+      "categoria": "Combos Promocionais",
+      "nome": "Combo Salmão 2",
+      "descricao": "1 temaki a sua escolha, 10 hot Philadelphia, 2 nigiri, 4 sashimi.",
+      "valor": "R$ 69,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 11
+    },
+    {
+      "id": "combos-promocionais-combo-salmao-3",
+      "categoria": "Combos Promocionais",
+      "nome": "Combo Salmão 3",
+      "descricao": "1 Temaki a sua escolha, 10 hot roll e 6 sashimi.",
+      "valor": "R$ 69,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "combos-promocionais-combo-salmao-4",
+      "categoria": "Combos Promocionais",
+      "nome": "Combo Salmão 4",
+      "descricao": "1 Temaki a sua escolha, 5 hot roll, 5 hot joy, 5 sashimi.",
+      "valor": "R$ 69,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "combos-promocionais-combo-salmao-5",
+      "categoria": "Combos Promocionais",
+      "nome": "Combo Salmão 5",
+      "descricao": "1 temaki a sua escolha, 2 joy, 2 sashimi, 2 nigiri, 5 hot roll.",
+      "valor": "R$ 69,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "combos-promocionais-combo-salmao-6-todo-hot",
+      "categoria": "Combos Promocionais",
+      "nome": "Combo Salmão 6 (Todo HOT)",
+      "descricao": "1 temaki hot e 15 hot roll.",
+      "valor": "R$ 69,99",
+      "status": "revisar_campanha",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "monte-seu-poke-monte-seu-poke",
+      "categoria": "Monte Seu Poke",
+      "nome": "Monte seu Poke",
+      "descricao": "Monte seu poke com ingredientes frescos e molho especial. Leve, saudável e delicioso!",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "mega-hot-roll-mega-hot-roll-de-salmao",
+      "categoria": "Mega Hot Roll",
+      "nome": "Mega Hot Roll de Salmão",
+      "descricao": "Hot roll inteiro cortado ao meio com salmão em cubos, cream cheese e finalizado com cebolinha.",
+      "valor": "R$ 54,99",
+      "status": "ativo",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "mega-hot-roll-mega-hot-roll-de-salmao-2",
+      "categoria": "Mega Hot Roll",
+      "nome": "Mega Hot Roll de Salmão 2",
+      "descricao": "Hot roll inteiro partido ao meio recheado com salmão, camarão, cream cheese e finalizado com cebolinha.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "mega-hot-roll-mega-hot-roll-de-salmao-grelhado",
+      "categoria": "Mega Hot Roll",
+      "nome": "Mega Hot Roll de Salmão Grelhado",
+      "descricao": "Hot roll inteiro partido ao meio recheado com salmão grelhado, cream cheese e finalizado com cebolinha.",
+      "valor": "R$ 44,99",
+      "status": "ativo",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "mega-hot-roll-mega-hot-roll-de-camarao",
+      "categoria": "Mega Hot Roll",
+      "nome": "Mega Hot Roll de Camarão",
+      "descricao": "Hot roll inteiro partido ao meio recheado com camarão, cream cheese e finalizado com cebolinha.",
+      "valor": "R$ 59,99",
+      "status": "ativo",
+      "fonte_pagina": 12
+    },
+    {
+      "id": "sobremesa-joy-goiabada-6-unid",
+      "categoria": "Sobremesa",
+      "nome": "Joy Goiabada - 6 unid.",
+      "descricao": "Tiras de goiabada recheada com cream cheese e morango fresco, finalizada com leite condensado, trazendo equilíbrio perfeito entre doce e cremosidade. Sobremesa mais pedida da casa!",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "sobremesa-hot-roll-banana-c-nutella",
+      "categoria": "Sobremesa",
+      "nome": "Hot Roll Banana C/ Nutella",
+      "descricao": "Hot roll com cream cheese e banana, finalizado com Nutella, combinação equilibrada entre crocância e cremosidade.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "sobremesa-harumaki-de-morango-c-nutella-2-unid",
+      "categoria": "Sobremesa",
+      "nome": "Harumaki de Morango C/ Nutella - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com nutella e morango envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "sobremesa-harumaki-de-banana-c-nutella-2-unid",
+      "categoria": "Sobremesa",
+      "nome": "Harumaki de Banana C/ Nutella - 2 unid.",
+      "descricao": "Delicados rolinhos primavera recheados com nutella e banana envoltos em massa fina e fritos até atingirem uma crocância perfeita.",
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "drinks-saquerinha",
+      "categoria": "Drinks",
+      "nome": "Saquerinha",
+      "descricao": null,
+      "valor": "R$ 27,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "drinks-caipiroska-smirnoff",
+      "categoria": "Drinks",
+      "nome": "Caipiroska Smirnoff",
+      "descricao": null,
+      "valor": "R$ 24,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "drinks-caipirinha-cachaca",
+      "categoria": "Drinks",
+      "nome": "Caipirinha Cachaça",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "drinks-gin-tonica",
+      "categoria": "Drinks",
+      "nome": "Gin Tônica",
+      "descricao": null,
+      "valor": "R$ 29,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "cervejas-long-neck-corona",
+      "categoria": "Cervejas Long Neck",
+      "nome": "Corona",
+      "descricao": null,
+      "valor": "R$ 13,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "cervejas-long-neck-corona-zero",
+      "categoria": "Cervejas Long Neck",
+      "nome": "Corona Zero",
+      "descricao": null,
+      "valor": "R$ 13,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "cervejas-long-neck-heineken",
+      "categoria": "Cervejas Long Neck",
+      "nome": "Heineken",
+      "descricao": null,
+      "valor": "R$ 13,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "cervejas-long-neck-heineken-zero",
+      "categoria": "Cervejas Long Neck",
+      "nome": "Heineken Zero",
+      "descricao": null,
+      "valor": "R$ 13,99",
+      "status": "ativo",
+      "fonte_pagina": 13
+    },
+    {
+      "id": "bebidas-soda-italiana",
+      "categoria": "Bebidas",
+      "nome": "Soda Italiana",
+      "descricao": "Morango, Frutas Vermelhas, Maracujá, Limão Siciliano, Mirtilo, Maçã Verde. Escrever na observação o sabor que você deseja!",
+      "valor": "R$ 22,90",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-coca-cola-zero-refrigerante-ks",
+      "categoria": "Bebidas",
+      "nome": "Coca-Cola Zero Refrigerante KS",
+      "descricao": null,
+      "valor": "R$ 7,50",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-coca-cola-refrigerante-ks",
+      "categoria": "Bebidas",
+      "nome": "Coca-Cola Refrigerante KS",
+      "descricao": null,
+      "valor": "R$ 7,50",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-fanta-refrigerante-ks",
+      "categoria": "Bebidas",
+      "nome": "Fanta refrigerante KS",
+      "descricao": null,
+      "valor": "R$ 7,50",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-sucos-naturais",
+      "categoria": "Bebidas",
+      "nome": "Sucos Naturais",
+      "descricao": "Caju, Laranja, Morango, Maracujá, Tamarindo, Uva, Laranja com Acerola e Acerola. Escrever na observação o sabor que você deseja!",
+      "valor": "R$ 13,99",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-agua-sem-gas",
+      "categoria": "Bebidas",
+      "nome": "Água sem Gás",
+      "descricao": "Água sem Gás",
+      "valor": "R$ 4,99",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-agua-com-gas",
+      "categoria": "Bebidas",
+      "nome": "Água com Gás",
+      "descricao": null,
+      "valor": "R$ 5,99",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-coca-cola-lata",
+      "categoria": "Bebidas",
+      "nome": "Coca-Cola (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-coca-cola-zero-lata",
+      "categoria": "Bebidas",
+      "nome": "Coca-Cola Zero (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-guarana-lata",
+      "categoria": "Bebidas",
+      "nome": "Guaraná (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-guarana-zero-lata",
+      "categoria": "Bebidas",
+      "nome": "Guaraná Zero (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-schweppes-lata",
+      "categoria": "Bebidas",
+      "nome": "Schweppes (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-schweppes-zero-lata",
+      "categoria": "Bebidas",
+      "nome": "Schweppes Zero (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-schweppes-tonica-lata",
+      "categoria": "Bebidas",
+      "nome": "Schweppes Tônica (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-fanta-uva-lata",
+      "categoria": "Bebidas",
+      "nome": "Fanta Uva (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-fanta-laranja-lata",
+      "categoria": "Bebidas",
+      "nome": "Fanta Laranja (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-fanta-laranja-zero-lata",
+      "categoria": "Bebidas",
+      "nome": "Fanta Laranja Zero (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-sprite-lata",
+      "categoria": "Bebidas",
+      "nome": "Sprite (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-sprite-limao-zero-lata",
+      "categoria": "Bebidas",
+      "nome": "Sprite Limão Zero (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-schweppes-citrus-lata",
+      "categoria": "Bebidas",
+      "nome": "Schweppes Citrus (lata)",
+      "descricao": null,
+      "valor": "R$ 8,00",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-h2o-limao",
+      "categoria": "Bebidas",
+      "nome": "H2O Limão",
+      "descricao": null,
+      "valor": "R$ 8,99",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "bebidas-h2o-limoneto",
+      "categoria": "Bebidas",
+      "nome": "H2O Limoneto",
+      "descricao": null,
+      "valor": "R$ 8,99",
+      "status": "ativo",
+      "fonte_pagina": 14
+    },
+    {
+      "id": "doses-sake",
+      "categoria": "Doses",
+      "nome": "sake",
+      "descricao": null,
+      "valor": "R$ 11,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "doses-tequila",
+      "categoria": "Doses",
+      "nome": "Tequila",
+      "descricao": null,
+      "valor": "R$ 14,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "doses-jack-daniels",
+      "categoria": "Doses",
+      "nome": "Jack Daniels",
+      "descricao": null,
+      "valor": "R$ 19,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "chopp-chopp-heineken-tulipa",
+      "categoria": "Chopp",
+      "nome": "Chopp Heineken (tulipa)",
+      "descricao": null,
+      "valor": "R$ 11,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-dobro-de-proteina",
+      "categoria": "Adicionais",
+      "nome": "DOBRO DE PROTEINA",
+      "descricao": null,
+      "valor": "R$ 17,00",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-adicional-sem-arroz",
+      "categoria": "Adicionais",
+      "nome": "ADICIONAL SEM ARROZ",
+      "descricao": null,
+      "valor": "R$ 10,00",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-topping-adicional",
+      "categoria": "Adicionais",
+      "nome": "TOPPING ADICIONAL",
+      "descricao": null,
+      "valor": "R$ 4,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-pimenta-biquinho",
+      "categoria": "Adicionais",
+      "nome": "PIMENTA BIQUINHO",
+      "descricao": null,
+      "valor": "R$ 2,00",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-nut-adicional",
+      "categoria": "Adicionais",
+      "nome": "NUT ADICIONAL",
+      "descricao": null,
+      "valor": "R$ 4,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-molho-adicional",
+      "categoria": "Adicionais",
+      "nome": "MOLHO ADICIONAL",
+      "descricao": null,
+      "valor": "R$ 3,00",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "adicionais-gengibre-e-wasabi",
+      "categoria": "Adicionais",
+      "nome": "GENGIBRE E WASABI",
+      "descricao": null,
+      "valor": "R$ 3,99",
+      "status": "ativo",
+      "fonte_pagina": 15
+    },
+    {
+      "id": "pratos-quentes-yakissoba-frango",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakissoba Frango",
+      "descricao": "Macarrão oriental salteado no molho especial da casa, com frango macio e legumes frescos, resultando em um prato saboroso, leve e aromático.",
+      "valor": "R$ 39,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-yakissoba-misto",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakissoba Misto",
+      "descricao": "Macarrão oriental salteado no molho especial da casa, com frango, carne e legumes frescos, resultando em um prato saboroso, leve e aromático.",
+      "valor": "R$ 44,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-yakissoba-carne",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakissoba Carne",
+      "descricao": "Macarrão oriental salteado no molho especial da casa, com carne em tiras e legumes frescos, resultando em um prato saboroso, leve e aromático.",
+      "valor": "R$ 49,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-yakissoba-camarao",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakissoba Camarão",
+      "descricao": "Macarrão oriental salteado no molho especial da casa, com camarão e legumes frescos, resultando em um prato saboroso, leve e aromático.",
+      "valor": "R$ 64,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-yakissoba-vegetariano",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakissoba Vegetariano",
+      "descricao": "Macarrão oriental salteado no molho especial da casa, com mix de legumes frescos, resultando em um prato saboroso, leve e aromático.",
+      "valor": "R$ 29,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-yakimeshi-frango",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakimeshi Frango",
+      "descricao": "Preparado com arroz japonês ou arroz brasileiro, salteado na chapa com tiras de frango, ovos, legumes frescos e molho especial, resultando em um prato saboroso e aromático.",
+      "valor": "R$ 34,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-yakimeshi-carne",
+      "categoria": "Pratos Quentes",
+      "nome": "Yakimeshi Carne",
+      "descricao": "Preparado com arroz japonês ou arroz brasileiro, salteado na chapa com tiras de carne, ovos, legumes frescos e molho especial, resultando em um prato saboroso e aromático.",
+      "valor": "R$ 39,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-tepan-salmao",
+      "categoria": "Pratos Quentes",
+      "nome": "Tepan Salmão",
+      "descricao": "Acompanha arroz japonês ou arroz brasileiro, posta de salmão grelhada e mix de legumes refogados no ponto ideal, trazendo sabor e leveza ao prato.",
+      "valor": "R$ 64,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-tepan-tilapia",
+      "categoria": "Pratos Quentes",
+      "nome": "Tepan Tilápia",
+      "descricao": "Acompanha arroz japonês ou arroz brasileiro, filé de tilápia grelhada e mix de legumes refogados no ponto ideal, trazendo sabor e leveza ao prato.",
+      "valor": "R$ 59,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-tepan-camarao",
+      "categoria": "Pratos Quentes",
+      "nome": "Tepan Camarão",
+      "descricao": "Acompanha arroz japonês ou arroz brasileiro, camarão salteado e mix de legumes refogados no ponto ideal, trazendo sabor e leveza ao prato.",
+      "valor": "R$ 69,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-tepan-frango",
+      "categoria": "Pratos Quentes",
+      "nome": "Tepan Frango",
+      "descricao": "Acompanha arroz japonês ou arroz brasileiro, filé de frango grelhado e mix de legumes refogados no ponto ideal, trazendo sabor e leveza ao prato.",
+      "valor": "R$ 39,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    },
+    {
+      "id": "pratos-quentes-tepan-especial",
+      "categoria": "Pratos Quentes",
+      "nome": "Tepan Especial",
+      "descricao": "Acompanha arroz japonês ou arroz brasileiro, posta de salmão empanada com creme a base de cream cheese e camarão, finalizado com tomate cereja.",
+      "valor": "R$ 74,99",
+      "status": "ativo_por_confirmacao_usuario_2026_09_22",
+      "fonte_pagina": 16
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "_meta": {
+    "uso": "auditoria interna apenas; nunca oferecer ao cliente",
+    "fonte_pagina": 17
+  },
+  "catalogo": [
+    {
+      "nome": "Filé Tilápia Grelhada",
+      "descricao": "Pausado por categoria",
+      "categoria": "Pratos Executivos",
+      "valor": "R$ 39,99",
+      "status": "pausado",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Filé de Frango Grelhado",
+      "descricao": "Pausado por categoria",
+      "categoria": "Pratos Executivos",
+      "valor": "R$ 29,99",
+      "status": "pausado",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Frango Xadrez",
+      "descricao": "Inativo no produto e categoria pausada",
+      "categoria": "Pratos Executivos",
+      "valor": "R$ 34,99",
+      "status": "pausado",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Frango Crispy",
+      "descricao": "Pausado por categoria",
+      "categoria": "Pratos Executivos",
+      "valor": "R$ 29,99",
+      "status": "pausado",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Carne com Legumes",
+      "descricao": "Pausado por categoria",
+      "categoria": "Pratos Executivos",
+      "valor": "R$ 39,99",
+      "status": "pausado",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Edamame",
+      "descricao": null,
+      "categoria": "Entradas",
+      "valor": "R$ 32,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Tartare de Salmão Especial",
+      "descricao": null,
+      "categoria": "Entradas",
+      "valor": "R$ 54,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Harumaki de Shimeji c/ Cream Cheese - 2 unid.",
+      "descricao": null,
+      "categoria": "Entradas",
+      "valor": "R$ 19,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Joy Camarão Avocado - 6 unid.",
+      "descricao": null,
+      "categoria": "Joy Especial (SEM ARROZ)",
+      "valor": "R$ 59,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Churros Nutella",
+      "descricao": null,
+      "categoria": "Sobremesa",
+      "valor": "R$ 24,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Churros Leite ninho",
+      "descricao": null,
+      "categoria": "Sobremesa",
+      "valor": "R$ 19,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Churros Doce leite",
+      "descricao": null,
+      "categoria": "Sobremesa",
+      "valor": "R$ 19,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Petit Gateau",
+      "descricao": null,
+      "categoria": "Sobremesa",
+      "valor": "R$ 29,99",
+      "status": "inativo",
+      "fonte_pagina": 17
+    },
+    {
+      "nome": "Brownie",
+      "descricao": null,
+      "categoria": "Sobremesa",
+      "valor": "R$ 12,00",
+      "status": "inativo",
+      "fonte_pagina": 17
+    }
+  ]
+}

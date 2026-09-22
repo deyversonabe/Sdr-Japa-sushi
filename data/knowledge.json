@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "versao": "1.1.0",
+    "revisado_em": "2026-09-22",
+    "fonte_cardapio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf (consolidado 16/09/2026)",
+    "fonte_atendimento": "Fluxo_ManyChat_Japa_Sushi.pdf (22/09/2026)",
+    "fonte_regras": "confirmações do responsável recebidas em 22/09/2026"
+  },
+  "empresa": {
+    "nome": "Japa Sushi Lounge",
+    "instagram": "@japasushibarretos",
+    "endereco": "Av. Treze, 657 – Centro, Barretos/SP, CEP 14780-270",
+    "cidade": "Barretos/SP"
+  },
+  "links": {
+    "cardapio_pedido": "https://japasushilounge.saipos.com/home",
+    "whatsapp": "https://wa.me/5517996064189",
+    "whatsapp_rh": "https://wa.me/5517996022567",
+    "google_maps": "https://www.google.com/maps?rlz=1C1GCEA_enBR1206BR1206&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KdkJD5BLhbuUMRAnQl-1sYJP&daddr=Av.+Treze,+657+-+Centro,+Barretos+-+SP,+14780-270",
+    "google_avaliacao": "https://search.google.com/local/writereview?placeid=ChIJ2QkPkEuFu5QRECdCX7Wxgk8",
+    "ifood": null,
+    "food99": null
+  },
+  "horarios": {
+    "domingo_a_quinta": "18h30 às 23h",
+    "sexta_e_sabado": "18h30 à 0h",
+    "rodizio_todos_os_dias": true,
+    "observacao": "Funcionamento noturno. Horários especiais/feriados devem ser confirmados no atendimento."
+  },
+  "rodizio": {
+    "individual": "R$ 114,90",
+    "casal": "R$ 199,90",
+    "infantil_9_a_11": "R$ 54,90",
+    "menor_que_9_gratuito": true,
+    "regra_idade_9": "Menores de 9 anos não pagam; de 9 a 11 anos completos pagam R$ 54,90.",
+    "bebidas_inclusas": false,
+    "sobremesas_inclusas": false,
+    "descricao_seguranca": "O rodízio é servido diariamente. Bebidas e sobremesas são cobradas separadamente. A composição exata de cada serviço deve ser confirmada com a equipe."
+  },
+  "formas_pagamento": {
+    "confirmados": [
+      "Pix",
+      "cartão de débito",
+      "cartão de crédito",
+      "dinheiro",
+      "Ticket refeição"
+    ],
+    "bandeiras_nao_confirmadas": [
+      "Alelo",
+      "Sodexo",
+      "VR específico",
+      "Caju",
+      "Ben"
+    ]
+  },
+  "pedidos": {
+    "entrega": true,
+    "retirada": true,
+    "taxa_entrega": "calculada no cardápio digital após informar o endereço",
+    "pedido_confirmado": "Confirmação do pedido somente pelo sistema de vendas ou equipe, nunca por uma intenção de compra no Direct"
+  },
+  "reserva": {
+    "sinal_percentual": 50,
+    "sinal_texto": "A reserva exige antecipação de 50% do valor. A equipe confirma disponibilidade, base de cálculo e instruções de pagamento diretamente no WhatsApp.",
+    "bot_nao_confirma_reserva": true
+  },
+  "avaliacao": {
+    "escala": "1 a 5",
+    "inicio_apos_pedido_confirmado": true,
+    "atraso_manychat_minutos": 120,
+    "link_google_pendente": false,
+    "convite_imparcial": "Convide todos os clientes com experiência real a deixar uma avaliação sincera, sem filtrar apenas notas positivas."
+  },
+  "atendimento": {
+    "tom": "brasileiro, acolhedor, breve, conversacional, sem exagero publicitário",
+    "proibir_assuntos": [
+      "proprietário anterior",
+      "troca de proprietário",
+      "busca de influenciadoras",
+      "campanhas encerradas"
+    ],
+    "parcerias": "Agradecer de forma neutra, sem revelar planos nem assumir compromissos.",
+    "rh": "Todas as mensagens sobre vaga, emprego, seleção, currículo e contratação seguem exclusivamente para o botão do RH.",
+    "duvida": "Quando não houver fato validado, encaminhar para atendimento humano pelo botão do WhatsApp."
+  },
+  "campanhas_ativas": [],
+  "observacoes_revisao": [
+    "Idade de 9 anos: paga R$ 54,90, confirmado pelo responsável em 22/09/2026.",
+    "Link de avaliação Google fornecido pelo responsável em 22/09/2026; conferir abertura em teste real.",
+    "Não anunciar combos promocionais nem inventar vigência: encaminhar para cardápio digital.",
+    "Antes do lançamento, conferir preços e disponibilidade no SAIPOS atual."
+  ]
+}
