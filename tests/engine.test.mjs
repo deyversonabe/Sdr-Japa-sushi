@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {resolve,standardPayload,dynamicPayload,CATALOG,HIDDEN,BUSINESS,humanize,VERSION,parseState,RODIZIO_GROUPS,marketplaceStatus,normalizeInput} from '../lib/engine.js';
+import {resolve,standardPayload,dynamicPayload,CATALOG,HIDDEN,BUSINESS,humanize,VERSION,parseState,RODIZIO_GROUPS,marketplaceStatus,normalizeInput,safeFirstName} from '../lib/engine.js';
 
 const route=(message,extra={})=>resolve({message,channel:'instagram',...extra});
 const okButton=(r,type)=>r.ctas.some(c=>c.url===BUSINESS.links[type]);
@@ -458,4 +458,29 @@ test('v1.3.1: "entregam?" e variações caem em delivery com SAIPOS/iFood/99Food
     const r=resolve({message:m}); assert.equal(r.intent,'delivery',m);
     assert.match(r.reply,/SAIPOS/); assert.match(r.reply,/iFood/); assert.match(r.reply,/99Food/);
   }
+});
+
+test('v1.3.3: trata o cliente pelo primeiro nome quando ele é seguro',()=>{
+  assert.equal(safeFirstName('ana paula'),'Ana');
+  assert.equal(safeFirstName('JOÃO'),'João');
+  for (const bad of ['','🍣🍣','user_123','a','x'.repeat(25),'<script>',null]) assert.equal(safeFirstName(bad),'',String(bad));
+  const c=(t,first_name)=>resolve({channel:'instagram',contact:{id:1,first_name,last_input_text:t,custom_fields:{}}});
+  assert.match(c('oi','Ana').reply,/^Oiê, Ana!/);
+  assert.match(c('oi','').reply,/^Oiê! Seja muito bem-vindo/);
+  assert.match(c('oi','🍣').reply,/^Oiê! /);
+  const rod=c('quanto é o rodízio?','Ana');
+  assert.equal(rod.intent,'rodizio');
+  assert.match(rod.reply,/^Aê, Ana! Boa escolha/);
+  for (const v of ['114,90','199,90','54,90']) assert.ok(rod.reply.includes(v),v);
+  assert.match(rod.reply,/Menores de 9 anos não pagam/);
+  assert.match(rod.reply,/Bebidas e sobremesas são à parte/);
+  assert.match(c('o que tem no rodízio?','Ana').reply,/^Ana, no rodízio você tem/);
+  assert.match(c('quero reservar','Ana').reply,/^Oba, Ana!/);
+  assert.match(c('meu pedido veio errado','Ana').reply,/^Sinto muito pelo ocorrido, Ana\./);
+  assert.match(c('obrigado','Ana').reply,/Nós que agradecemos, Ana!/);
+  assert.match(c('quero mandar currículo','Ana').reply,/^Que bom, Ana!/);
+  // sem nome, nenhuma vírgula solta ou "undefined"
+  for (const m of ['oi','quanto é o rodízio?','o que tem no rodízio?','quero reservar','meu pedido veio errado','obrigado','quero mandar currículo'])
+    assert.doesNotMatch(resolve({message:m}).reply,/undefined|null|, !|,\./,m);
+  assert.ok(resolve({message:'o que tem no rodízio?',first_name:'Ana'}).reply.length<=480);
 });
