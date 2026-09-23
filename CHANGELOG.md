@@ -7,6 +7,7 @@
 - Log de erro da OpenAI passa a registrar só status e mensagem curta da API, sem dados do cliente.
 - Removida a cópia idêntica `.github/workflows/workflows/ci.yml` (o GitHub Actions só lê `.github/workflows/*.yml`).
 - Pergunta de idade citando "filho/filha" sem a palavra rodízio agora responde a regra infantil (antes caía no WhatsApp).
+- Homologação 23/09 (pós-deploy): "entregam?"/"fazem entregas?" agora respondem delivery (SAIPOS, iFood e 99Food); logs `OPENAI_REPLY_OK` / `OPENAI_REPLY_FILTERED <intenção> <motivo>` sem conteúdo do cliente, para comprovar uso da OpenAI; `.env.example` com `IFOOD_STORE_URL`/`FOOD99_STORE_URL` opcionais; CI duplicado finalmente removido (o upload pelo navegador não apaga arquivos).
 - Novos testes: roteiro de homologação completo, Story, áudio, ortografia, memória legada e fallback/timeout da OpenAI com `store:false`.
 
 ## v1.3.0 · 23/09/2026 · Delivery multiplataforma
