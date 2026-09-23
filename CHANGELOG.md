@@ -1,5 +1,11 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.3.5 · 23/09/2026 · Correções do teste no Instagram
+
+- Nome: quando o perfil não tem nome preenchido, o bot usa o @ do Instagram ("deyverson_abe" → "Deyverson"). Palavras que não são nome (user, loja, oficial, material etc.) são ignoradas.
+- "Oque tem no rodízio" (junto) agora recebe o resumo do rodízio, e não mais o preço.
+- "Oque vem" / "o que tem de bom" sem outro assunto também recebem o resumo do rodízio. Antes caíam na mensagem genérica do WhatsApp.
+
 ## v1.3.4 · 23/09/2026 · Mais jeitos de perguntar
 
 - Localização entende "Ond vcs estão localizados", "Aonde e", "onde?", "onde vcs ficam", "end de vcs", "qual rua", "como faço pra chegar", "manda a localização" e parecidos. Resposta com o nome do cliente ("Claro, Nome! 📍") e o botão Como chegar.
