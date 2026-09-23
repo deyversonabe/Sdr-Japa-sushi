@@ -484,3 +484,26 @@ test('v1.3.3: trata o cliente pelo primeiro nome quando ele é seguro',()=>{
     assert.doesNotMatch(resolve({message:m}).reply,/undefined|null|, !|,\./,m);
   assert.ok(resolve({message:'o que tem no rodízio?',first_name:'Ana'}).reply.length<=480);
 });
+
+test('v1.3.4: perguntas de localização escritas de vários jeitos',()=>{
+  for (const m of ['Queria saber Ond vcs estão localizados','Aonde e','Aonde é?','onde?','onde vcs ficam?','Ond fica','onde vcs estao',
+    'qual o endereço','end de vcs','onde fica o japa','como faço pra chegar','vcs ficam em qual rua','manda a localização','onde é o restaurante']) {
+    const r=resolve({message:m});
+    assert.equal(r.intent,'localizacao',m);
+    assert.match(r.reply,/Av\. Treze, 657/);
+    assert.ok(r.ctas.some(c=>c.url===BUSINESS.links.google_maps),m);
+  }
+  assert.match(resolve({contact:{first_name:'Ana',last_input_text:'aonde é',custom_fields:{}}}).reply,/^Claro, Ana! 📍/);
+  // "onde" com outro assunto não vira localização
+  assert.equal(resolve({message:'onde vejo o cardapio'}).intent,'cardapio');
+  assert.equal(resolve({message:'onde faço o pedido'}).intent,'pedido');
+  assert.equal(resolve({message:'onde mando meu currículo'}).intent,'vaga');
+});
+
+test('v1.3.4: abreviações comuns do Direct',()=>{
+  assert.equal(resolve({message:'o q tem no rodizio'}).intent,'rodizio_composicao');
+  assert.equal(resolve({message:'qto ta o rodizio'}).intent,'rodizio');
+  assert.equal(resolve({message:'vcs abrem hj?'}).intent,'horario');
+  assert.equal(resolve({message:'vcs entregam?'}).intent,'delivery');
+  assert.equal(resolve({message:'vlw'}).intent,'agradecimento');
+});
