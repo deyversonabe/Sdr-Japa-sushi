@@ -507,3 +507,19 @@ test('v1.3.4: abreviações comuns do Direct',()=>{
   assert.equal(resolve({message:'vcs entregam?'}).intent,'delivery');
   assert.equal(resolve({message:'vlw'}).intent,'agradecimento');
 });
+
+test('v1.3.5: nome vindo do @ do Instagram, "oque" e "o que vem" no rodízio',()=>{
+  assert.equal(safeFirstName('deyverson_abe'),'Deyverson');
+  assert.equal(safeFirstName('@mafe'),'Mafe');
+  assert.equal(safeFirstName('joao.silva92'),'Joao');
+  const C=(t,ai='')=>({channel:'instagram',contact:{id:1,name:'deyverson_abe',first_name:'',ig_username:'deyverson_abe',last_input_text:t,custom_fields:{ai_state:ai}}});
+  const a=resolve(C('Qual o valor do rodízio'));
+  assert.match(a.reply,/^Aê, Deyverson! Boa escolha/);
+  const b=resolve(C('Oque tem no rodízio',dynamicPayload(a).content.actions[0].value));
+  assert.equal(b.intent,'rodizio_composicao');
+  assert.match(b.reply,/^Deyverson, no rodízio você tem/);
+  const c=resolve(C('Oque vem',dynamicPayload(b).content.actions[0].value));
+  assert.equal(c.intent,'rodizio_composicao');
+  assert.equal(resolve({message:'Oque vem'}).intent,'rodizio_composicao');
+  assert.equal(resolve({message:'oque tem no cardapio'}).intent,'cardapio');
+});
