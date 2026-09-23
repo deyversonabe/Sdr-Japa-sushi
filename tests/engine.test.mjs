@@ -238,3 +238,13 @@ test('OpenAI só humaniza intenção social, sem alterar preço',async()=>{
 });
 
 test('promoções não inventam campanha e remetem ao SAIPOS por botão',()=>{const r=route('Quais combos estão em promoção?');assert.equal(r.intent,'promocao');assert.ok(r.ctas.some(c=>c.url===BUSINESS.links.cardapio_pedido));assert.doesNotMatch(r.reply,/https?:\/\//);});
+
+test('regressão homologação 22/09: vaga, entrega e erro de digitação',()=>{
+  for (const m of ['vcs tao contratando sushiman?','tem vaga de garçom?','quero trabalho']) {
+    const r=route(m); assert.equal(r.intent,'vaga',m); assert.ok(okButton(r,'whatsapp_rh'),m);
+  }
+  assert.equal(route('Vocês entregam?').intent,'delivery');
+  const t=route('tem temaky de camarao?');
+  assert.match(t.reply,/Temaki Camarão — R\$ 39,99/);
+  assert.doesNotMatch(t.reply,/Temaki Tradicional/);
+});
