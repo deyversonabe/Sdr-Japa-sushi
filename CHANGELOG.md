@@ -1,5 +1,9 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.3.2 · 23/09/2026 · Resumo do rodízio
+
+- "O que tem no rodízio?" agora responde em **uma única mensagem curta**: tipos de peça, preços e convite para ver fritos, grelhados ou sem arroz. Não manda mais a lista completa com o guia em várias bolhas. Os guias por preferência continuam respondendo quando o cliente pede.
+
 ## v1.3.1 · 23/09/2026 · Correção de regressão
 
 - Restaurada a correção de 22/09 (commit 259123d) que o upload da v1.3 (22b030c) sobrescreveu: leitura do chip "Dados completos do contato" do ManyChat, memória `ai_state` em base64url (sem aspas, não quebra o JSON da Solicitação Externa), normalização de erros comuns (rodizo/rodizzio com maiúsculas, temaky, sachimi, filadelfia) e a palavra "json" no input da OpenAI exigida pelo `json_object`.
