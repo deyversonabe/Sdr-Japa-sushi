@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {resolve,standardPayload,dynamicPayload,CATALOG,HIDDEN,BUSINESS,humanize,VERSION,parseState,RODIZIO_GROUPS,marketplaceStatus} from '../lib/engine.js';
+import {resolve,standardPayload,dynamicPayload,CATALOG,HIDDEN,BUSINESS,humanize,VERSION,parseState,RODIZIO_GROUPS,marketplaceStatus,normalizeInput} from '../lib/engine.js';
 
 const route=(message,extra={})=>resolve({message,channel:'instagram',...extra});
 const okButton=(r,type)=>r.ctas.some(c=>c.url===BUSINESS.links[type]);
@@ -377,4 +377,77 @@ test('Dynamic Block divide composição longa sem partir nomes nem soltar links'
   assert.match(reconstructed,/GUIA POR PREFERÊNCIA/);
   assert.ok(payload.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Ver cardápio \/ pedir'));
   assert.equal(payload.content.actions.some(a=>a.tag_name==='interesse_cardapio'),true);
+});
+
+// Restaurado de 259123d/e31cf3e (sobrescrito pelo upload da v1.3 em 22b030c).
+test('aceita Dados completos do contato do ManyChat e memória sem aspas',()=>{
+  const r=resolve({channel:'instagram',contact:{id:9,first_name:'Ana',last_input_text:'qual "valor" do\nrodizio',custom_fields:{ai_state:''}}});
+  assert.equal(r.intent,'rodizio');
+  const st=dynamicPayload(r).content.actions[0].value;
+  assert.doesNotMatch(st,/"/);
+  assert.equal(parseState(st).last_intent,'rodizio');
+  const n=resolve({contact:{last_input_text:'5',custom_fields:{ai_state:'{"rating_pending":true}'}}});
+  assert.equal(n.intent,'avaliacao_nota');
+});
+
+test('v1.3.1: memória antiga em JSON puro continua aceita e nova sai em base64url',()=>{
+  const legacy=resolve({message:'5',ai_state:JSON.stringify({rating_pending:true})});
+  assert.equal(legacy.intent,'avaliacao_nota');
+  const p=standardPayload(resolve({message:'oi'}));
+  assert.doesNotMatch(p.ai_state,/[{}"]/);
+  assert.equal(parseState(p.ai_state).last_intent,'saudacao');
+  assert.equal(parseState('lixo%%%').last_intent,'');
+});
+
+test('v1.3.1: erros ortográficos comuns',()=>{
+  assert.equal(resolve({message:'Rodizo quanto é?'}).intent,'rodizio');
+  assert.equal(resolve({message:'RODIZZIO'}).intent,'rodizio');
+  assert.match(resolve({message:'tem temaky?'}).reply,/Temaki/i);
+});
+
+test('v1.3.1: roteiro de homologação — intenções esperadas',()=>{
+  const cases={
+    'oi':'saudacao','quanto é o rodízio?':'rodizio','meu filho tem 9 anos paga rodizio?':'rodizio_infantil',
+    'quais fritos tem no rodizio?':'rodizio_preferencias','tem grelhados no rodizio?':'rodizio_preferencias',
+    'tem opção sem arroz no rodizio?':'rodizio_preferencias','quero ver o cardápio':'cardapio',
+    'quero reservar uma mesa':'reserva','aceita pix?':'pagamento','vocês estão no ifood?':'delivery',
+    'tem no 99food?':'delivery','qual a taxa de entrega?':'delivery','quero mandar currículo':'vaga',
+    'onde fica?':'localizacao','meu pedido veio errado':'reclamacao','quero avaliar':'avaliacao_solicitar_nota'
+  };
+  for (const [msg,intent] of Object.entries(cases)) assert.equal(resolve({message:msg}).intent,intent,msg);
+  const casal=resolve({message:'quanto é o rodizio casal?'});
+  assert.match(casal.reply,/199,90/);
+});
+
+test('v1.3.1: resposta a Story sem texto, áudio e nenhum botão de marketplace sem link validado',()=>{
+  assert.equal(resolve({event_type:'story mention',message:''}).intent,'story_mention');
+  assert.equal(resolve({message_type:'audio',message:''}).intent,'audio');
+  const d=standardPayload(resolve({message:'quero pedir delivery'}));
+  assert.ok(d.ctas.every(c=>!/ifood|99app/.test(c.url)));
+  assert.doesNotMatch(d.reply,/https?:|wa\.me|www\./);
+});
+
+test('v1.3.1: OpenAI recebe store:false, palavra json, e cai no texto determinístico em erro/timeout',async()=>{
+  const prev={k:process.env.OPENAI_API_KEY,t:process.env.OPENAI_TIMEOUT_MS};
+  process.env.OPENAI_API_KEY='sk-teste-local'; process.env.OPENAI_TIMEOUT_MS='50';
+  const social=resolve({message:'oi'});
+  let body;
+  const ok=async(_u,o)=>{body=JSON.parse(o.body);return {ok:true,json:async()=>({output:[{content:[{type:'output_text',text:'{"reply":"Oi! Que bom te ver por aqui 🍣"}'}]}]})};};
+  assert.equal((await humanize(social,ok)).reply,'Oi! Que bom te ver por aqui 🍣');
+  assert.equal(body.store,false); assert.match(body.input,/json/);
+  const fail=async()=>({ok:false,status:500,json:async()=>({error:{message:'x'}})});
+  assert.equal((await humanize(social,fail)).reply,social.reply);
+  const hang=(_u,o)=>new Promise((_,rej)=>o.signal.addEventListener('abort',()=>rej(Object.assign(new Error('a'),{name:'AbortError'}))));
+  assert.equal((await humanize(social,hang)).reply,social.reply);
+  const preco=resolve({message:'quanto é o rodizio'});
+  let called=false; await humanize(preco,async()=>{called=true;});
+  assert.equal(called,false);
+  process.env.OPENAI_API_KEY=prev.k??''; if(prev.k===undefined) delete process.env.OPENAI_API_KEY;
+  if(prev.t===undefined) delete process.env.OPENAI_TIMEOUT_MS; else process.env.OPENAI_TIMEOUT_MS=prev.t;
+});
+
+test('v1.3.1: pergunta de idade citando filho/filha sem a palavra rodízio',()=>{
+  const r=resolve({message:'meu filho tem 9 anos'});
+  assert.equal(r.intent,'rodizio_infantil'); assert.match(r.reply,/54,90/);
+  assert.equal(resolve({message:'minha filha de 5 anos paga?'}).intent,'rodizio_infantil');
 });

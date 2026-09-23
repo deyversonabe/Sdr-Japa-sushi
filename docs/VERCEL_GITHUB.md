@@ -1,14 +1,17 @@
 # GitHub + Vercel — implantação segura
 
+**ATUALIZAÇÃO v1.3.1:** este projeto **já existe** no GitHub e na Vercel. Não crie outro projeto ou reimporte o repositório. Confira primeiro a `main`, aplique a correção via PR, faça redeploy do projeto `sdr-japa-sushi` existente e rotacione o `WEBHOOK_SECRET` nos dois sistemas. Consulte [`GUIA_INSTALACAO_CORRECAO_V1_3_1.md`](GUIA_INSTALACAO_CORRECAO_V1_3_1.md). As instruções iniciais de importação abaixo permanecem apenas como referência para uma instalação *do zero* expressamente autorizada.
+
+
 ## 1. Repositório GitHub
 
-O repositório **já foi criado** como `deyversonabe/Sdr-Japa-sushi`. Faça commit e push da atualização v1.3.0 neste repositório; prefira torná-lo **privado**. Não inicialize outro repositório para essa revisão. **Não substituir outro bot ou projeto já em produção**. Importe todo o conteúdo desta pasta preservando `api/`, `lib/`, `data/`, `docs/` e arquivos ocultos. Não suba os PDFs originais de auditoria nem segredos. Na pasta `.github/workflows`, o CI valida alterações com Node 22.
+O repositório **já foi criado** como `deyversonabe/Sdr-Japa-sushi`. Faça commit e push da atualização v1.3.1 neste repositório; prefira torná-lo **privado**. Não inicialize outro repositório para essa revisão. **Não substituir outro bot ou projeto já em produção**. Importe todo o conteúdo desta pasta preservando `api/`, `lib/`, `data/`, `docs/` e arquivos ocultos. Não suba os PDFs originais de auditoria nem segredos. Na pasta `.github/workflows`, o CI valida alterações com Node 22.
 
 Configure proteção da branch principal e aprove alterações de preços/status via Pull Request. Sempre rode `npm run check` antes de aceitar o commit. Este pacote **não tem histórico de commits**; ao importá-lo no repositório novo, o primeiro commit é criado por quem fizer o upload.
 
 ## 2. Projeto Vercel
 
-1. Vercel → Add New → Project → Import Git Repository; autorize o repositório privado dedicado.
+1. **Na atualização existente:** abra `sdr-japa-sushi` e confira a integração GitHub antes de fazer redeploy. **Somente em instalação nova autorizada:** Vercel → Add New → Project → Import Git Repository; autorize o repositório dedicado.
 2. Framework Preset: **Other**; Root Directory: diretório raiz do repo. Não coloque `api/` como diretório raiz.
 3. Use o `vercel.json` incluído. Há **uma única função** (`api/manychat.js`); a pasta `lib/` fica fora de `api/`. O conteúdo `data/**` é incluído na função. `.vercelignore` exclui scripts/docs/testes do pacote de runtime.
 4. Em Project → Settings → Environment Variables, configure variáveis **Production** e de teste separadamente:
@@ -23,7 +26,7 @@ Configure proteção da branch principal e aprove alterações de preços/status
 | `FOOD99_STORE_URL` | Opcional, aguardando URL de loja | Link direto do Japa Sushi Lounge de Barretos no 99Food, validado com o responsável. Não usar loja homônima em outra cidade. |
 
 5. Faça Deploy. Use a URL HTTPS do ambiente Production e anote **exatamente** o host informado pelo projeto.
-6. Teste em navegador o health GET: `https://SEU-PROJETO.vercel.app/api/manychat`. A resposta deve trazer `ok: true`, `catalogo_ativo: 178`, `openai_configured: true`, `webhook_secret_configured: true`. A propriedade `google_review_configured` deve ser true com o link fornecido. A versão v1.3.0 também retorna `rodizio_grupos_configurados: 3`, `ifood_confirmed:true` e `food99_confirmed:true`. Os campos `ifood_button_configured` e `food99_button_configured` só se tornam `true` depois de URLs diretas de loja válidas.
+6. Teste em navegador o health GET: `https://SEU-PROJETO.vercel.app/api/manychat`. A resposta deve trazer `ok: true`, `catalogo_ativo: 178`, `openai_configured: true`, `webhook_secret_configured: true`. A propriedade `google_review_configured` deve ser true com o link fornecido. A versão v1.3.1 também retorna `rodizio_grupos_configurados: 3`, `ifood_confirmed:true` e `food99_confirmed:true`. Os campos `ifood_button_configured` e `food99_button_configured` só se tornam `true` depois de URLs diretas de loja válidas.
 7. Configure o mesmo segredo na requisição do ManyChat: cabeçalho `x-webhook-secret`. Não inclua a chave da OpenAI em nenhum campo do ManyChat.
 
 **Exemplo de teste técnico**, substituindo URL e segredo localmente (não poste resultados com cabeçalhos reais em prints):

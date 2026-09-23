@@ -10,7 +10,7 @@ Em **Settings → Fields → Custom User Fields**, crie estes campos com **exata
 
 | Campo | Tipo | Uso |
 |---|---|---|
-| `ai_state` | Text | JSON curto de memória: último assunto, continuidade, avaliação pendente e deduplicação. |
+| `ai_state` | Text | Memória opaca em base64url (v1.3.1, sem aspas): último assunto, continuidade, avaliação pendente e deduplicação. Não editar manualmente; JSON antigo continua aceito. |
 | `avaliacao_nota` | Number | Nota de 1 a 5, gravada somente após resposta válida em pesquisa pendente. |
 | `avaliacao_feedback` | Text | Comentário livre de cliente que avaliou de 1 a 4. |
 | `atendimento_humano` | True/False | Somente se ativar futuramente um fluxo oficial de WhatsApp com transferência; não precisa habilitar canal agora. |

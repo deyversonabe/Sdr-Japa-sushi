@@ -1,10 +1,10 @@
 # Japa Sushi Lounge · Atendimento Instagram + ManyChat + Vercel + OpenAI
 
-**Código de implantação — v1.3.0 · 23/09/2026**
+**Código de implantação — v1.3.1 · 23/09/2026**
 
 Sistema exclusivo do **Japa Sushi Lounge (Barretos/SP)**, preparado com base no fluxo de atendimento, relatório técnico e cardápio-mestre fornecidos pelo responsável. O ManyChat recebe/envia mensagens; **não se ativa AI Step, IA nativa, reconhecimento por IA ou qualquer IA do ManyChat**. A Vercel executa as regras comerciais. A OpenAI, quando sua API Key está configurada, pode humanizar apenas respostas sociais simples, sem criar preço, descrição, oferta, horário ou disponibilidade.
 
-**Estado de entrega:** atualização v1.3.0 empacotada em ZIP para aplicar no repositório já criado `deyversonabe/Sdr-Japa-sushi`. A publicação desta revisão na Vercel e a ativação de fluxos no ManyChat **não foram verificadas**. Validar na operação real os itens remanescentes documentados em [`docs/PENDENCIAS_ANTES_DE_PUBLICAR.md`](docs/PENDENCIAS_ANTES_DE_PUBLICAR.md).
+**Estado de entrega:** pacote completo **v1.3.1** para atualizar o repositório **existente** `deyversonabe/Sdr-Japa-sushi` e corrigir a leitura de `contact` do ManyChat, a memória `ai_state` e o JSON da OpenAI. Os **47 testes locais passaram**. A publicação desta correção na Vercel e a homologação do ManyChat/Instagram **não foram verificadas**; consulte [`docs/GUIA_INSTALACAO_CORRECAO_V1_3_1.md`](docs/GUIA_INSTALACAO_CORRECAO_V1_3_1.md) e [`docs/PROMPT_EXECUCAO_CORRECAO_V1_3_1.md`](docs/PROMPT_EXECUCAO_CORRECAO_V1_3_1.md).
 
 ## Arquitetura
 
