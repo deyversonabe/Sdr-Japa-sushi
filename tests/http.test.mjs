@@ -16,7 +16,7 @@ test('GET health check não mostra segredos',async()=>{
   assert.equal(r.body.business,'Japa Sushi Lounge');
   assert.equal(r.body.catalogo_ativo,178);
   assert.equal(r.body.rodizio_grupos_configurados,3);
-  assert.equal(r.body.app_version,'1.3.4');
+  assert.equal(r.body.app_version,'1.3.5');
   assert.equal(r.body.ifood_confirmed,true);
   assert.equal(r.body.food99_confirmed,true);
   assert.equal(r.body.ifood_button_configured,false);
