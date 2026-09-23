@@ -248,3 +248,13 @@ test('regressão homologação 22/09: vaga, entrega e erro de digitação',()=>{
   assert.match(t.reply,/Temaki Camarão — R\$ 39,99/);
   assert.doesNotMatch(t.reply,/Temaki Tradicional/);
 });
+
+test('aceita Dados completos do contato do ManyChat e memória sem aspas',()=>{
+  const r=resolve({channel:'instagram',contact:{id:9,first_name:'Ana',last_input_text:'qual "valor" do\nrodizio',custom_fields:{ai_state:''}}});
+  assert.equal(r.intent,'rodizio');
+  const st=dynamicPayload(r).content.actions[0].value;
+  assert.doesNotMatch(st,/"/);
+  assert.equal(parseState(st).last_intent,'rodizio');
+  const n=resolve({contact:{last_input_text:'5',custom_fields:{ai_state:'{"rating_pending":true}'}}});
+  assert.equal(n.intent,'avaliacao_nota');
+});
