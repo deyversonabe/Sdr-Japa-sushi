@@ -68,6 +68,25 @@ O ManyChat deve montar JSON válido depois de substituir os chips, inclusive qua
 
 No ambiente real, **não** cole este exemplo de resposta: o webhook o gera dinamicamente usando a URL completa confirmada pelo responsável. O botão é nativo; o endereço do destino não fica visível na conversa.
 
+## 2.1. Novo grupo SEPARADO da lista do rodízio — versão 1.2.0
+
+Não é necessário criar outra automação nem outro webhook: o motor atual responde às novas frases na mesma requisição do Default Reply. Os gatilhos de Story Reply também usam essas intenções quando o cliente fizer perguntas sobre o rodízio.
+
+| Mensagem recebida | `intent` esperado | Resposta |
+|---|---|---|
+| `o que tem no rodízio?` / `o que vem no rodízio?` | `rodizio_composicao` | Lista principal resumida seguida de **um segundo grupo separado** por preferência: fritos/empanados, grelhados e sem arroz. |
+| `quais fritos tem no rodízio?` / `fritos` | `rodizio_preferencias` | Somente fritos e empanados cadastrados, com botões Cardápio e WhatsApp. |
+| `tem grelhados no rodízio?` | `rodizio_preferencias` | Hossomaki e uramaki grelhados cadastrados. |
+| `sem arroz` / `o que tem sem arroz no rodízio?` | `rodizio_preferencias` | Sashimis, carpaccio, ceviche, sunomono e shimeji; Joy Especial sem arroz identificado como à la carte separado. |
+| `quanto custa o rodízio?` | `rodizio` | Preços já aprovados, sem despejar a relação completa. |
+| `bebidas entram no rodízio?` | `rodizio_inclusoes` | Não; bebidas e sobremesas são cobradas separadamente. |
+
+Os grupos ficam em `data/rodizio_grupos_atendimento.json`; **não** acrescente os grupos como uma nova modalidade, preço ou promessa de inclusão. A lista é a relação histórica do cadastro interno: confirme disponibilidade real com a equipe antes de ativar a resposta detalhada.
+
+O texto completo do rodízio supera 900 caracteres. Portanto, **priorize o Dynamic Block**, que já divide em várias bolhas por parágrafo e cria os botões apenas na última. Se utilizar **Solicitação Externa**, mapeie `reply_part_1`, `reply_part_2`, `reply_part_3` e envie as partes **não vazias** em bolhas separadas, em ordem. **Não** coloque o `reply` completo numa bolha única do Instagram e não envie simultaneamente `reply` e `reply_part_*`, pois isso duplica respostas. Exiba botões nativos somente na última bolha.
+
+Acesse a resposta aprovada, o grupo separado e a validação de implantação em [`RODIZIO_GRUPOS_MANYCHAT.md`](RODIZIO_GRUPOS_MANYCHAT.md).
+
 ## 3. Fluxos adicionais — entradas sem conflito
 
 Crie automações separadas somente se a conta tiver os gatilhos disponíveis:
@@ -125,4 +144,16 @@ Nesse modo, construa condições por `ai_cta_count` e pelo `ai_intent`, e **bot�
 - Saúde da Vercel com versão correta; POST autenticado devolve `v2` e botões; 401 gera fallback de rede no fluxo.
 - Disparo de currículo leva **somente** ao RH; dúvida leva WhatsApp do restaurante; cardápio e rota usam seus próprios botões, nunca texto com URL.
 - Pesquisa inicia só com pedido confirmado; notas, relato e eventual review são testados com **contato interno**, não com cliente real.
-- Pendências sobre **idade exata de 9 anos, review URL, campanhas e divergência SAIPOS/PDF** resolvidas antes do lançamento público.
+- Idade exata de 9 anos e URL de avaliação já foram fornecidas. Antes de publicar, valide a abertura do review, os valores atuais do SAIPOS, a disponibilidade dos itens cadastrados no rodízio e mantenha promoções antigas bloqueadas.
+
+## 8. Delivery SAIPOS, iFood e 99Food (v1.3.0)
+
+O responsável confirmou os três canais de pedido. **Apenas SAIPOS tem URL direta fornecida até o momento**. O webhook atualizado trata frases como `tem no ifood?`, `quero pedir pelo 99food`, `quero entrega`, `quanto é a taxa?`, `quero pedir` e monta a resposta sem IA nativa do ManyChat.
+
+**Dynamic Block já existente:** não crie um segundo fluxo ou gatilho de Direct. A mesma chamada `POST /api/manychat?mode=dynamic` devolve os botões contextuais. Após configurar as URLs de loja na Vercel, responda por um contato de teste e confira até três botões nativos: **Ver cardápio / pedir**, **Pedir no iFood** e **Pedir no 99Food**. Caso só uma URL esteja validada, esse botão aparece e a outra plataforma continua citada na resposta sem link fictício.
+
+**Alternativa Solicitação Externa:** se o canal já utiliza `cta_count` e `cta_1..3_url`, confirme que os ramos 1, 2 e 3 têm todas as URLs variáveis ou destinos específicos validados. Sem suporte real à URL variável, crie ramos fixos separados somente para os destinos confirmados. Evite colocar URL em texto e evite retornar um botão vazio.
+
+No SAIPOS, a taxa é consultada após informar o endereço; iFood e 99Food apresentam condições e preços próprios no aplicativo. **Não anuncie a mesma taxa ou o mesmo valor para os três canais sem confirmação expressa.**
+
+Consulte `docs/ENTREGA_SAIPOS_IFOOD_99FOOD.md` para a etapa final da configuração. As chaves e segredos não pertencem ao código nem ao ManyChat, exceto o cabeçalho privado do webhook.

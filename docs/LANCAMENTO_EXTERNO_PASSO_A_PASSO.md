@@ -1,6 +1,8 @@
-# Lançamento externo — Japa Sushi Lounge (v1.1.0)
+# Lançamento externo — Japa Sushi Lounge (v1.3.0)
 
 **Situação:** pacote preparado; nenhuma conta externa foi alterada. Requer usuário com acesso administrativo ao GitHub, Vercel, ManyChat, Instagram e projeto de API OpenAI. Não ativar nenhuma IA nativa do ManyChat.
+
+> **ATUALIZAÇÃO 1.3.0:** O GitHub `deyversonabe/Sdr-Japa-sushi` já foi criado. Para esta revisão, não rode `git init` nem crie um segundo repositório. Confira os arquivos modificados, execute `npm run check`, faça commit/push e verifique o deployment Vercel. Use o manual abaixo somente se estiver fazendo a implantação em outro ambiente.
 
 ## 1. Preparar repositório exclusivo (GitHub)
 
@@ -12,7 +14,7 @@
 git init
 git branch -M main
 git add .
-git commit -m "Implantar webhook Japa Sushi v1.1.0"
+git commit -m "Implantar webhook Japa Sushi v1.3.0"
 git remote add origin https://github.com/SEU-USUARIO/japa-sushi-manychat-vercel.git
 git push -u origin main
 ```
@@ -28,7 +30,7 @@ git push -u origin main
 2. Configure **Framework Preset: Other** e **Root Directory: `./`** (raiz onde fica `package.json`). Não use `api/` como raiz.
 3. Em **Environment Variables**, crie em Production: `WEBHOOK_SECRET` (segredo exclusivo, aleatório, com 24+ caracteres), `OPENAI_API_KEY` (chave de API da OpenAI; não é a assinatura ChatGPT), `OPENAI_MODEL` (opcional, padrão do código). **Nunca salve chaves no repositório**. Configure Preview separadamente, com segredo de teste diferente.
 4. Deploy; anote a URL Production `https://SEU-PROJETO.vercel.app/api/manychat`. Se alterar variáveis depois do deploy, faça redeploy.
-5. Acesse a URL por GET. Confirmar `ok:true`, `app_version:1.1.0`, `catalogo_ativo:178`, `google_review_configured:true`, `openai_configured:true`, `webhook_secret_configured:true`. O GET público não deve revelar segredos.
+5. Acesse a URL por GET. Confirmar `ok:true`, `app_version:1.3.0`, `catalogo_ativo:178`, `google_review_configured:true`, `openai_configured:true`, `webhook_secret_configured:true`. O GET público não deve revelar segredos.
 6. Teste o POST autenticado **com contato técnico de teste**, antes de conectar clientes. Exemplo:
 
 ```bash
@@ -67,3 +69,19 @@ Resultado esperado: resposta com R$ 54,90 e botão pertinente, sem URL no texto.
 2. Evitar Default Replies concorrentes; desligar versão antiga apenas quando o fluxo novo passar no teste interno.
 3. Se houver incidente, pausar as automações novas no ManyChat ou restaurar o deployment anterior na Vercel; não apagar dados de contato nem revogar segredos antes de estabilizar a operação.
 4. Após o lançamento, monitorar erros e intenções desconhecidas nos logs da Vercel (sem registrar PII), revisar preços no JSON e acompanhar encaminhamentos humanos.
+
+## Atualizar o repositório existente com v1.3.0
+
+Após extrair a pasta desta versão sobre uma cópia limpa do repositório atual (sem sobrescrever segredos), confirme que `data/rodizio_grupos_atendimento.json` existe, execute `npm run check`, faça commit dos arquivos alterados e push para a branch adotada. Se o GitHub Actions e os testes estiverem verdes, integre à `main` e confira o GET `/api/manychat`: `app_version=1.3.0` e `rodizio_grupos_configurados=3`. Faça o teste real do Dynamic Block com um contato interno antes de ativar para todos.
+
+## 6. Ativar iFood e 99Food (versão 1.3.0)
+
+**Já confirmado:** loja disponível em iFood e 99Food, além do SAIPOS. **Ainda não confirmado:** endereço direto de cada loja. O projeto não cria botões para URLs ausentes.
+
+1. Abra o perfil do **Japa Sushi Lounge de Barretos** em cada aplicativo e use a opção de compartilhar a loja. Confira nome e cidade; não confunda com restaurantes homônimos.
+2. Na Vercel → Project → Settings → Environment Variables, cadastre `IFOOD_STORE_URL` e `FOOD99_STORE_URL` com os links completos da loja, nos ambientes apropriados. Não insira links de outras lojas e não use redirecionadores genéricos. Se o link do app não corresponder ao domínio oficial aceito pelo código, solicite validação antes de ampliar a lista segura.
+3. Faça redeploy. Verifique o GET `/api/manychat`: `ifood_confirmed:true`, `food99_confirmed:true`, `ifood_button_configured:true`, `food99_button_configured:true`.
+4. Envie DM pelo contato interno: `quero entrega`, `quero pedir no ifood`, `tem no 99food?` e `quanto é o frete?`. Confirme os botões no aparelho: **SAIPOS**, **Pedir no iFood** e **Pedir no 99Food**. O Instagram mostra somente rótulos; os URLs estão ocultos nos destinos dos botões.
+5. Se os campos de URL continuarem ausentes, o bot informa os três canais e oferece os botões já confirmados, sem inventar endereço ou preço de outros aplicativos.
+
+Não é necessário criar novos gatilhos de IA no ManyChat: a intenção `delivery` já é processada pelo webhook existente. Na integração alternativa com `Solicitação Externa` (sem Dynamic Block), revise os ramos de `cta_count` (até 3) e os botões de URL variável segundo o construtor da sua conta.

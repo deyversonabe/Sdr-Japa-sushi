@@ -2,7 +2,7 @@
 
 ## Testes automatizados
 
-Com Node 20 ou superior, execute `npm run check`. O script confere sintaxe dos três módulos JS e executa os testes em `tests/engine.test.mjs` e `tests/http.test.mjs`. O projeto foi preparado com **28 testes automatizados** cobrindo contrato JSON, catálogo, roteamento, links, pagamentos, idade, reservas, RH, privacidade, fallback, estado, avaliação, deduplicação e chamada à OpenAI **simulada**.
+Com Node 20 ou superior, execute `npm run check`. O script confere sintaxe dos três módulos JS e executa os testes em `tests/engine.test.mjs` e `tests/http.test.mjs`. O projeto foi preparado com **40 testes automatizados** cobrindo contrato JSON, catálogo, roteamento, links, pagamentos, idade, reservas, RH, privacidade, fallback, estado, avaliação, deduplicação e chamada à OpenAI **simulada**.
 
 A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativos na Vercel. Igualmente, o teste unitário de Dynamic Block **não substitui** a “Solicitação de Teste” no ManyChat real nem um teste em conta interna de Instagram. O deploy e a publicação nos serviços externos precisam ser confirmados separadamente.
 
@@ -12,12 +12,17 @@ A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativ
 |---|---|
 | `oi` | Saudação natural, sem preço inventado nem link em texto. Com chave OpenAI válida, pode ser humanizada; sem chave, resposta-base. |
 | `Qto tá o rodiozio?` | Rodízio diário: R$ 114,90 individual, R$ 199,90 casal; bebidas e sobremesas à parte. |
-| `Criança de 9 anos paga?` | **Não adivinhar**: solicita confirmação da equipe via botão do WhatsApp. |
+| `o que tem no rodízio?` | Lista principal + **guia separado** de fritos/empanados, grelhados e sem arroz. Sem declarar Joy Especial à la carte como incluso. |
+| `quais fritos tem no rodízio?` | Somente fritos/empanados cadastrados; botões Cardápio e WhatsApp, sem URLs no texto. |
+| `tem grelhados no rodízio?` | Hossomaki e uramaki grelhados, sem adicionar pratos do à la carte. |
+| `o que tem sem arroz?` | Lista de sashimis, carpaccio, ceviche, sunomono e shimeji; esclarece que Joy Especial sem arroz é à la carte. |
+| `Criança de 9 anos paga?` | Informa R$ 54,90 para 9 a 11 anos e gratuidade somente para menores de 9 anos. |
 | `Quanto custa Combo Casal?` | R$ 169,99; dizer honestamente que falta descrição confirmada. Não confundir com rodízio para casal. |
 | `Joy Salmão` | Se o termo não indicar categoria, apresentar alternativas reais R$ 34,99 e R$ 44,99 com respectivas categorias. |
 | `Yakimeshi` / `Yakissoba camarão` | Somente pratos quentes ativos confirmados; valor exacto R$ 64,99 para Yakissoba Camarão. |
 | `quero reservar uma mesa` | Nome/dia/hora/quantidade + regra de sinal de 50%; CTA WhatsApp; nunca “mesa garantida”. |
-| `quanto é a taxa de entrega?` | Informa consulta pelo endereço no SAIPOS; botão SAIPOS e, opcionalmente, WhatsApp. |
+| `quanto é a taxa de entrega?` | Informa SAIPOS, iFood e 99Food; consulta de taxa no SAIPOS pelo endereço, taxas/preços dos marketplaces em cada app. Sem URL direta validada, não cria botão de marketplace. |
+| `quero pedir no iFood` / `tem no 99Food?` | Confirma canais e direciona pelo botão nativo da loja **somente se URL específica foi validada**. Caso contrário, orienta buscar Japa Sushi Lounge em Barretos no app e apresenta botão SAIPOS. |
 | `onde fica?` | Endereço correto + botão Maps real; **nenhuma URL aparente**. |
 | `quero trabalhar aí` / `envio currículo` | **Somente** botão RH para (17) 99602-2567. |
 | `sou influenciadora, proposta de parceria` | Resposta institucional neutra, sem confirmar buscas pessoais, mudanças de gestão ou promessa comercial. |
@@ -35,7 +40,7 @@ A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativ
 
 ## Checklist de publicação — aceite formal
 
-1. **Dados comerciais:** idade exata de 9 anos, URL exata do review, status dos 7 combos promocionais, preços atuais no PDV e regra detalhada da reserva definidos; reexecutar os testes após alterar.
+1. **Dados comerciais:** idade de 9 anos e URL de avaliação já definidas; manter combos promocionais bloqueados, confirmar preços no SAIPOS, itens reais do rodízio e regra detalhada da reserva; reexecutar os testes após alterar.
 2. **Ambiente:** segredo configurado e protegido; OpenAI API Key ativa; Deploy Vercel bem-sucedido; `GET /api/manychat` indica versões e flags esperadas; controle de acesso da conta correto.
 3. **ManyChat:** IA interna **totalmente desativada**; tags/campos com nomes idênticos; Dynamic Block testado e fallback configurado; não há gatilhos concorrentes; URL de review nunca substituída pela rota Maps.
 4. **Pesquisa:** evento vem de venda realmente confirmada, não de `interesse_pedido`; bloqueio operacional contra pesquisas duplicadas; acesso ao Google não restrito a notas 5.
@@ -54,3 +59,11 @@ A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativ
 Revisar erros `BOT_FATAL_ERROR`, `OPENAI_REPLY_ERROR`, aumento de intenção `outro` e divergências de preço reportadas pela equipe. Para qualquer nova frase problemática, criar primeiro um teste de regressão. Confronte o `app_version` do webhook com a versão do repositório em produção; não publique alteração de menu sem conferir o sistema de vendas.
 
 Referências: [ManyChat Dynamic Block](https://help.manychat.com/hc/pt-br/articles/14281268533788-DevTools-Bloco-din%C3%A2mico), [protocolo Instagram](https://manychat.github.io/dynamic_block_docs/channels/), [OpenAI Responses API](https://platform.openai.com/docs/api-reference/responses).
+
+## Novos testes v1.3.0: canais de entrega
+
+- Atendimento do delivery indica os três canais, sem fixar taxa ou preço dos aplicativos.
+- Sem `IFOOD_STORE_URL` ou `FOOD99_STORE_URL`, não existe botão de loja inventado.
+- Com URLs diretas de loja e domínios aceitos, a resposta padrão e o Dynamic Block mostram **até três botões**: SAIPOS, iFood e 99Food.
+- URLs de página inicial genérica ou domínios falsos são rejeitados.
+- As rotas e os botões devem ser testados em conta interna antes de ativação pública. Os URLs usados nos testes automatizados são **fictícios de teste**, não endereços da loja real.

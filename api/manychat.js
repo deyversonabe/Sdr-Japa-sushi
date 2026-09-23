@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import {resolve,humanize,standardPayload,dynamicPayload,VERSION,BUSINESS,CATALOG} from '../lib/engine.js';
+import {resolve,humanize,standardPayload,dynamicPayload,VERSION,BUSINESS,CATALOG,RODIZIO_GROUPS,marketplaceStatus} from '../lib/engine.js';
 
 const json=(res,code,obj)=>res.status(code).setHeader('Content-Type','application/json; charset=utf-8').json(obj);
 function authorized(req) {
@@ -15,9 +15,13 @@ function authorized(req) {
 export default async function handler(req,res) {
   if (req.method==='GET') return json(res,200,{
     ok:true,app_version:VERSION,business:BUSINESS.empresa.nome,
-    catalogo_ativo:CATALOG.length,openai_configured:!!process.env.OPENAI_API_KEY,
+    catalogo_ativo:CATALOG.length,rodizio_grupos_configurados:Object.keys(RODIZIO_GROUPS.guia_por_preferencia).length,openai_configured:!!process.env.OPENAI_API_KEY,
     webhook_secret_configured:!!process.env.WEBHOOK_SECRET,
-    google_review_configured:!!BUSINESS.links.google_avaliacao
+    google_review_configured:!!BUSINESS.links.google_avaliacao,
+    ifood_confirmed:!!BUSINESS.pedidos.marketplaces?.ifood?.disponivel_confirmado,
+    food99_confirmed:!!BUSINESS.pedidos.marketplaces?.food99?.disponivel_confirmado,
+    ifood_button_configured:!!marketplaceStatus().ifood,
+    food99_button_configured:!!marketplaceStatus().food99
   });
   if (req.method!=='POST') return json(res,405,{ok:false,error:'METHOD_NOT_ALLOWED'});
   if (!authorized(req)) return json(res,401,{ok:false,error:'UNAUTHORIZED'});

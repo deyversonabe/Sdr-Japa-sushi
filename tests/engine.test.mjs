@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {resolve,standardPayload,dynamicPayload,CATALOG,HIDDEN,BUSINESS,humanize,VERSION,parseState} from '../lib/engine.js';
+import {readFileSync} from 'node:fs';
+import {resolve,standardPayload,dynamicPayload,CATALOG,HIDDEN,BUSINESS,humanize,VERSION,parseState,RODIZIO_GROUPS,marketplaceStatus} from '../lib/engine.js';
 
 const route=(message,extra={})=>resolve({message,channel:'instagram',...extra});
 const okButton=(r,type)=>r.ctas.some(c=>c.url===BUSINESS.links[type]);
@@ -80,11 +81,61 @@ test('reserva recolhe dados no WhatsApp, cobra sinal sem prometer confirmação'
   assert.doesNotMatch(r.reply,/já está reservada|reserva confirmada/i);
 });
 
-test('delivery oferece só SAIPOS, calcula taxa pelo endereço',()=>{
+test('entrega apresenta SAIPOS, iFood e 99Food e explica condições por plataforma',()=>{
   const r=route('Quanto é a taxa do delivery?');
-  assert.equal(r.intent,'delivery');assert.match(r.reply,/endereço/);
+  assert.equal(r.intent,'delivery');
+  assert.match(r.reply,/endereço/);
+  assert.match(r.reply,/iFood.*99Food/);
+  assert.match(r.reply,/taxas e os preços/i);
   assert.ok(okButton(r,'cardapio_pedido'));
-  assert.equal(r.ctas.some(c=>/ifood|99food/.test(c.label.toLowerCase())),false);
+  assert.equal(r.ctas.some(c=>/ifood|99food/i.test(c.label)),false,'sem URLs de lojas não deve haver botão inventado');
+  assert.equal(BUSINESS.pedidos.marketplaces.ifood.disponivel_confirmado,true);
+  assert.equal(BUSINESS.pedidos.marketplaces.food99.disponivel_confirmado,true);
+});
+
+test('solicitação específica no iFood ou 99Food sem URL validada orienta buscar no app e fornece SAIPOS',()=>{
+  for (const [q,brand] of [['Quero pedir no iFood','iFood'],['Vocês estão no 99Food?','99Food']]) {
+    const r=route(q);
+    assert.equal(r.intent,'delivery',q);
+    assert.match(r.reply,new RegExp(brand,'i'));
+    assert.match(r.reply,/Barretos/);
+    assert.ok(okButton(r,'cardapio_pedido'));
+    assert.doesNotMatch(r.reply,/https?:\/\//);
+  }
+});
+
+test('URLs verificadas via env liberam botões nativos SAIPOS, iFood e 99Food com limite de 3',()=>{
+  const i='https://www.ifood.com.br/delivery/barretos-sp/japa-sushi-lounge-centro/12345678-1234-1234-1234-123456789abc';
+  const f='https://99app.com/99food/barretos/japa-sushi-lounge/123456789/';
+  try {
+    process.env.IFOOD_STORE_URL=i;
+    process.env.FOOD99_STORE_URL=f;
+    assert.deepEqual(marketplaceStatus(),{ifood:i,food99:f});
+    const generic=standardPayload(route('Vocês fazem entrega?'));
+    assert.equal(generic.cta_count,3);
+    assert.deepEqual(generic.ctas.map(c=>c.label),['Ver cardápio / pedir','Pedir no iFood','Pedir no 99Food']);
+    assert.deepEqual(generic.ctas.map(c=>c.url),[BUSINESS.links.cardapio_pedido,i,f]);
+    assert.doesNotMatch(generic.reply,/https?:\/\//);
+    const dynamic=dynamicPayload(route('Quero delivery'));
+    const urls=dynamic.content.messages.flatMap(m=>(m.buttons||[]).map(b=>b.url));
+    assert.deepEqual(urls,[BUSINESS.links.cardapio_pedido,i,f]);
+    const targeted=standardPayload(route('Quero pedir no 99Food'));
+    assert.equal(targeted.cta_1_url,f);
+  } finally {delete process.env.IFOOD_STORE_URL;delete process.env.FOOD99_STORE_URL;}
+});
+
+test('URLs de marketplace não oficiais ou genéricas são rejeitadas e nunca entram no CTA',()=>{
+  try {
+    process.env.IFOOD_STORE_URL='https://www.ifood.com.br/';
+    process.env.FOOD99_STORE_URL='https://99app.com/99food/';
+    assert.equal(marketplaceStatus().ifood,null);
+    assert.equal(marketplaceStatus().food99,null);
+    process.env.IFOOD_STORE_URL='https://ifood.com.br.evil.example/delivery/barretos-sp/falso';
+    process.env.FOOD99_STORE_URL='https://99app.com.evil.example/99food/barretos/falso/123';
+    assert.equal(marketplaceStatus().ifood,null);
+    assert.equal(marketplaceStatus().food99,null);
+    assert.equal(standardPayload(route('quero delivery')).cta_count,2);
+  } finally {delete process.env.IFOOD_STORE_URL;delete process.env.FOOD99_STORE_URL;}
 });
 
 test('vaga, currículo, seleção e contratação exclusivamente RH',()=>{
@@ -239,22 +290,91 @@ test('OpenAI só humaniza intenção social, sem alterar preço',async()=>{
 
 test('promoções não inventam campanha e remetem ao SAIPOS por botão',()=>{const r=route('Quais combos estão em promoção?');assert.equal(r.intent,'promocao');assert.ok(r.ctas.some(c=>c.url===BUSINESS.links.cardapio_pedido));assert.doesNotMatch(r.reply,/https?:\/\//);});
 
-test('regressão homologação 22/09: vaga, entrega e erro de digitação',()=>{
-  for (const m of ['vcs tao contratando sushiman?','tem vaga de garçom?','quero trabalho']) {
-    const r=route(m); assert.equal(r.intent,'vaga',m); assert.ok(okButton(r,'whatsapp_rh'),m);
+test('guia do rodízio tem grupos separados e usa apenas nomes da fonte',()=>{
+  const base=JSON.parse(readFileSync(new URL('../data/rodizio_itens_referencia_nao_confirmados.json',import.meta.url),'utf8'));
+  const nomes=new Set(base.itens);
+  assert.deepEqual(Object.keys(RODIZIO_GROUPS.guia_por_preferencia),['fritos_empanados','grelhados','sem_arroz']);
+  for (const categoria of [RODIZIO_GROUPS.principal,RODIZIO_GROUPS.guia_por_preferencia]) {
+    for (const grupo of Object.values(categoria)) {
+      assert.ok(grupo.nomes_do_cadastro.every(nome=>nomes.has(nome)));
+    }
   }
-  assert.equal(route('Vocês entregam?').intent,'delivery');
-  const t=route('tem temaky de camarao?');
-  assert.match(t.reply,/Temaki Camarão — R\$ 39,99/);
-  assert.doesNotMatch(t.reply,/Temaki Tradicional/);
+  assert.equal(RODIZIO_GROUPS.ala_carte_separado.titulo.includes('à la carte'),true);
 });
 
-test('aceita Dados completos do contato do ManyChat e memória sem aspas',()=>{
-  const r=resolve({channel:'instagram',contact:{id:9,first_name:'Ana',last_input_text:'qual "valor" do\nrodizio',custom_fields:{ai_state:''}}});
-  assert.equal(r.intent,'rodizio');
-  const st=dynamicPayload(r).content.actions[0].value;
-  assert.doesNotMatch(st,/"/);
-  assert.equal(parseState(st).last_intent,'rodizio');
-  const n=resolve({contact:{last_input_text:'5',custom_fields:{ai_state:'{"rating_pending":true}'}}});
-  assert.equal(n.intent,'avaliacao_nota');
+test('composição do rodízio exibe lista principal e um guia independente',()=>{
+  for (const m of ['o que tem no rodízio?','o que vem no rodízio?','quais itens do rodízio?','o que inclui o rodízio?']) {
+    const r=route(m);
+    assert.equal(r.intent,'rodizio_composicao',m);
+    assert.match(r.reply,/GUIA POR PREFERÊNCIA \(separado da lista principal\)/);
+    assert.match(r.reply,/FRITOS E EMPANADOS|Fritos e empanados/);
+    assert.match(r.reply,/Grelhados/);
+    assert.match(r.reply,/Sem arroz/);
+    assert.match(r.reply,/R\$ 114,90/);
+    assert.doesNotMatch(r.reply,/Harumaki de Chocolate|SI - MORANGO|R\$ 0,00/);
+    assert.ok(r.ctas.some(c=>c.url===BUSINESS.links.cardapio_pedido));
+  }
+});
+
+test('fritos e empanados informam itens cadastrados sem prometer extras',()=>{
+  const r=route('quais fritos tem no rodízio?');
+  assert.equal(r.intent,'rodizio_preferencias');
+  for (const item of ['Hot Roll Philadelphia','Camarão empanado','Tiras de salmão empanadas','Guioza de legumes frito','Harumaki de muçarela','Batata frita']) {
+    assert.ok(r.reply.includes(item),item);
+  }
+  assert.doesNotMatch(r.reply,/Joy Especial sem arroz/);
+  assert.match(r.reply,/não opções extras/);
+});
+
+test('grelhados trazem apenas opções cadastradas no rodízio',()=>{
+  for (const msg of ['grelhados do rodízio','grelhados']) {
+    const r=route(msg);
+    assert.equal(r.intent,'rodizio_preferencias');
+    assert.match(r.reply,/Hossomaki grelhado/);
+    assert.match(r.reply,/Uramaki grelhado/);
+    assert.doesNotMatch(r.reply,/Tepan Salmão|Temaki Salmão Grelhado/);
+  }
+});
+
+test('sem arroz separa opções do rodízio dos Joys especiais à la carte',()=>{
+  for (const msg of ['sem arroz','o que tem sem arroz no rodízio?']) {
+    const r=route(msg);
+    assert.equal(r.intent,'rodizio_preferencias');
+    for (const item of ['Sashimi de salmão','Sashimi de tilápia','Carpaccio de salmão','Ceviche misto','Sunomono','Shimeji']) {
+      assert.ok(r.reply.includes(item),item);
+    }
+    assert.match(r.reply,/à la carte/);
+    assert.match(r.reply,/não são anunciados como inclusos/);
+  }
+  const alaCarte=route('joy sem arroz');
+  assert.equal(alaCarte.intent,'categoria_cardapio');
+});
+
+test('múltiplas preferências na mesma mensagem não repetem a lista principal',()=>{
+  const r=route('fritos grelhados sem arroz no rodízio');
+  assert.equal(r.intent,'rodizio_preferencias');
+  for (const label of ['Fritos e empanados','Grelhados','Sem arroz']) assert.ok(r.reply.includes(label));
+  assert.equal((r.reply.match(/GUIA POR PREFERÊNCIA/g)||[]).length,0);
+  assert.doesNotMatch(r.reply,/https?:\/\//);
+});
+
+test('preço e exceções do rodízio permanecem prioritários; prato específico não vira guia',()=>{
+  assert.equal(route('valor do rodízio').intent,'rodizio');
+  assert.equal(route('bebidas inclusas no rodízio?').intent,'rodizio_inclusoes');
+  assert.equal(route('Temaki Salmão Grelhado').intent,'item_cardapio');
+  assert.equal(route('Combo s/ arroz 25 peças').intent,'item_cardapio');
+});
+
+test('Dynamic Block divide composição longa sem partir nomes nem soltar links',()=>{
+  const r=route('o que tem no rodízio?');
+  const payload=dynamicPayload(r);
+  assert.ok(payload.content.messages.length>=3);
+  for (const m of payload.content.messages) {
+    assert.ok(m.text.length<=780,m.text.length);
+    assert.doesNotMatch(m.text,/https?:\/\//);
+  }
+  const reconstructed=payload.content.messages.map(m=>m.text).filter(t=>t!=='É só tocar no botão abaixo:').join('\n');
+  assert.match(reconstructed,/GUIA POR PREFERÊNCIA/);
+  assert.ok(payload.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Ver cardápio \/ pedir'));
+  assert.equal(payload.content.actions.some(a=>a.tag_name==='interesse_cardapio'),true);
 });

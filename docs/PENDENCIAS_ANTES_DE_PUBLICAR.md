@@ -12,6 +12,10 @@ Este arquivo registra **lacunas reais** dos documentos fornecidos. A solução n
 | **Alta** | **Quais combos “promocionais” do PDF estão realmente vigentes?** | 6 Combos Salmão e “Combo Dia dos Namorados” têm natureza promocional. O responsável proibiu referência à promoção antiga sem especificar qual. | O responsável determinou não anunciar promoções: consultas de combos promocionais encaminham para o **botão do cardápio SAIPOS**. Os sete registros continuam bloqueados na base local, sem oferta automática. |
 | **Alta** | **Existe um evento real de pedido confirmado que possa disparar avaliação?** | Não foi fornecido acesso ou webhook autorizado do SAIPOS para esse gatilho. | O código fornece `event_type=pedido_confirmado`; o ManyChat **não** deve agendar pesquisa a partir de intenção de compra. A integração desse evento requer ação operacional. |
 
+## Novo bloco de rodízio v1.2.0
+
+A lista principal e o grupo separado por preferência já estão implementados no webhook. Antes de publicar, peça à cozinha para confirmar que os itens cadastrados **continuam efetivamente no rodízio**, especialmente fritos/empanados, os dois sushis grelhados e os itens servidos sem arroz. Não anuncie Joy Especial (SEM ARROZ) do à la carte como incluso sem confirmação expressa. Bebidas e sobremesas permanecem cobradas separadamente. Consulte `docs/RODIZIO_GRUPOS_MANYCHAT.md`.
+
 ## Recomendáveis para melhorar precisão
 
 | Pergunta | Por quê |
@@ -37,3 +41,9 @@ Este arquivo registra **lacunas reais** dos documentos fornecidos. A solução n
 ## Como atualizar
 
 Depois das respostas do responsável, altere **somente** o campo correspondente em `data/knowledge.json` ou o registro preciso de `data/catalogo_extraido.json`. Acrescente ou adapte testes em `tests/engine.test.mjs`. Se for um dado que aparece nos textos fixos de `lib/engine.js` (como idade infantil), atualize essa resposta e rode `npm run check`. Registre a data e a origem do dado no commit GitHub.
+
+## Integrações iFood e 99Food — atualização 23/09/2026
+
+O responsável confirmou que o Japa Sushi Lounge também recebe pedidos de delivery pelo **iFood** e **99Food**. As URLs diretas da loja **ainda não foram fornecidas**. Não associar automaticamente resultados de pesquisa ou restaurantes homônimos à empresa. Enquanto os links estiverem pendentes, o bot menciona ambos os aplicativos e orienta buscar o Japa Sushi Lounge em Barretos, mas oferece só os botões já validados: SAIPOS e WhatsApp.
+
+Para liberar botões específicos, receber os links compartilhados pelas **lojas oficiais** em cada app, validar a identidade da loja e incluí-los em `links.ifood`/`links.food99` ou nas variáveis opcionais `IFOOD_STORE_URL`/`FOOD99_STORE_URL` da Vercel. Conferir preços e taxas no próprio aplicativo; não assumir igualdade entre canais. Ver `docs/ENTREGA_SAIPOS_IFOOD_99FOOD.md`.

@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "versao": "1.2.0",
+    "fonte": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf, páginas 2-3; cadastro interno do rodízio",
+    "status": "itens cadastrados; disponibilidade atual e composição exata sujeitas à confirmação com a equipe",
+    "estrutura": "A lista principal e o guia por preferência são blocos SEPARADOS de apresentação. Os itens do guia não são pratos adicionais nem inclusões extras.",
+    "restricoes": [
+      "Bebidas e sobremesas são cobradas à parte, ainda que existam nomes dessas categorias no cadastro interno.",
+      "Joy Especial (SEM ARROZ) é uma categoria do à la carte: não afirmar que está incluída no rodízio.",
+      "Não divulgar preços individuais R$ 0,00 do cadastro interno nem garantir estoque ou preparo especial."
+    ]
+  },
+  "principal": {
+    "sushis_e_sashimis": {
+      "titulo": "Sushis e sashimis",
+      "resumo": "Sashimi de salmão e tilápia; niguiris de salmão, skin e kani; hossomakis de salmão, kani, pepino, shimeji, gengibre e pepino com manga; uramakis Philadelphia e salmão skin.",
+      "nomes_do_cadastro": [
+        "Sashimi Salmão",
+        "Sashimi Tilapia",
+        "Niguiri Salmão",
+        "Niguiri Salmão Skin",
+        "Niguiri kani",
+        "Hossomaki Salmão",
+        "Hossomaki Kani",
+        "Hossomaki Pepino",
+        "Hossomaki Shimeji (Vegetariano)",
+        "Hossomaki Gengibre (Vegetariano)",
+        "Hossomaki Pepino e Manga (Vegetariano)",
+        "Uramaki Philadelphia",
+        "Uramaki Salmão Skin"
+      ]
+    },
+    "joys": {
+      "titulo": "Joys",
+      "resumo": "Joys de salmão, camarão, shimeji, couve crispy, mexicano, Dane Sushi e combinações com geleias de pimenta, morango, maracujá e amora, além de pimentas especiais.",
+      "nomes_do_cadastro": [
+        "Joy Salmão",
+        "Joy Camarão",
+        "Joy Shimeji",
+        "Joy Couve Crispy",
+        "Joy Mexicano",
+        "Joy Dane Sushi",
+        "Joy Geleia Pimenta",
+        "Joy Geleia Morango",
+        "Joy Geleia Maracuja",
+        "Joy Geleia Amora",
+        "Joy Pimenta Biquinho",
+        "Joy Pimenta Calabresa"
+      ]
+    },
+    "entradas_e_quentes": {
+      "titulo": "Entradas e pratos quentes",
+      "resumo": "Carpaccio de salmão, ceviche misto, sunomono, shimeji, missoshirô, yakissoba e iscas de tilápia e frango.",
+      "nomes_do_cadastro": [
+        "Carpaccio de Salmão",
+        "Ceviche Misto (Salmão/Tilapia)",
+        "Sunomono",
+        "Shimeji",
+        "Missoshiro",
+        "Yakissoba",
+        "Isca de Tilapia",
+        "Isca de Frango"
+      ]
+    }
+  },
+  "guia_por_preferencia": {
+    "fritos_empanados": {
+      "titulo": "Fritos e empanados",
+      "itens": [
+        "Hot Roll Philadelphia",
+        "Hot Roll de salmão",
+        "Camarão empanado",
+        "Tiras de salmão empanadas",
+        "Guioza suíno frito",
+        "Guioza de legumes frito",
+        "Harumaki de muçarela",
+        "Harumaki de frango com cream cheese",
+        "Batata frita"
+      ],
+      "nomes_do_cadastro": [
+        "Hot Holl Philadelphia",
+        "Hot Holl Salmão",
+        "Camarão (Empanado)",
+        "Tiras Salmão (Empanado)",
+        "Guioza Suino (frito)",
+        "Guioza Legumes (frito)",
+        "Harumaki Mussarela",
+        "Harumaki Frango c Creme Cheese",
+        "Batata frita"
+      ]
+    },
+    "grelhados": {
+      "titulo": "Grelhados",
+      "itens": [
+        "Hossomaki grelhado",
+        "Uramaki grelhado"
+      ],
+      "nomes_do_cadastro": [
+        "Hossomaki Grelhado",
+        "Uramaki Grelhado"
+      ]
+    },
+    "sem_arroz": {
+      "titulo": "Sem arroz (conforme o cadastro)",
+      "itens": [
+        "Sashimi de salmão",
+        "Sashimi de tilápia",
+        "Carpaccio de salmão",
+        "Ceviche misto de salmão e tilápia",
+        "Sunomono",
+        "Shimeji"
+      ],
+      "nomes_do_cadastro": [
+        "Sashimi Salmão",
+        "Sashimi Tilapia",
+        "Carpaccio de Salmão",
+        "Ceviche Misto (Salmão/Tilapia)",
+        "Sunomono",
+        "Shimeji"
+      ],
+      "observacao": "Itens normalmente apresentados sem arroz; acompanhamentos e substituições devem ser confirmados com a equipe."
+    }
+  },
+  "ala_carte_separado": {
+    "titulo": "Joy Especial (SEM ARROZ) — à la carte",
+    "explicacao": "O cardápio possui Joys especiais sem arroz, mas essa categoria é do à la carte e não está confirmada como parte do rodízio. Para saber as variedades e os preços, use o botão Ver cardápio."
+  }
+}

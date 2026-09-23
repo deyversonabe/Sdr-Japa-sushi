@@ -2,7 +2,7 @@
 
 ## 1. Repositório GitHub
 
-Crie **um novo repositório privado, exclusivo**, por exemplo `japa-sushi-manychat-vercel`. **Não substituir outro bot ou projeto já em produção**. Importe todo o conteúdo desta pasta preservando `api/`, `lib/`, `data/`, `docs/` e arquivos ocultos. Não suba os PDFs originais de auditoria nem segredos. Na pasta `.github/workflows`, o CI valida alterações com Node 22.
+O repositório **já foi criado** como `deyversonabe/Sdr-Japa-sushi`. Faça commit e push da atualização v1.3.0 neste repositório; prefira torná-lo **privado**. Não inicialize outro repositório para essa revisão. **Não substituir outro bot ou projeto já em produção**. Importe todo o conteúdo desta pasta preservando `api/`, `lib/`, `data/`, `docs/` e arquivos ocultos. Não suba os PDFs originais de auditoria nem segredos. Na pasta `.github/workflows`, o CI valida alterações com Node 22.
 
 Configure proteção da branch principal e aprove alterações de preços/status via Pull Request. Sempre rode `npm run check` antes de aceitar o commit. Este pacote **não tem histórico de commits**; ao importá-lo no repositório novo, o primeiro commit é criado por quem fizer o upload.
 
@@ -19,9 +19,11 @@ Configure proteção da branch principal e aprove alterações de preços/status
 | `OPENAI_API_KEY` | Sim para usar OpenAI | A chave da conta de API da OpenAI, configurada somente na Vercel; **não** é chave da assinatura ChatGPT. Sem chave, o bot responde com os textos-base. |
 | `OPENAI_MODEL` | Opcional | Padrão do código: `gpt-4o-mini`; altere só depois de testar JSON. |
 | `OPENAI_TIMEOUT_MS` | Opcional | Padrão: `8000` (8 segundos). |
+| `IFOOD_STORE_URL` | Opcional, aguardando URL de loja | Link direto do Japa Sushi Lounge de Barretos no iFood, validado com o responsável. Não usar link genérico. |
+| `FOOD99_STORE_URL` | Opcional, aguardando URL de loja | Link direto do Japa Sushi Lounge de Barretos no 99Food, validado com o responsável. Não usar loja homônima em outra cidade. |
 
 5. Faça Deploy. Use a URL HTTPS do ambiente Production e anote **exatamente** o host informado pelo projeto.
-6. Teste em navegador o health GET: `https://SEU-PROJETO.vercel.app/api/manychat`. A resposta deve trazer `ok: true`, `catalogo_ativo: 178`, `openai_configured: true`, `webhook_secret_configured: true`. A propriedade `google_review_configured` deve ser true com o link fornecido.
+6. Teste em navegador o health GET: `https://SEU-PROJETO.vercel.app/api/manychat`. A resposta deve trazer `ok: true`, `catalogo_ativo: 178`, `openai_configured: true`, `webhook_secret_configured: true`. A propriedade `google_review_configured` deve ser true com o link fornecido. A versão v1.3.0 também retorna `rodizio_grupos_configurados: 3`, `ifood_confirmed:true` e `food99_confirmed:true`. Os campos `ifood_button_configured` e `food99_button_configured` só se tornam `true` depois de URLs diretas de loja válidas.
 7. Configure o mesmo segredo na requisição do ManyChat: cabeçalho `x-webhook-secret`. Não inclua a chave da OpenAI em nenhum campo do ManyChat.
 
 **Exemplo de teste técnico**, substituindo URL e segredo localmente (não poste resultados com cabeçalhos reais em prints):

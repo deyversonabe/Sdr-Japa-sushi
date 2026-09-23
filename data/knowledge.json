@@ -1,10 +1,12 @@
 {
   "_meta": {
-    "versao": "1.1.0",
-    "revisado_em": "2026-09-22",
+    "versao": "1.3.0",
+    "revisado_em": "2026-09-23",
     "fonte_cardapio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf (consolidado 16/09/2026)",
     "fonte_atendimento": "Fluxo_ManyChat_Japa_Sushi.pdf (22/09/2026)",
-    "fonte_regras": "confirmações do responsável recebidas em 22/09/2026"
+    "fonte_regras": "confirmações do responsável recebidas em 22/09/2026",
+    "fonte_grupos_rodizio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf, paginas 2-3; organizacao de atendimento 22/09/2026",
+    "fonte_delivery_marketplaces": "Confirmação do responsável: também atende pelo iFood e 99Food; links de lojas não informados, aguardando validação."
   },
   "empresa": {
     "nome": "Japa Sushi Lounge",
@@ -35,7 +37,8 @@
     "regra_idade_9": "Menores de 9 anos não pagam; de 9 a 11 anos completos pagam R$ 54,90.",
     "bebidas_inclusas": false,
     "sobremesas_inclusas": false,
-    "descricao_seguranca": "O rodízio é servido diariamente. Bebidas e sobremesas são cobradas separadamente. A composição exata de cada serviço deve ser confirmada com a equipe."
+    "descricao_seguranca": "O rodízio é servido diariamente. Bebidas e sobremesas são cobradas separadamente. A composição exata de cada serviço deve ser confirmada com a equipe.",
+    "guia_por_preferencia": "Consulte data/rodizio_grupos_atendimento.json: fritos/empanados, grelhados, sem arroz. O guia fica SEPARADO da lista principal, mas usa os mesmos itens cadastrados no rodízio. Disponibilidade atual deve ser validada com a cozinha."
   },
   "formas_pagamento": {
     "confirmados": [
@@ -57,7 +60,18 @@
     "entrega": true,
     "retirada": true,
     "taxa_entrega": "calculada no cardápio digital após informar o endereço",
-    "pedido_confirmado": "Confirmação do pedido somente pelo sistema de vendas ou equipe, nunca por uma intenção de compra no Direct"
+    "pedido_confirmado": "Confirmação do pedido somente pelo sistema de vendas ou equipe, nunca por uma intenção de compra no Direct",
+    "marketplaces": {
+      "ifood": {
+        "disponivel_confirmado": true,
+        "url_loja_confirmada": false
+      },
+      "food99": {
+        "disponivel_confirmado": true,
+        "url_loja_confirmada": false
+      }
+    },
+    "taxas_marketplaces": "Taxas, preços e disponibilidade são exibidos no próprio iFood/99Food conforme endereço e condições do aplicativo. Não assumir os mesmos valores do SAIPOS."
   },
   "reserva": {
     "sinal_percentual": 50,
@@ -88,6 +102,8 @@
     "Idade de 9 anos: paga R$ 54,90, confirmado pelo responsável em 22/09/2026.",
     "Link de avaliação Google fornecido pelo responsável em 22/09/2026; conferir abertura em teste real.",
     "Não anunciar combos promocionais nem inventar vigência: encaminhar para cardápio digital.",
-    "Antes do lançamento, conferir preços e disponibilidade no SAIPOS atual."
+    "Antes do lançamento, conferir preços e disponibilidade no SAIPOS atual.",
+    "Categorias fritos/empanados, grelhados e sem arroz agrupadas separadamente para resposta no Direct; Joy Especial sem arroz pertence ao à la carte, não é declarado incluso no rodízio.",
+    "iFood e 99Food confirmados pelo responsável como canais de entrega. URLs oficiais da loja pendentes: os botões específicos ficam desabilitados até validação; nunca vincular outra loja nem usar link inventado."
   ]
 }
