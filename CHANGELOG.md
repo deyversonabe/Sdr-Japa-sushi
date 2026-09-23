@@ -1,5 +1,12 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.3.4 · 23/09/2026 · Mais jeitos de perguntar
+
+- Localização entende "Ond vcs estão localizados", "Aonde e", "onde?", "onde vcs ficam", "end de vcs", "qual rua", "como faço pra chegar", "manda a localização" e parecidos. Resposta com o nome do cliente ("Claro, Nome! 📍") e o botão Como chegar.
+- "Onde" junto com cardápio, pedido, reserva, pagamento ou vaga continua indo para o assunto certo.
+- Abreviações comuns do Direct são entendidas em todas as perguntas: vc/vcs, q, oq, qto, hj, tbm, ond/aonde, end, ta/tao, hrs, vlw, obg.
+- "Pago"/"pagar" passam a cair em formas de pagamento.
+
 ## v1.3.3 · 23/09/2026 · Linguagem mais próxima, com o nome do cliente
 
 - O bot chama o cliente pelo primeiro nome do Instagram na saudação, no rodízio (preço e composição), na reserva, na reclamação, no RH e no agradecimento. Nome com emoji, número ou símbolo é ignorado e a frase sai sem nome, sem vírgula solta.
