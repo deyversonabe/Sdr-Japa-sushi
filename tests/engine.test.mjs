@@ -451,3 +451,10 @@ test('v1.3.1: pergunta de idade citando filho/filha sem a palavra rodízio',()=>
   assert.equal(r.intent,'rodizio_infantil'); assert.match(r.reply,/54,90/);
   assert.equal(resolve({message:'minha filha de 5 anos paga?'}).intent,'rodizio_infantil');
 });
+
+test('v1.3.1: "entregam?" e variações caem em delivery com SAIPOS/iFood/99Food',()=>{
+  for (const m of ['entregam?','vocês entregam no centro?','fazem entregas?']) {
+    const r=resolve({message:m}); assert.equal(r.intent,'delivery',m);
+    assert.match(r.reply,/SAIPOS/); assert.match(r.reply,/iFood/); assert.match(r.reply,/99Food/);
+  }
+});
