@@ -1,5 +1,25 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.3.6 · 23/09/2026 · Auditoria de implantação
+
+Correções de erros reproduzidos no motor (65 testes; eram 52):
+
+- Rodízio com erro de digitação ("rodisio", "rodzio", "rudizio", "rodiziu") caía na mensagem genérica do WhatsApp; agora recebe preço/resumo.
+- "Oi tudo bem", "boa noite, tudo bem?", "oii boa noite" caíam em "não tenho essa informação"; agora recebem a saudação.
+- "Vcs tão no 99" não era reconhecido; agora responde sobre o 99Food (sem botão enquanto o link oficial não for validado).
+- Hot Roll Philadelphia 10 unid. estava inalcançável (grafado "Philadelfia" no cadastro) e o bot respondia o preço da versão de 5 unid. A busca normaliza os dois lados e usa o tamanho pedido para desempatar.
+- "Tem hot roll?" listava Joys do à la carte; agora lista apenas itens Hot Roll. "Mega hot roll" tem categoria própria.
+- "Tem rodízio no almoço?" respondia "servido todos os dias" (dava a entender almoço). Agora informa que a casa funciona somente à noite.
+- VR, Alelo, Sodexo etc. recebem as formas confirmadas + WhatsApp, sem afirmar que a bandeira é aceita.
+- `custom_fields` em formato de lista (API do ManyChat) era ignorado e a memória `ai_state` se perdia; agora os dois formatos são aceitos.
+- Pesquisa de satisfação duplicada: um segundo evento `pedido_confirmado` com pesquisa pendente (ou com o mesmo `order_id`) é ignorado (`intent: pesquisa_duplicada`, sem mensagem).
+- Frases que só citam "avaliação" ("adorei a avaliação de vocês no Google") não abrem mais a pesquisa sem pedido confirmado.
+- Menção em Story com texto ("que lindo") respondia "não tenho essa informação"; agora agradece.
+- Novo campo `public_reply` para comentários: texto público neutro ("Te respondemos no Direct! 📩"; reclamação: "Sentimos muito. Te chamamos no Direct…"), sem preços, links ou agradecimento automático em reclamação.
+- Espera da OpenAI limitada a 6 s (padrão 5 s), mesmo se `OPENAI_TIMEOUT_MS` for maior, para não estourar o limite de ~10 s da requisição do ManyChat.
+
+ManyChat: opcionalmente envie `"order_id"` no evento `pedido_confirmado` para bloquear pesquisa repetida do mesmo pedido.
+
 ## v1.3.5 · 23/09/2026 · Correções do teste no Instagram
 
 - Nome: quando o perfil não tem nome preenchido, o bot usa o @ do Instagram ("deyverson_abe" → "Deyverson"). Palavras que não são nome (user, loja, oficial, material etc.) são ignoradas.
