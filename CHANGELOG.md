@@ -1,5 +1,11 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.3.3 · 23/09/2026 · Linguagem mais próxima, com o nome do cliente
+
+- O bot chama o cliente pelo primeiro nome do Instagram na saudação, no rodízio (preço e composição), na reserva, na reclamação, no RH e no agradecimento. Nome com emoji, número ou símbolo é ignorado e a frase sai sem nome, sem vírgula solta.
+- Saudação no tom da referência ("Oiê, Nome! Seja muito bem-vindo(a) ao Japa Sushi Lounge 🍣✨"), agora com botões de Cardápio e WhatsApp.
+- Preço do rodízio em lista (Individual, Casal, 9 a 11 anos, menores de 9), convite para reservar pelo WhatsApp e oferta dos grupos frito, grelhado e sem arroz. Preços e regras sem mudança; nenhuma promessa sem confirmação.
+
 ## v1.3.2 · 23/09/2026 · Resumo do rodízio
 
 - "O que tem no rodízio?" agora responde em **uma única mensagem curta**: tipos de peça, preços e convite para ver fritos, grelhados ou sem arroz. Não manda mais a lista completa com o guia em várias bolhas. Os guias por preferência continuam respondendo quando o cliente pede.
