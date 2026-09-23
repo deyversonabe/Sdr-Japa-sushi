@@ -302,16 +302,18 @@ test('guia do rodízio tem grupos separados e usa apenas nomes da fonte',()=>{
   assert.equal(RODIZIO_GROUPS.ala_carte_separado.titulo.includes('à la carte'),true);
 });
 
-test('composição do rodízio exibe lista principal e um guia independente',()=>{
-  for (const m of ['o que tem no rodízio?','o que vem no rodízio?','quais itens do rodízio?','o que inclui o rodízio?']) {
+test('composição do rodízio responde em um resumo curto, sem listão',()=>{
+  for (const m of ['o que tem no rodízio?','o que vem no rodízio?','quais itens do rodízio?','o que inclui o rodízio?','O que tem no rodizio']) {
     const r=route(m);
     assert.equal(r.intent,'rodizio_composicao',m);
-    assert.match(r.reply,/GUIA POR PREFERÊNCIA \(separado da lista principal\)/);
-    assert.match(r.reply,/FRITOS E EMPANADOS|Fritos e empanados/);
-    assert.match(r.reply,/Grelhados/);
-    assert.match(r.reply,/Sem arroz/);
-    assert.match(r.reply,/R\$ 114,90/);
-    assert.doesNotMatch(r.reply,/Harumaki de Chocolate|SI - MORANGO|R\$ 0,00/);
+    assert.doesNotMatch(r.reply,/GUIA POR PREFERÊNCIA|•/);
+    assert.match(r.reply,/sushis e sashimis/);
+    assert.match(r.reply,/R\$ 114,90/); assert.match(r.reply,/R\$ 199,90/); assert.match(r.reply,/R\$ 54,90/);
+    assert.match(r.reply,/menores de 9 não pagam/);
+    assert.match(r.reply,/Bebidas e sobremesas à parte/);
+    assert.match(r.reply,/fritas, grelhadas ou sem arroz/);
+    assert.ok(r.reply.length<=480,r.reply.length);
+    assert.doesNotMatch(r.reply,/Harumaki de Chocolate|SI - MORANGO|R\$ 0,00|Joy Especial/);
     assert.ok(r.ctas.some(c=>c.url===BUSINESS.links.cardapio_pedido));
   }
 });
@@ -365,18 +367,17 @@ test('preço e exceções do rodízio permanecem prioritários; prato específic
   assert.equal(route('Combo s/ arroz 25 peças').intent,'item_cardapio');
 });
 
-test('Dynamic Block divide composição longa sem partir nomes nem soltar links',()=>{
+test('Dynamic Block envia a composição do rodízio em uma única bolha com botões',()=>{
   const r=route('o que tem no rodízio?');
   const payload=dynamicPayload(r);
-  assert.ok(payload.content.messages.length>=3);
-  for (const m of payload.content.messages) {
-    assert.ok(m.text.length<=780,m.text.length);
-    assert.doesNotMatch(m.text,/https?:\/\//);
-  }
-  const reconstructed=payload.content.messages.map(m=>m.text).filter(t=>t!=='É só tocar no botão abaixo:').join('\n');
-  assert.match(reconstructed,/GUIA POR PREFERÊNCIA/);
-  assert.ok(payload.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Ver cardápio \/ pedir'));
+  assert.equal(payload.content.messages.length,1);
+  const m=payload.content.messages[0];
+  assert.doesNotMatch(m.text,/https?:\/\//);
+  assert.ok(m.buttons.some(b=>b.caption==='Ver cardápio \/ pedir'));
   assert.equal(payload.content.actions.some(a=>a.tag_name==='interesse_cardapio'),true);
+  // detalhe continua disponível sob pedido
+  const f=route('quais fritos?',{ai_state:JSON.stringify(r.state)});
+  assert.equal(f.intent,'rodizio_preferencias');
 });
 
 // Restaurado de 259123d/e31cf3e (sobrescrito pelo upload da v1.3 em 22b030c).
