@@ -10,11 +10,11 @@
   },
   "catalogo": [
     {
-      "id": "rodizios-rodizio-infantil-9-a-11-anos",
+      "id": "rodizios-rodizio-infantil-5-a-11-anos",
       "categoria": "Rodízios",
-      "nome": "Rodízio Infantil (9 a 11 anos)",
+      "nome": "Rodízio Infantil (5 a 11 anos)",
       "descricao": null,
-      "valor": "R$ 54,90",
+      "valor": "R$ 49,90",
       "status": "ativo",
       "fonte_pagina": 2
     },
@@ -33,6 +33,24 @@
       "nome": "Rodízio Casal",
       "descricao": null,
       "valor": "R$ 199,90",
+      "status": "ativo",
+      "fonte_pagina": 2
+    },
+    {
+      "id": "rodizios-rodizio-individual-sex-dom",
+      "nome": "Rodízio Individual (sexta a domingo e feriados)",
+      "valor": "R$ 124,90",
+      "categoria": "Rodízios",
+      "descricao": null,
+      "status": "ativo",
+      "fonte_pagina": 2
+    },
+    {
+      "id": "rodizios-rodizio-casal-sex-dom",
+      "nome": "Rodízio Casal (sexta a domingo e feriados)",
+      "valor": "R$ 229,90",
+      "categoria": "Rodízios",
+      "descricao": null,
       "status": "ativo",
       "fonte_pagina": 2
     },

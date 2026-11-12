@@ -7,7 +7,7 @@ const route=(message,extra={})=>resolve({message,channel:'instagram',...extra});
 const okButton=(r,type)=>r.ctas.some(c=>c.url===BUSINESS.links[type]);
 
 test('metadata, catálogo e inventário provêm da fonte',()=>{
-  assert.equal(CATALOG.length,178);
+  assert.equal(CATALOG.length,180);
   assert.equal(HIDDEN.length,7);
   assert.equal(CATALOG.find(p=>p.nome==='Combo Casal').valor,'R$ 169,99');
   assert.equal(CATALOG.find(p=>p.nome==='Rodízio Casal').valor,'R$ 199,90');
