@@ -164,26 +164,27 @@ test('parcerias recebem neutralidade e questões pessoais não revelam contexto'
 test('elogios usam exclusivamente o link de review fornecido pelo responsável',()=>{
   const r=route('amei, que delícia');
   assert.equal(r.intent,'elogio');
-  assert.equal(BUSINESS.links.google_avaliacao,'https://search.google.com/local/writereview?placeid=ChIJ2QkPkEuFu5QRECdCX7Wxgk8');
-  assert.equal(r.ctas[0].url,BUSINESS.links.google_avaliacao);
+  assert.equal(BUSINESS.links.avaliacao_pagina,'https://japasushi.netlify.app/');
+  assert.equal(r.ctas[0].url,BUSINESS.links.avaliacao_pagina);
+  assert.equal(r.ctas[0].label,'Avaliar o Japa');
 });
 
 test('URL Google aprovada gera botão nativo para todas as notas e elogios',()=>{
-  const prev=BUSINESS.links.google_avaliacao;
-  BUSINESS.links.google_avaliacao='https://g.page/r/EXEMPLO_LINK_REVIEW_TESTE/review';
+  const prev=BUSINESS.links.avaliacao_pagina;
+  BUSINESS.links.avaliacao_pagina='https://japasushi.netlify.app/';
   try {
     const prompt=route('',{event_type:'pedido_confirmado'});
     const state=JSON.stringify(prompt.state);
     for (const nota of ['5','4']) {
       const r=route(nota,{ai_state:state});
       assert.equal(r.nota,Number(nota));
-      assert.ok(r.ctas.some(c=>c.label==='Avaliar no Google'));
+      assert.ok(r.ctas.some(c=>c.label==='Avaliar o Japa'));
       const dynamic=dynamicPayload(r);
-      assert.ok(dynamic.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Avaliar no Google'));
+      assert.ok(dynamic.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Avaliar o Japa'));
       assert.doesNotMatch(dynamic.content.messages.map(m=>m.text).join(' '),/https?:\/\//i);
     }
-    assert.equal(route('amei').ctas[0].label,'Avaliar no Google');
-  } finally {BUSINESS.links.google_avaliacao=prev;}
+    assert.equal(route('amei').ctas[0].label,'Avaliar o Japa');
+  } finally {BUSINESS.links.avaliacao_pagina=prev;}
 });
 
 test('avaliação após pedido confirmado: 5 válido, 4 feedback, número solto não nota',()=>{
