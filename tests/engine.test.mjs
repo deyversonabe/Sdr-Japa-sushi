@@ -8,7 +8,7 @@ const okButton=(r,type)=>r.ctas.some(c=>c.url===BUSINESS.links[type]);
 
 test('metadata, catálogo e inventário provêm da fonte',()=>{
   assert.equal(CATALOG.length,180);
-  assert.equal(HIDDEN.length,7);
+  assert.equal(HIDDEN.length,6);
   assert.equal(CATALOG.find(p=>p.nome==='Combo Casal').valor,'R$ 169,99');
   assert.equal(CATALOG.find(p=>p.nome==='Rodízio Casal').valor,'R$ 199,90');
   assert.equal(CATALOG.find(p=>p.nome==='Yakissoba Camarão').valor,'R$ 64,99');

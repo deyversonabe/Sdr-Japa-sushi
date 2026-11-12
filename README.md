@@ -46,7 +46,7 @@ O webhook também suporta `mode=standard` (ou ausência de `mode`) para automaç
 | `lib/engine.js` | Classificador determinístico, cardápio, regras comerciais, avaliação, segurança, botão, estado. |
 | `lib/persona.js` | Tom humano e limites da chamada opcional à OpenAI. |
 | `data/knowledge.json` | Horários, rodízio, pagamento, reservas, contatos, URLs aprovadas e pendências. |
-| `data/catalogo_extraido.json` | **187 registros** do PDF, com categoria, nome, descrição fiel quando existe, preço, página de origem e status. **180 autorizados para consulta automática; 7 promocionais bloqueados e redirecionados ao cardápio digital** até validação. |
+| `data/catalogo_extraido.json` | **186 registros** do PDF, com categoria, nome, descrição fiel quando existe, preço, página de origem e status. **180 autorizados para consulta automática; 6 promocionais bloqueados e redirecionados ao cardápio digital** até validação. |
 | `data/catalogo_inativo_nao_ofertar.json` | **14 registros pausados/inativos**, só para auditoria; nunca exibidos ao cliente. |
 | `data/rodizio_itens_referencia_nao_confirmados.json` | Relação literal do cadastro interno, usada para validação de nomes. |
 | `data/rodizio_grupos_atendimento.json` | **NOVO:** lista principal e guia separado por preferência: fritos/empanados, grelhados, sem arroz. |

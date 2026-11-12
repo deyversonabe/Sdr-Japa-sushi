@@ -5,7 +5,7 @@
     "observacoes": [
       "Rodízio: sobremesa e bebida NÃO inclusas, conforme confirmação de 22/09/2026.",
       "Pratos Quentes foram confirmados ativos pelo usuário em 22/09/2026.",
-      "Combos promocionais e Dia dos Namorados aguardam confirmação de vigência."
+      "Combos promocionais aguardam confirmação de vigência."
     ]
   },
   "catalogo": [
@@ -988,15 +988,6 @@
       "descricao": "5 Joy Especial Shimeji, 5 Joy Especial Amêndoa e Mel, 5 Joy Especial Camarão, 5 Joy Especial Salmão, 5 Joy Especial Salmão Flambado com Couve Crispy.",
       "valor": "R$ 129,99",
       "status": "ativo",
-      "fonte_pagina": 11
-    },
-    {
-      "id": "combos-combo-dia-dos-namorados",
-      "categoria": "Combos",
-      "nome": "Combo dia dos namorados",
-      "descricao": null,
-      "valor": "R$ 199,99",
-      "status": "revisar_campanha",
       "fonte_pagina": 11
     },
     {
