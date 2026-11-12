@@ -14,7 +14,7 @@ test('GET health check não mostra segredos',async()=>{
   const r=await call('GET');
   assert.equal(r.statusCode,200);assert.equal(r.body.ok,true);
   assert.equal(r.body.business,'Japa Sushi Lounge');
-  assert.equal(r.body.catalogo_ativo,178);
+  assert.equal(r.body.catalogo_ativo,180);
   assert.equal(r.body.rodizio_grupos_configurados,3);
   assert.equal(r.body.app_version,'1.4.0');
   assert.equal(r.body.ifood_confirmed,true);
