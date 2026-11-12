@@ -28,14 +28,15 @@ test('rodízio atual e criança sem bebidas ou sobremesas',()=>{
   assert.equal(r.intent,'rodizio');
   assert.match(r.reply,/R\$ 114,90/);
   assert.match(r.reply,/R\$ 199,90/);
-  assert.match(r.reply,/R\$ 54,90/);
+  assert.match(r.reply,/R\$ 124,90/); assert.match(r.reply,/R\$ 229,90/);
+  assert.match(r.reply,/R\$ 49,90/);
   assert.match(r.reply,/à parte/);
   r=route('Rodízio de criança com 7 anos paga?');
   assert.equal(r.intent,'rodizio_infantil');
-  assert.match(r.reply,/Menores de 9 anos/);
+  assert.match(r.reply,/5 a 11 anos pagam R\$ 49,90/);
   const exato=route('criança com 9 anos paga rodízio?');
   assert.equal(exato.intent,'rodizio_infantil');
-  assert.match(exato.reply,/9 a 11 anos completos pagam R\$ 54,90/);
+  assert.match(exato.reply,/5 a 11 anos pagam R\$ 49,90/);
   r=route('bebida entra no rodízio?');
   assert.equal(r.intent,'rodizio_inclusoes');
   assert.match(r.reply,/não estão inclusas/);
@@ -65,7 +66,7 @@ test('descrições ausentes continuam não confirmadas',()=>{
 });
 
 test('horário, pagamento e endereço são específicos',()=>{
-  assert.match(route('Abrem domingo?').reply,/18h30/);
+  assert.match(route('Abrem domingo?').reply,/17h às 23h/);
   const p=route('Aceita pix e ticket?');
   assert.equal(p.intent,'pagamento');assert.match(p.reply,/Ticket refeição/);
   assert.doesNotMatch(p.reply,/Alelo|Sodexo|Caju/);
@@ -75,10 +76,15 @@ test('horário, pagamento e endereço são específicos',()=>{
 test('reserva recolhe dados no WhatsApp, cobra sinal sem prometer confirmação',()=>{
   const r=route('quero reservar uma mesa');
   assert.equal(r.intent,'reserva');
-  assert.match(r.reply,/50%/);
-  assert.match(r.reply,/nome, dia, horário e quantidade/);
-  assert.ok(okButton(r,'whatsapp'));
+  assert.match(r.reply,/Quantas pessoas/);
   assert.doesNotMatch(r.reply,/já está reservada|reserva confirmada/i);
+  // ao final do roteiro, o botão do WhatsApp leva a mensagem pronta e o aviso do sinal de 50%
+  const fim=route('quero reservar uma mesa para 4 pessoas sábado às 20h');
+  assert.equal(fim.intent,'reserva_pronta');
+  assert.match(fim.reply,/50%/);
+  assert.equal(fim.needs_human,true);
+  assert.ok(fim.ctas[0].url.startsWith(BUSINESS.links.whatsapp+'?text='));
+  assert.doesNotMatch(fim.reply,/já está reservada|reserva confirmada/i);
 });
 
 test('entrega apresenta SAIPOS, iFood e 99Food e explica condições por plataforma',()=>{
@@ -308,8 +314,8 @@ test('composição do rodízio responde em um resumo curto, sem listão',()=>{
     assert.equal(r.intent,'rodizio_composicao',m);
     assert.doesNotMatch(r.reply,/GUIA POR PREFERÊNCIA|•/);
     assert.match(r.reply,/sushis e sashimis/);
-    assert.match(r.reply,/R\$ 114,90/); assert.match(r.reply,/R\$ 199,90/); assert.match(r.reply,/R\$ 54,90/);
-    assert.match(r.reply,/menores de 9 não pagam/);
+    assert.match(r.reply,/R\$ 114,90/); assert.match(r.reply,/R\$ 199,90/); assert.match(r.reply,/R\$ 49,90/);
+    assert.match(r.reply,/crianças de 5 a 11 anos R\$ 49,90/);
     assert.match(r.reply,/Bebidas e sobremesas à parte/);
     assert.match(r.reply,/fritas, grelhadas ou sem arroz/);
     assert.ok(r.reply.length<=480,r.reply.length);
@@ -449,7 +455,7 @@ test('v1.3.1: OpenAI recebe store:false, palavra json, e cai no texto determiní
 
 test('v1.3.1: pergunta de idade citando filho/filha sem a palavra rodízio',()=>{
   const r=resolve({message:'meu filho tem 9 anos'});
-  assert.equal(r.intent,'rodizio_infantil'); assert.match(r.reply,/54,90/);
+  assert.equal(r.intent,'rodizio_infantil'); assert.match(r.reply,/49,90/);
   assert.equal(resolve({message:'minha filha de 5 anos paga?'}).intent,'rodizio_infantil');
 });
 
@@ -471,9 +477,9 @@ test('v1.3.3: trata o cliente pelo primeiro nome quando ele é seguro',()=>{
   const rod=c('quanto é o rodízio?','Ana');
   assert.equal(rod.intent,'rodizio');
   assert.match(rod.reply,/^Aê, Ana! Boa escolha/);
-  for (const v of ['114,90','199,90','54,90']) assert.ok(rod.reply.includes(v),v);
-  assert.match(rod.reply,/Menores de 9 anos não pagam/);
-  assert.match(rod.reply,/Bebidas e sobremesas são à parte/);
+  for (const v of ['114,90','199,90','124,90','229,90','49,90']) assert.ok(rod.reply.includes(v),v);
+  assert.match(rod.reply,/Crianças de 5 a 11 anos/);
+  assert.match(rod.reply,/Bebidas e sobremesas ficam à parte/);
   assert.match(c('o que tem no rodízio?','Ana').reply,/^Ana, no rodízio você tem/);
   assert.match(c('quero reservar','Ana').reply,/^Oba, Ana!/);
   assert.match(c('meu pedido veio errado','Ana').reply,/^Sinto muito pelo ocorrido, Ana\./);

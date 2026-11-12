@@ -1,5 +1,23 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.4.0 · 12/11/2026 · Atendimento mais humano, horário e rodízio atuais
+
+Origem: varredura do Instagram, do WhatsApp Business e do site em 12/11/2026 (documento "Japa Sushi Lounge — Diagnóstico do atendimento e novo fluxo humanizado").
+
+- **Horário por dia da semana.** "Hoje está aberto?", "hoje é fechado?", "abre hoje?" passam a responder com o dia e a hora de Barretos: terça é folga e o bot diz quando volta; aberto, almoço delivery, antes de abrir e já encerrado têm texto próprio. Horário de um dia ("abrem domingo?") e horário geral também. Antes, "fechado" não era entendido e o cliente recebia "não tenho essa informação".
+- **Horários atuais** em `data/knowledge.json`: almoço delivery 11h às 15h (quarta a segunda); jantar e rodízio a partir das 17h, até 22h30 (seg, qua, qui) e 23h (sex a dom). Terça fechado. O horário antigo (18h30, meia-noite) saiu.
+- **Rodízio atual.** Preços por faixa de dia (seg a qui; sex a dom e feriados) e "de quarta a segunda"; a pergunta com "hoje", dia da semana ou "fim de semana" recebe só o preço do dia. Infantil de 5 a 11 anos R$ 49,90; menor de 5 e 12 ou mais vão para a equipe (não informado pelo responsável). Saiu "todos os dias" e "menores de 9 não pagam".
+- **RH.** Entregador, sushiman, cozinheiro, garçom, freelance e "estão contratando?" passam a ir para o botão do RH (antes caíam em "não tenho essa informação").
+- **Reserva guiada.** Pergunta quantas pessoas, dia e horário, uma por vez, aproveitando o que o cliente já disse; recusa terça; sai do roteiro se o cliente perguntar outra coisa; após duas respostas ininteligíveis entrega à equipe. No fim, o botão "Reservar no WhatsApp" abre a conversa com a mensagem pronta. O bot continua sem confirmar mesa nem cobrar sinal. "Sim" depois de "Quer que eu te ajude a reservar?" começa o roteiro.
+- **Aniversário.** Explica o bolo do Palácio das Delícias (10 convidados, 3 sabores, receita para até 15 pessoas) sem detalhar regras, pergunta o aniversariante e leva o nome na mensagem da reserva.
+- **Story.** Menção agradece e pergunta se pode repostar; "pode" e "não" são entendidos (tag `repost_autorizado`).
+- **Comentário.** DM de comentário sem a frase "se algo não saiu como esperado"; palavra-chave QUERO leva ao cardápio.
+- **Pedido já feito** ("está anotado o pedido?") vai para a equipe, não para o cardápio.
+- **Quando o bot não sabe:** "Toque no botão e fale com a equipe no WhatsApp", sem "não tenho essa informação confirmada".
+- **Saudação na terça** avisa da folga.
+- Novas tags usadas pelo webhook (criar no ManyChat): `interesse_aniversario`, `repost_autorizado`, `candidato_rh`.
+- 18 testes novos (`tests/v140.test.mjs`) com os casos reais e testes antigos atualizados. `resolve(input, {now})` aceita data fixa só para testes; o webhook nunca a recebe.
+
 ## v1.3.5 · 23/09/2026 · Correções do teste no Instagram
 
 - Nome: quando o perfil não tem nome preenchido, o bot usa o @ do Instagram ("deyverson_abe" → "Deyverson"). Palavras que não são nome (user, loja, oficial, material etc.) são ignoradas.

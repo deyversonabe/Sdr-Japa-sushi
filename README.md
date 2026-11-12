@@ -1,6 +1,6 @@
 # Japa Sushi Lounge · Atendimento Instagram + ManyChat + Vercel + OpenAI
 
-**Código de implantação — v1.3.1 · 23/09/2026**
+**Código de implantação — v1.4.0 · 12/11/2026** (atualização de atendimento humano: [`docs/ATUALIZACAO_V1_4_0.md`](docs/ATUALIZACAO_V1_4_0.md))
 
 Sistema exclusivo do **Japa Sushi Lounge (Barretos/SP)**, preparado com base no fluxo de atendimento, relatório técnico e cardápio-mestre fornecidos pelo responsável. O ManyChat recebe/envia mensagens; **não se ativa AI Step, IA nativa, reconhecimento por IA ou qualquer IA do ManyChat**. A Vercel executa as regras comerciais. A OpenAI, quando sua API Key está configurada, pode humanizar apenas respostas sociais simples, sem criar preço, descrição, oferta, horário ou disponibilidade.
 
@@ -71,7 +71,7 @@ Health check no projeto publicado: `GET https://SEU-PROJETO.vercel.app/api/manyc
 
 - Links de qualquer natureza **nunca** aparecem no texto final. Os destinos aprovados ficam em botões nativos: SAIPOS, WhatsApp de atendimento, WhatsApp do RH e rota do Maps. iFood e 99Food foram confirmados como canais de entrega; botões individuais só surgem quando as URLs de loja forem fornecidas e validadas. O botão de avaliação usa a URL fornecida pelo responsável.
 - Todas as vagas, currículos, entrevistas e contratações são exclusivamente direcionadas ao **RH: (17) 99602-2567**. Dúvidas sem dado confirmado, reclamações e reservas vão para **(17) 99606-4189**.
-- Rodízio **todos os dias**: individual R$ 114,90; casal R$ 199,90; infantil R$ 54,90 conforme faixa cadastrada. **Bebidas e sobremesas à parte.** **Menores de 9 anos não pagam; crianças de 9 a 11 anos completos pagam R$ 54,90.**
+- Rodízio **de quarta a segunda, no jantar** (terça fechado): segunda a quinta individual R$ 114,90 e casal R$ 199,90; sexta a domingo e feriados individual R$ 124,90 e casal R$ 229,90; crianças de 5 a 11 anos R$ 49,90; menores de 5 anos a equipe confirma. **Bebidas e sobremesas à parte.** (v1.4.0; os documentos antigos em `docs/` que citam 9 a 11 anos ou "todos os dias" estão superados.)
 - **Combo Casal à la carte** (R$ 169,99) não deve ser confundido com **rodízio Casal** (R$ 199,90). Sem descrição no documento-mestre, o bot não inventa a composição.
 - Pratos quentes estão ativos por confirmação expressa do responsável. Combos identificados como promocionais e itens antigos/inativos não são anunciados automaticamente.
 - Reserva exige adiantamento de 50%, **mas o bot não confirma disponibilidade, faz cobrança nem marca a mesa automaticamente**. Apenas orienta e passa para a equipe.
