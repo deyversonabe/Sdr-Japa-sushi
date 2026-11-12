@@ -1,12 +1,13 @@
 {
   "_meta": {
-    "versao": "1.3.5",
-    "revisado_em": "2026-09-23",
+    "versao": "1.4.0",
+    "revisado_em": "2026-11-12",
     "fonte_cardapio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf (consolidado 16/09/2026)",
     "fonte_atendimento": "Fluxo_ManyChat_Japa_Sushi.pdf (22/09/2026)",
     "fonte_regras": "confirmações do responsável recebidas em 22/09/2026",
     "fonte_grupos_rodizio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf, paginas 2-3; organizacao de atendimento 22/09/2026",
-    "fonte_delivery_marketplaces": "Confirmação do responsável: também atende pelo iFood e 99Food; links de lojas não informados, aguardando validação."
+    "fonte_delivery_marketplaces": "Confirmação do responsável: também atende pelo iFood e 99Food; links de lojas não informados, aguardando validação.",
+    "fonte_horarios_e_precos": "Instagram @japasushibarretos (bio e post de 11/11/2026), site japasushi.com.br e artes enviadas pelo responsável em 12/11/2026; horário de 04/11/2026 (jantar a partir das 17h)"
   },
   "empresa": {
     "nome": "Japa Sushi Lounge",
@@ -24,20 +25,51 @@
     "food99": null
   },
   "horarios": {
-    "domingo_a_quinta": "18h30 às 23h",
-    "sexta_e_sabado": "18h30 à 0h",
-    "rodizio_todos_os_dias": true,
-    "observacao": "Funcionamento noturno. Horários especiais/feriados devem ser confirmados no atendimento."
+    "dia_fechado": "terça",
+    "dia_fechado_numero": 2,
+    "almoco_delivery": {
+      "dias_texto": "quarta a segunda",
+      "abre": "11h",
+      "fecha": "15h",
+      "abre_min": 660,
+      "fecha_min": 900
+    },
+    "jantar_rodizio": {
+      "seg_a_qui": {
+        "dias_texto": "segunda, quarta e quinta",
+        "abre": "17h",
+        "fecha": "22h30",
+        "abre_min": 1020,
+        "fecha_min": 1350
+      },
+      "sex_a_dom": {
+        "dias_texto": "sexta, sábado e domingo",
+        "abre": "17h",
+        "fecha": "23h",
+        "abre_min": 1020,
+        "fecha_min": 1380
+      }
+    },
+    "rodizio_todos_os_dias": false,
+    "observacao": "Terça fechado. Horário de jantar conforme Instagram (04/11/2026); a arte de 12/11 trazia 18h30 e meia-noite na sexta e no sábado, mantido o do Instagram até confirmação do responsável. Feriados: confirmar com a equipe."
   },
   "rodizio": {
-    "individual": "R$ 114,90",
-    "casal": "R$ 199,90",
-    "infantil_9_a_11": "R$ 54,90",
-    "menor_que_9_gratuito": true,
-    "regra_idade_9": "Menores de 9 anos não pagam; de 9 a 11 anos completos pagam R$ 54,90.",
+    "dias_texto": "quarta a segunda, no jantar",
+    "seg_a_qui": {
+      "individual": "R$ 114,90",
+      "casal": "R$ 199,90"
+    },
+    "sex_a_dom_feriados": {
+      "individual": "R$ 124,90",
+      "casal": "R$ 229,90"
+    },
+    "infantil_5_a_11": "R$ 49,90",
+    "infantil_de": 5,
+    "infantil_ate": 11,
+    "menor_que_5": "Não informado pelo responsável: o bot encaminha para a equipe.",
     "bebidas_inclusas": false,
     "sobremesas_inclusas": false,
-    "descricao_seguranca": "O rodízio é servido diariamente. Bebidas e sobremesas são cobradas separadamente. A composição exata de cada serviço deve ser confirmada com a equipe.",
+    "descricao_seguranca": "O rodízio é servido no jantar, de quarta a segunda. Bebidas e sobremesas são cobradas separadamente. A composição exata de cada serviço deve ser confirmada com a equipe.",
     "guia_por_preferencia": "Consulte data/rodizio_grupos_atendimento.json: fritos/empanados, grelhados, sem arroz. O guia fica SEPARADO da lista principal, mas usa os mesmos itens cadastrados no rodízio. Disponibilidade atual deve ser validada com a cozinha."
   },
   "formas_pagamento": {
@@ -94,16 +126,24 @@
       "campanhas encerradas"
     ],
     "parcerias": "Agradecer de forma neutra, sem revelar planos nem assumir compromissos.",
-    "rh": "Todas as mensagens sobre vaga, emprego, seleção, currículo e contratação seguem exclusivamente para o botão do RH.",
+    "rh": "Todas as mensagens sobre vaga, emprego, seleção, currículo, contratação, entregador, sushiman e freelance seguem exclusivamente para o botão do RH.",
     "duvida": "Quando não houver fato validado, encaminhar para atendimento humano pelo botão do WhatsApp."
   },
   "campanhas_ativas": [],
   "observacoes_revisao": [
-    "Idade de 9 anos: paga R$ 54,90, confirmado pelo responsável em 22/09/2026.",
     "Link de avaliação Google fornecido pelo responsável em 22/09/2026; conferir abertura em teste real.",
     "Não anunciar combos promocionais nem inventar vigência: encaminhar para cardápio digital.",
     "Antes do lançamento, conferir preços e disponibilidade no SAIPOS atual.",
     "Categorias fritos/empanados, grelhados e sem arroz agrupadas separadamente para resposta no Direct; Joy Especial sem arroz pertence ao à la carte, não é declarado incluso no rodízio.",
-    "iFood e 99Food confirmados pelo responsável como canais de entrega. URLs oficiais da loja pendentes: os botões específicos ficam desabilitados até validação; nunca vincular outra loja nem usar link inventado."
-  ]
+    "iFood e 99Food confirmados pelo responsável como canais de entrega. URLs oficiais da loja pendentes: os botões específicos ficam desabilitados até validação; nunca vincular outra loja nem usar link inventado.",
+    "Infantil: 5 a 11 anos R$ 49,90 (arte de 12/11/2026). Menores de 5 anos: não informado, o bot encaminha para a equipe.",
+    "Horário de jantar: Instagram diz 17h; arte de 12/11 diz 18h30. Confirmar qual vale e ajustar horarios.jantar_rodizio."
+  ],
+  "aniversario": {
+    "minimo_convidados": 10,
+    "brinde": "bolo do Palácio das Delícias, 3 sabores à escolha, receita para até 15 pessoas",
+    "parceiro_instagram": "@palaciodas_delicias",
+    "regra": "A promoção tem condições especiais; o bot não detalha regras, a equipe combina as condições.",
+    "fonte": "Reel de 23/10/2026 do @japasushibarretos"
+  }
 }
