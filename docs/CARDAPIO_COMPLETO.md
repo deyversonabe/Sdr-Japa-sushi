@@ -159,7 +159,6 @@ O usuário confirmou que **bebidas e sobremesas não estão inclusas no rodízio
 | Nome conforme PDF | Descrição conforme PDF | Preço conforme PDF | Status | Página PDF |
 |---|---|---:|---|---:|
 | Combo s/ arroz 25 peças | 5 Joy Especial Shimeji, 5 Joy Especial Amêndoa e Mel, 5 Joy Especial Camarão, 5 Joy Especial Salmão, 5 Joy Especial Salmão Flambado com Couve Crispy. | R$ 129,99 | ATIVO | 11 |
-| Combo dia dos namorados | — (não consta na fonte) | R$ 199,99 | AGUARDANDO campanha | 11 |
 | Combo 40 peças | 10 Sashimi de Salmão, 10 Hot Roll, 5 Niguiri de Salmão, 5 Joy Geleia de Pimenta, 5 Joy de Salmão, 5 Joy de Camarão. | R$ 159,99 | ATIVO | 11 |
 | Combo Casal | — (não consta na fonte) | R$ 169,99 | ATIVO | 11 |
 

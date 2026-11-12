@@ -28,7 +28,6 @@ A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativ
 | `sou influenciadora, proposta de parceria` | Resposta institucional neutra, sem confirmar buscas pessoais, mudanças de gestão ou promessa comercial. |
 | `meu pedido veio errado` | Pedido de desculpa + botão humano no WhatsApp de atendimento. |
 | `sou alérgico a camarão` | Sem garantir ausência de alérgenos ou contaminação cruzada; encaminha humano. |
-| `Combo Dia dos Namorados` | Nunca ofertar promoção antiga nem reproduzir seu preço de cadastro. |
 | Resposta a Story com `qual rodízio?` | Trata a pergunta real; não devolve agradecimento genérico nem resposta para story diferente. |
 | Menção em Story sem mensagem | Agradece sem empurrar venda. |
 | Evento `pedido_confirmado` (simulado com contato interno) | Pergunta nota 1–5; `ai_state` fica pendente. |
