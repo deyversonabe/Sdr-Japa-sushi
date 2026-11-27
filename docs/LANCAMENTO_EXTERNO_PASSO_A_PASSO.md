@@ -49,17 +49,19 @@ Resultado esperado: resposta com R$ 54,90 e botão pertinente, sem URL no texto.
 3. Criar a automação `JAPA | Instagram | Default Reply`. Entrada: mensagem no Direct. Adicione o **Dynamic Block** com URL `https://SEU-PROJETO.vercel.app/api/manychat?mode=dynamic`, método POST, `Content-Type: application/json`, `x-webhook-secret: ...`; enviar `message`, `first_name`, `subscriber_id`, `channel:instagram`, `event_type:direct` e campo persistente `ai_state` (veja contrato detalhado em `MANYCHAT_CONFIGURACAO.md`).
 4. Configure as saídas de texto e **botões nativos** geradas pelo bloco dinâmico (destinos nunca devem aparecer no texto). Garanta persistência dos campos usados pelo contrato, em especial `ai_state`; confirme o mapeamento dos campos `set_field_value` em uma resposta de teste.
 5. Criar fluxos distintos para `story_reply`, `story_mention` e `instagram_comment` e alterar apenas `event_type` nos corpos. Evite gatilhos sobrepostos disparando duas respostas para o mesmo evento.
-6. Criar fluxo exclusivo `Feedback de pedido confirmado`: **somente após evento real de confirmação da venda**; quando a janela e as permissões do canal permitirem, atraso configurável de 120 minutos; chamar webhook com `event_type:pedido_confirmado`; armazenar estado retornado; próxima resposta numérica é tratada como nota. O botão Avaliar no Google utiliza link autorizado. Não disparar pesquisa ao simples clique em cardápio, intenção ou pedido abandonado.
+6. Criar fluxo exclusivo `Feedback de pedido confirmado`: **somente após evento real de confirmação da venda**; quando a janela e as permissões do canal permitirem, atraso configurável de 120 minutos; chamar webhook com `event_type:pedido_confirmado`; armazenar estado retornado; próxima resposta numérica é tratada como nota. O botão "Avaliar o Japa" usa `https://japasushi.netlify.app/`. Não disparar pesquisa ao simples clique em cardápio, intenção ou pedido abandonado.
 7. Para reclamação, áudio, dúvida factual sem confirmação ou reserva, configurar fallback/handoff ao WhatsApp oficial; RH somente no botão do número exclusivo. Se webhook não responder ou HTTP 401, o próprio ManyChat deve ter mensagem de contingência com **botão nativo** de WhatsApp.
 8. Publicar **primeiro com contato interno**. Testar cada fluxo e canal. Nunca testar envios em massa com clientes reais.
 
 ## 4. Critérios de aceite antes de liberar
 
 - Em terminal, `npm run check` sem falhas; GitHub Actions verde; Vercel em Production saudável.
-- Rodízio: individual R$ 114,90; casal R$ 199,90; infantil 9–11 R$ 54,90; menores de 9 gratuito. Bebidas/sobremesas à parte.
+- Rodízio (jantar completo, terça fechado): individual R$ 114,90 (seg–qui) ou R$ 124,90 (sex–dom); casal R$ 199,90 ou R$ 229,90; crianças de 5 a 11 anos R$ 49,90. Bebidas/sobremesas à parte.
+- Horários: almoço (somente delivery) 11h–15h; jantar completo seg/qua/qui até 22h30 e sex/sáb/dom até 23h.
 - Consulta por promoção ou combo promocional deve enviar botão **Cardápio** com URL direta `https://japasushilounge.saipos.com/home`, sem inventar descontos ou campanhas.
-- Avaliação: link fornecido pelo responsável `https://search.google.com/local/writereview?placeid=ChIJ2QkPkEuFu5QRECdCX7Wxgk8` deve abrir pelo botão; revisar em celular conectado e desconectado ao Google.
-- RH recebe **somente** assunto contratação: +55 17 99602-2567. Atendimento e dúvidas: +55 17 99606-4189.
+- Avaliação: `https://japasushi.netlify.app/` deve abrir pelo botão "Avaliar o Japa"; revisar no celular.
+- Site: `https://www.japasushi.com.br/` abre pelo botão "Conhecer o site".
+- RH recebe **somente** assunto contratação: +55 17 99602-2567. Atendimento e dúvidas: +55 17 99708-6511.
 - Nenhum link bruto no texto; nenhuma IA do ManyChat ativada; sem chaves no GitHub/ManyChat; não anunciar campanhas antigas ou itens inativos.
 - Conferir preços e disponibilidade no cardápio SAIPOS antes de abrir o fluxo para todos; validar permissões Meta, janela de envio, cobrança e LGPD.
 

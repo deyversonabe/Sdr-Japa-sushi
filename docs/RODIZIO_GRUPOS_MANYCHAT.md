@@ -143,4 +143,4 @@ Botões: **Ver cardápio / pedir** · **Falar no WhatsApp**.
 - Pesquisas de satisfação: somente depois de pedido efetivamente confirmado.
 - OpenAI humaniza apenas mensagens sociais autorizadas; o classificador determinístico apresenta esta lista comercial, sem gerar itens novos.
 
-**Destinos internos usados pelos botões:** cardápio https://japasushilounge.saipos.com/home · WhatsApp https://wa.me/5517996064189. Não colar estes endereços no corpo de mensagens ao cliente.
+**Destinos internos usados pelos botões:** cardápio https://japasushilounge.saipos.com/home · WhatsApp https://wa.me/5517997086511. Não colar estes endereços no corpo de mensagens ao cliente.

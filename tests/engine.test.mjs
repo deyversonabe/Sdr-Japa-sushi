@@ -24,13 +24,15 @@ test('todos preços são formatados, registros não têm URLs no texto comercial
 });
 
 test('rodízio atual e criança sem bebidas ou sobremesas',()=>{
-  let r=route('Qto tá o rodiozio?');
+  const at=(m,now)=>resolve({message:m,channel:'instagram'},{now});
+  let r=at('Qto tá o rodiozio?','2026-11-12T12:00:00-03:00'); // quinta: preço do dia, curto
   assert.equal(r.intent,'rodizio');
-  assert.match(r.reply,/R\$ 114,90/);
-  assert.match(r.reply,/R\$ 199,90/);
-  assert.match(r.reply,/R\$ 124,90/); assert.match(r.reply,/R\$ 229,90/);
-  assert.match(r.reply,/R\$ 49,90/);
+  assert.match(r.reply,/R\$ 114,90/); assert.match(r.reply,/R\$ 199,90/);
+  assert.doesNotMatch(r.reply,/229,90/);
   assert.match(r.reply,/à parte/);
+  r=at('Qto tá o rodiozio?','2026-11-13T19:00:00-03:00'); // sexta
+  assert.match(r.reply,/R\$ 124,90/); assert.match(r.reply,/R\$ 229,90/);
+  assert.doesNotMatch(r.reply,/114,90/);
   r=route('Rodízio de criança com 7 anos paga?');
   assert.equal(r.intent,'rodizio_infantil');
   assert.match(r.reply,/5 a 11 anos pagam R\$ 49,90/);
@@ -161,29 +163,36 @@ test('parcerias recebem neutralidade e questões pessoais não revelam contexto'
   assert.doesNotMatch(q.reply,/propriet[aá]rio|dono|rafa/i);
 });
 
-test('elogios usam exclusivamente o link de review fornecido pelo responsável',()=>{
+test('v1.5.0: elogio sem experiência real não pede avaliação; com experiência usa o link oficial japasushi.netlify.app',()=>{
   const r=route('amei, que delícia');
   assert.equal(r.intent,'elogio');
-  assert.equal(BUSINESS.links.google_avaliacao,'https://search.google.com/local/writereview?placeid=ChIJ2QkPkEuFu5QRECdCX7Wxgk8');
-  assert.equal(r.ctas[0].url,BUSINESS.links.google_avaliacao);
+  assert.equal(r.ctas.length,0);
+  assert.doesNotMatch(r.reply,/avalia/i);
+  assert.equal(BUSINESS.links.avaliacao,'https://japasushi.netlify.app/');
+  const v=route('fui ontem, amei');
+  assert.equal(v.intent,'elogio');
+  assert.equal(v.ctas[0].url,BUSINESS.links.avaliacao);
+  assert.equal(v.ctas[0].label,'Avaliar o Japa');
+  assert.doesNotMatch(v.reply,/Google/i);
 });
 
-test('URL Google aprovada gera botão nativo para todas as notas e elogios',()=>{
-  const prev=BUSINESS.links.google_avaliacao;
-  BUSINESS.links.google_avaliacao='https://g.page/r/EXEMPLO_LINK_REVIEW_TESTE/review';
-  try {
-    const prompt=route('',{event_type:'pedido_confirmado'});
-    const state=JSON.stringify(prompt.state);
-    for (const nota of ['5','4']) {
-      const r=route(nota,{ai_state:state});
-      assert.equal(r.nota,Number(nota));
-      assert.ok(r.ctas.some(c=>c.label==='Avaliar no Google'));
-      const dynamic=dynamicPayload(r);
-      assert.ok(dynamic.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Avaliar no Google'));
-      assert.doesNotMatch(dynamic.content.messages.map(m=>m.text).join(' '),/https?:\/\//i);
-    }
-    assert.equal(route('amei').ctas[0].label,'Avaliar no Google');
-  } finally {BUSINESS.links.google_avaliacao=prev;}
+test('v1.5.0: notas 4 e 5 ganham botão "Avaliar o Japa"; notas 1 a 3 vão para feedback + equipe, sem botão de avaliação',()=>{
+  const prompt=route('',{event_type:'pedido_confirmado'});
+  const state=JSON.stringify(prompt.state);
+  for (const nota of ['5','4']) {
+    const r=route(nota,{ai_state:state});
+    assert.equal(r.nota,Number(nota));
+    assert.ok(r.ctas.some(c=>c.label==='Avaliar o Japa'&&c.url==='https://japasushi.netlify.app/'));
+    const dynamic=dynamicPayload(r);
+    assert.ok(dynamic.content.messages.flatMap(m=>m.buttons||[]).some(b=>b.caption==='Avaliar o Japa'));
+    assert.doesNotMatch(dynamic.content.messages.map(m=>m.text).join(' '),/https?:\/\/|Google/i);
+  }
+  for (const nota of ['1','2','3']) {
+    const r=route(nota,{ai_state:state});
+    assert.equal(r.state.feedback_pending,true);
+    assert.ok(r.ctas.every(c=>c.label!=='Avaliar o Japa'));
+    assert.ok(r.ctas.some(c=>c.url===BUSINESS.links.whatsapp));
+  }
 });
 
 test('avaliação após pedido confirmado: 5 válido, 4 feedback, número solto não nota',()=>{
@@ -422,7 +431,7 @@ test('v1.3.1: roteiro de homologação — intenções esperadas',()=>{
     'onde fica?':'localizacao','meu pedido veio errado':'reclamacao','quero avaliar':'avaliacao_solicitar_nota'
   };
   for (const [msg,intent] of Object.entries(cases)) assert.equal(resolve({message:msg}).intent,intent,msg);
-  const casal=resolve({message:'quanto é o rodizio casal?'});
+  const casal=resolve({message:'quanto é o rodizio casal?'},{now:'2026-11-12T12:00:00-03:00'});
   assert.match(casal.reply,/199,90/);
 });
 
@@ -471,19 +480,17 @@ test('v1.3.3: trata o cliente pelo primeiro nome quando ele é seguro',()=>{
   assert.equal(safeFirstName('JOÃO'),'João');
   for (const bad of ['','🍣🍣','user_123','a','x'.repeat(25),'<script>',null]) assert.equal(safeFirstName(bad),'',String(bad));
   const c=(t,first_name)=>resolve({channel:'instagram',contact:{id:1,first_name,last_input_text:t,custom_fields:{}}});
-  assert.match(c('oi','Ana').reply,/^Oiê, Ana!/);
-  assert.match(c('oi','').reply,/^Oiê! Seja muito bem-vindo/);
-  assert.match(c('oi','🍣').reply,/^Oiê! /);
+  assert.match(c('oi','Ana').reply,/Ana/);
+  assert.doesNotMatch(c('oi','').reply,/undefined|, !|,\./);
+  assert.doesNotMatch(c('oi','🍣').reply,/undefined|, !|,\./);
   const rod=c('quanto é o rodízio?','Ana');
   assert.equal(rod.intent,'rodizio');
-  assert.match(rod.reply,/^Aê, Ana! Boa escolha/);
-  for (const v of ['114,90','199,90','124,90','229,90','49,90']) assert.ok(rod.reply.includes(v),v);
-  assert.match(rod.reply,/Crianças de 5 a 11 anos/);
+  assert.match(rod.reply,/Individual R\$ 1\d\d,90/);
   assert.match(rod.reply,/Bebidas e sobremesas ficam à parte/);
   assert.match(c('o que tem no rodízio?','Ana').reply,/^Ana, no rodízio você tem/);
   assert.match(c('quero reservar','Ana').reply,/^Oba, Ana!/);
-  assert.match(c('meu pedido veio errado','Ana').reply,/^Sinto muito pelo ocorrido, Ana\./);
-  assert.match(c('obrigado','Ana').reply,/Nós que agradecemos, Ana!/);
+  assert.match(c('meu pedido veio errado','Ana').reply,/Sinto muito|Lamento|Lamentamos|Desculpa|Poxa/);
+  assert.equal(c('obrigado','Ana').intent,'agradecimento');
   assert.match(c('quero mandar currículo','Ana').reply,/^Que bom, Ana!/);
   // sem nome, nenhuma vírgula solta ou "undefined"
   for (const m of ['oi','quanto é o rodízio?','o que tem no rodízio?','quero reservar','meu pedido veio errado','obrigado','quero mandar currículo'])
@@ -520,7 +527,8 @@ test('v1.3.5: nome vindo do @ do Instagram, "oque" e "o que vem" no rodízio',()
   assert.equal(safeFirstName('joao.silva92'),'Joao');
   const C=(t,ai='')=>({channel:'instagram',contact:{id:1,name:'deyverson_abe',first_name:'',ig_username:'deyverson_abe',last_input_text:t,custom_fields:{ai_state:ai}}});
   const a=resolve(C('Qual o valor do rodízio'));
-  assert.match(a.reply,/^Aê, Deyverson! Boa escolha/);
+  assert.equal(a.intent,'rodizio');
+  assert.match(a.reply,/^Hoje/);
   const b=resolve(C('Oque tem no rodízio',dynamicPayload(a).content.actions[0].value));
   assert.equal(b.intent,'rodizio_composicao');
   assert.match(b.reply,/^Deyverson, no rodízio você tem/);

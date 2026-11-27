@@ -108,14 +108,14 @@ Automação **JAPA · 06 · Pesquisa pós-pedido**, disparada **somente** quando
 2. Se for adequado, aplique **Smart Delay: 2 horas** após o evento real, sem agendar pesquisas repetidas para o mesmo pedido.
 3. Chame Dynamic Block no mesmo endpoint com os chips do contato, `event_type: "pedido_confirmado"` e `message: ""`. A resposta pergunta “De 1 a 5, que nota você dá?” e define `ai_state.rating_pending=true`.
 4. O próximo Direct do cliente entra no Default Reply, que carrega `ai_state`. Nota de 1 a 5 atualiza `avaliacao_nota`. Notas 1–4 solicitam relato e o salva em `avaliacao_feedback`; encaminhe o relato para revisão humana. Nota 5 agradece.
-5. **Convide todas as notas a deixar uma avaliação sincera**, quando a URL verificada do Google estiver configurada. Para notas 1–4, além do convite, ofereça um canal de resolução; não impedir o acesso do cliente ao Google por ter dado nota baixa. Elogios espontâneos também podem apresentar o botão quando fizer sentido.
-6. Sem link verificado, o webhook **não inventa o destino** e **não apresenta** o botão de avaliação. O link fornecido para **rota Maps não é link de avaliação**.
+5. **v1.5.0:** notas 4 e 5 recebem o botão **Avaliar o Japa**, num convite imparcial, sem citar Google e sem pedir nota. Notas 1 a 3 pedem o relato e vão para a equipe pelo botão do WhatsApp (`precisa_humano`). Elogio espontâneo só recebe o botão quando a pessoa conta que já esteve ou pediu, e no máximo 1 convite a cada 30 dias.
+6. O destino é `links.avaliacao` (`https://japasushi.netlify.app/`). Se o campo ficar vazio, o botão some e nada é inventado.
 
 O Dynamic Block grava memória e notas por `set_field_value`. Ele **não** dispara a automação de pesquisa sozinho; o gatilho de pedido confirmado precisa ser integrado manualmente ao SAIPOS ou confirmado pela equipe.
 
 ## 5. WhatsApp como destino vs. canal automatizado
 
-O **WhatsApp de atendimento (17) 99606-4189** e o **RH (17) 99602-2567** são **botões que abrem conversa**; para isso, não é necessário ativar os números como canais de automação no ManyChat. Nunca conectar o número pessoal do RH como se fosse o canal oficial do restaurante.
+O **WhatsApp de atendimento (17) 99708-6511** e o **RH (17) 99602-2567** são **botões que abrem conversa**; para isso, não é necessário ativar os números como canais de automação no ManyChat. Nunca conectar o número pessoal do RH como se fosse o canal oficial do restaurante.
 
 Se a empresa quiser mais tarde conectar o WhatsApp do restaurante ao ManyChat, primeiro validar titularidade, verificação e requisitos atuais da Meta. Depois, criar **outro fluxo** com `"channel":"whatsapp"`, mesma memória e condições: quando `atendimento_humano=true`, não mandar resposta automática (`next_action: silencio_humano`). Testar o protocolo específico do canal **antes** de ativar. Este pacote prioriza o atendimento do Direct com encaminhamento humano pelo botão.
 
@@ -144,7 +144,7 @@ Nesse modo, construa condições por `ai_cta_count` e pelo `ai_intent`, e **bot�
 - Saúde da Vercel com versão correta; POST autenticado devolve `v2` e botões; 401 gera fallback de rede no fluxo.
 - Disparo de currículo leva **somente** ao RH; dúvida leva WhatsApp do restaurante; cardápio e rota usam seus próprios botões, nunca texto com URL.
 - Pesquisa inicia só com pedido confirmado; notas, relato e eventual review são testados com **contato interno**, não com cliente real.
-- Idade exata de 9 anos e URL de avaliação já foram fornecidas. Antes de publicar, valide a abertura do review, os valores atuais do SAIPOS, a disponibilidade dos itens cadastrados no rodízio e mantenha promoções antigas bloqueadas.
+- Antes de publicar, valide a abertura do link de avaliação e do site, os valores atuais do SAIPOS, a disponibilidade dos itens cadastrados no rodízio e mantenha promoções antigas bloqueadas.
 
 ## 8. Delivery SAIPOS, iFood e 99Food (v1.3.0)
 
@@ -157,3 +157,15 @@ O responsável confirmou os três canais de pedido. **Apenas SAIPOS tem URL dire
 No SAIPOS, a taxa é consultada após informar o endereço; iFood e 99Food apresentam condições e preços próprios no aplicativo. **Não anuncie a mesma taxa ou o mesmo valor para os três canais sem confirmação expressa.**
 
 Consulte `docs/ENTREGA_SAIPOS_IFOOD_99FOOD.md` para a etapa final da configuração. As chaves e segredos não pertencem ao código nem ao ManyChat, exceto o cabeçalho privado do webhook.
+
+
+## 9. Atualização v1.5.0 — o que configurar no ManyChat
+
+Detalhes passo a passo em [`ATUALIZACAO_V1_5_0.md`](ATUALIZACAO_V1_5_0.md). Resumo:
+
+- **Corpo do External Request:** além dos campos atuais, enviar `message_type` e `event_type` (se o gatilho fornecer), o texto do comentário em `message` e, opcionalmente, `atendimento_humano_desde`.
+- **Comentários:** mapear `resposta_publica` (campo ou `$.public_reply`) para o passo que responde publicamente ao comentário, e usar `enviar_resposta_privada` para decidir se envia o Direct. O comentário público nunca leva link nem número.
+- **Tag nova:** `cliente_novo`.
+- **Botões novos:** "Conhecer o site" e "Avaliar o Japa" (os dois vêm prontos no Dynamic Block; no modo `standard`, criar os botões manualmente com `cta_N_label` e `cta_N_url`).
+- **Atendimento humano:** quando um atendente responder, ligar `atendimento_humano`; o bot fica quieto por 24h em qualquer canal. Para o prazo valer, grave também `atendimento_humano_desde` (data ISO).
+- **Variáveis da Vercel:** nenhuma nova.

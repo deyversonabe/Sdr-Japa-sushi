@@ -4,7 +4,7 @@ O código desta versão cuida das respostas. Os itens abaixo ficam no ManyChat e
 
 ## 0. Antes de publicar
 
-1. Confirmar o horário do jantar. O Instagram (bio e post de 11/11) diz **17h**; a arte "Novo horário" enviada em 12/11 diz **18h30** e meia-noite na sexta e no sábado. O bot usa o do Instagram. Para trocar, edite só `horarios.jantar_rodizio` em `data/knowledge.json` (`abre`, `fecha`, `abre_min`, `fecha_min`; minutos desde a meia-noite) e rode `npm run check`.
+1. (Resolvido na v1.5.0: horários oficiais definidos; o aviso abaixo é histórico.) Confirmar o horário do jantar. O Instagram (bio e post de 11/11) diz **17h**; a arte "Novo horário" enviada em 12/11 diz **18h30** e meia-noite na sexta e no sábado. O bot usa o do Instagram. Para trocar, edite só `horarios.jantar_rodizio` em `data/knowledge.json` (`abre`, `fecha`, `abre_min`, `fecha_min`; minutos desde a meia-noite) e rode `npm run check`.
 2. Criar as tags no ManyChat: `interesse_aniversario`, `repost_autorizado`, `candidato_rh` (as outras já existem).
 3. Confirmar com a equipe as regras do bolo de aniversário (precisa de antecedência? vale em qualquer dia? até quando?). O bot só diz que "a equipe combina as condições".
 4. Definir se criança menor de 5 anos paga. Hoje o bot encaminha para a equipe.

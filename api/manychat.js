@@ -17,6 +17,8 @@ export default async function handler(req,res) {
     ok:true,app_version:VERSION,business:BUSINESS.empresa.nome,
     catalogo_ativo:CATALOG.length,rodizio_grupos_configurados:Object.keys(RODIZIO_GROUPS.guia_por_preferencia).length,openai_configured:!!process.env.OPENAI_API_KEY,
     webhook_secret_configured:!!process.env.WEBHOOK_SECRET,
+    review_link_configured:!!BUSINESS.links.avaliacao,
+    site_link_configured:!!BUSINESS.links.site,
     google_review_configured:!!BUSINESS.links.google_avaliacao,
     ifood_confirmed:!!BUSINESS.pedidos.marketplaces?.ifood?.disponivel_confirmado,
     food99_confirmed:!!BUSINESS.pedidos.marketplaces?.food99?.disponivel_confirmado,

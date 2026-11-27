@@ -34,7 +34,7 @@ Você é o engenheiro responsável por concluir, auditar e homologar a integraç
 
 17. Preserve rodízio diário: individual R$ 114,90; casal R$ 199,90; infantil de 9 a 11 anos completos R$ 54,90; **menores de 9 anos gratuitos**. Bebidas e sobremesas são cobradas à parte. Preserve grupo separado com fritos/empanados, grelhados e sem arroz. Não apresente Joy Especial sem arroz do **à la carte** como incluso no rodízio sem confirmação expressa. Não reative itens inativos nem promoções antigas; confira preços e disponibilidade com o SAIPOS/equipe antes da liberação.
 18. Para entrega informe **SAIPOS (entrega e retirada), iFood e 99Food**. Os links diretos de iFood e 99Food estavam pendentes e `links.ifood`/`links.food99` eram `null`: não invente URL de loja, cidade ou taxas. Só configure `IFOOD_STORE_URL` e `FOOD99_STORE_URL` após receber e validar o destino oficial do restaurante em Barretos. Até lá, informe os aplicativos e exiba somente botões comprovados. Nunca publique URLs no texto do cliente: apenas botões nativos para cardápio, WhatsApp comercial, RH, Maps e Google.
-19. Atendente comercial: (17) 99606-4189. RH exclusivo para vagas/currículos: (17) 99602-2567. Reservas exigem adiantamento de 50%, mas o bot não deve confirmar mesa, calcular base não validada nem inventar disponibilidade.
+19. Atendente comercial: (17) 99708-6511. RH exclusivo para vagas/currículos: (17) 99602-2567. Reservas exigem adiantamento de 50%, mas o bot não deve confirmar mesa, calcular base não validada nem inventar disponibilidade.
 
 ## 6. Homologação e entrega obrigatória
 
