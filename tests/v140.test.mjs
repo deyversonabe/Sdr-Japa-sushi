@@ -27,16 +27,16 @@ test('"hoje está fechado?" na terça responde que é folga e quando volta', () 
     const r = ig(m, AT.terca_12h);
     assert.equal(r.intent, 'horario', m);
     assert.match(r.reply, /terça, dia de folga/, m);
-    assert.match(r.reply, /Amanhã a gente volta com almoço delivery das 11h às 15h e jantar com rodízio das 17h às 22h30/, m);
+    assert.match(r.reply, /Amanhã a gente volta com almoço \(somente delivery\) das 11h às 15h e jantar completo das 17h às 22h30/, m);
     assert.doesNotMatch(r.reply, /não tenho essa informação/i);
   }
 });
 
 test('horário responde conforme o momento do dia', () => {
-  assert.match(ig('está aberto?', AT.quinta_19h).reply, /Estamos abertos! Hoje o jantar e o rodízio vão até 22h30/);
-  assert.match(ig('está aberto?', AT.quinta_12h).reply, /almoço delivery, até 15h\. O salão e o rodízio abrem às 17h/);
-  assert.match(ig('abre hoje?', AT.quarta_10h).reply, /almoço delivery às 11h, e o jantar com rodízio abre às 17h/);
-  assert.match(ig('abre hoje?', AT.quarta_16h).reply, /abre às 17h para o jantar e o rodízio/);
+  assert.match(ig('está aberto?', AT.quinta_19h).reply, /Estamos abertos! Hoje o jantar completo vai até 22h30/);
+  assert.match(ig('está aberto?', AT.quinta_12h).reply, /almoço, somente delivery, até 15h\. O jantar completo, com salão e rodízio, abre às 17h/);
+  assert.match(ig('abre hoje?', AT.quarta_10h).reply, /almoço \(somente delivery\) às 11h, e o jantar completo abre às 17h/);
+  assert.match(ig('abre hoje?', AT.quarta_16h).reply, /jantar completo abre às 17h, com salão, rodízio e delivery/);
   assert.match(ig('hoje está aberto?', AT.sabado_23h).reply, /Por hoje já encerramos/);
 });
 
@@ -52,17 +52,19 @@ test('horário de um dia específico e horário geral', () => {
   const terca = ig('funciona na terça?', AT.quinta_12h);
   assert.match(terca.reply, /Na terça é o dia de folga do Japa\. Voltamos na quarta/);
   const geral = ig('qual o horário de funcionamento?', AT.quinta_12h);
-  assert.match(geral.reply, /quarta a segunda; terça é o nosso dia de folga/);
-  assert.match(geral.reply, /Jantar e rodízio: segunda, quarta e quinta, das 17h às 22h30; sexta, sábado e domingo, das 17h às 23h/);
+  assert.match(geral.reply, /de segunda a domingo, menos na terça, que é o nosso dia de folga/);
+  assert.match(geral.reply, /Almoço \(somente delivery\): das 11h às 15h/);
+  assert.match(geral.reply, /Jantar completo \(salão, rodízio e delivery\): segunda, quarta e quinta, das 17h às 22h30; sexta, sábado e domingo, das 17h às 23h/);
   assert.doesNotMatch(geral.reply, /18h30/);
 });
 
 test('rodízio: preço por dia, terça e criança', () => {
+  // v1.5.0: sem dia na pergunta, responde só o preço de hoje (curto), com bebidas e sobremesas à parte e sem repetir horários.
   const geral = ig('qual o valor do rodízio?', AT.quinta_12h, {first_name:'Hendni'});
   assert.equal(geral.intent, 'rodizio');
-  for (const v of ['R$ 114,90','R$ 199,90','R$ 124,90','R$ 229,90','R$ 49,90']) assert.ok(geral.reply.includes(v), v);
-  assert.match(geral.reply, /quarta a segunda/);
-  assert.doesNotMatch(geral.reply, /todos os dias|199,99|54,90/);
+  assert.match(geral.reply, /^Hoje \(quinta\) o rodízio é: Individual R\$ 114,90 · Casal R\$ 199,90\. Bebidas e sobremesas ficam à parte\./);
+  assert.doesNotMatch(geral.reply, /124,90|229,90|todos os dias|199,99|54,90|\d{1,2}h/);
+  assert.ok(geral.ctas.length >= 1);
 
   const hoje = ig('qual seria o valor do rodízio hoje?', AT.quinta_12h);
   assert.match(hoje.reply, /Hoje \(quinta\) o rodízio é: Individual R\$ 114,90 · Casal R\$ 199,90/);
@@ -124,10 +126,13 @@ test('status de pedido já feito vai para a equipe, não para o cardápio', () =
 test('menção em story agradece, pede para repostar e entende a resposta', () => {
   const m = resolve({message:'', event_type:'story_mention', first_name:'Pedro', channel:'instagram'}, {now:AT.quinta_19h});
   assert.equal(m.intent, 'story_mention');
-  assert.match(m.reply, /^Que foto linda, Pedro! 🤩 Obrigado por marcar o Japa\. Posso repostar/);
+  // v1.5.0: não descreve nem elogia a imagem (o bot não vê a foto) e não pede avaliação.
+  assert.match(m.reply, /marca(r|ção)|marcando/i);
+  assert.match(m.reply, /repost|compartilh/i);
+  assert.doesNotMatch(m.reply, /foto linda|imagem|avalia/i);
   const sim = next(m, 'Pode sim', AT.quinta_19h, {first_name:'Pedro'});
   assert.equal(sim.intent, 'story_repost_ok');
-  assert.match(sim.reply, /^Combinado, Pedro!/);
+  assert.match(sim.reply, /^Combinado!/); // nome só em 1 de cada 2 respostas: a anterior já usou o nome
   assert.ok(dynamicPayload(sim).content.actions.some(a => a.tag_name === 'repost_autorizado'));
   const nao = next(m, 'Prefiro que não', AT.quinta_19h);
   assert.equal(nao.intent, 'story_repost_nao');
@@ -136,12 +141,14 @@ test('menção em story agradece, pede para repostar e entende a resposta', () =
 });
 
 test('comentário vira conversa: sem falar de problema, com palavra-chave QUERO', () => {
+  // v1.5.0: elogio curto recebe agradecimento público, sem pergunta e sem Direct.
   const c = resolve({message:'Que delícia', event_type:'instagram_comment', channel:'instagram', first_name:'Edmar'}, {now:AT.quinta_12h});
-  assert.equal(c.intent, 'comentario');
-  assert.match(c.reply, /^Oi, Edmar! Vi seu comentário no nosso post/);
-  assert.doesNotMatch(c.reply, /não saiu como esperado/);
+  assert.equal(c.intent, 'elogio');
+  assert.ok(c.public_reply && !/\?/.test(c.public_reply));
+  assert.equal(c.reply, '');
   const q = resolve({message:'QUERO', event_type:'instagram_comment', channel:'instagram', first_name:'Edmar'}, {now:AT.quinta_12h});
   assert.equal(q.intent, 'comentario_quero');
+  assert.match(q.public_reply, /direct/i);
   assert.ok(q.ctas.some(x => x.url === BUSINESS.links.cardapio_pedido));
   const elogio = resolve({message:'Só passei pra elogiar', channel:'instagram'}, {now:AT.quinta_12h});
   assert.equal(elogio.intent, 'elogio');
@@ -150,9 +157,10 @@ test('comentário vira conversa: sem falar de problema, com palavra-chave QUERO'
 test('saudação na terça avisa da folga e oferece ajuda', () => {
   const r = ig('oi', AT.terca_12h, {first_name:'Ana'});
   assert.equal(r.intent, 'saudacao');
-  assert.match(r.reply, /^Oiê, Ana! Seja muito bem-vindo/);
+  assert.match(r.reply, /^Boa tarde, Ana! Seja bem-vindo\(a\) ao Japa Sushi Lounge\./);
   assert.match(r.reply, /Hoje é terça, nosso dia de folga, mas amanhã a gente volta/);
-  assert.match(ig('oi', AT.quinta_12h).reply, /Tô aqui pra te ajudar rapidinho/);
+  assert.match(r.reply, /almoço \(somente delivery\) das 11h às 15h e jantar completo das 17h às 22h30/);
+  assert.match(ig('oi', AT.quinta_12h).reply, /^Boa tarde/);
 });
 
 test('reserva guiada: uma pergunta por vez até o botão com mensagem pronta', () => {

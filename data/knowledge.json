@@ -1,25 +1,29 @@
 {
   "_meta": {
-    "versao": "1.4.0",
-    "revisado_em": "2026-11-12",
+    "versao": "1.5.0",
+    "revisado_em": "2026-11-27",
     "fonte_cardapio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf (consolidado 16/09/2026)",
     "fonte_atendimento": "Fluxo_ManyChat_Japa_Sushi.pdf (22/09/2026)",
     "fonte_regras": "confirmações do responsável recebidas em 22/09/2026",
     "fonte_grupos_rodizio": "Cardapio_Mestre_Japa_Sushi_Lounge_ATUALIZADO.pdf, paginas 2-3; organizacao de atendimento 22/09/2026",
     "fonte_delivery_marketplaces": "Confirmação do responsável: também atende pelo iFood e 99Food; links de lojas não informados, aguardando validação.",
-    "fonte_horarios_e_precos": "Instagram @japasushibarretos (bio e post de 11/11/2026), site japasushi.com.br e artes enviadas pelo responsável em 12/11/2026; horário de 04/11/2026 (jantar a partir das 17h)"
+    "fonte_horarios_e_precos": "Confirmação do responsável em 27/11/2026 (terça fechada; almoço somente delivery 11h às 15h; jantar completo a partir das 17h); Instagram @japasushibarretos e site japasushi.com.br para preços do rodízio",
+    "fonte_contatos_e_links": "Confirmação do responsável em 27/11/2026: novo WhatsApp de atendimento, site japasushi.com.br e link de avaliação japasushi.netlify.app"
   },
   "empresa": {
     "nome": "Japa Sushi Lounge",
     "instagram": "@japasushibarretos",
     "endereco": "Av. Treze, 657 – Centro, Barretos/SP, CEP 14780-270",
-    "cidade": "Barretos/SP"
+    "cidade": "Barretos/SP",
+    "whatsapp_exibicao": "(17) 99708-6511"
   },
   "links": {
     "cardapio_pedido": "https://japasushilounge.saipos.com/home",
-    "whatsapp": "https://wa.me/5517996064189",
+    "site": "https://www.japasushi.com.br/",
+    "whatsapp": "https://wa.me/5517997086511",
     "whatsapp_rh": "https://wa.me/5517996022567",
     "google_maps": "https://www.google.com/maps?rlz=1C1GCEA_enBR1206BR1206&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KdkJD5BLhbuUMRAnQl-1sYJP&daddr=Av.+Treze,+657+-+Centro,+Barretos+-+SP,+14780-270",
+    "avaliacao": "https://japasushi.netlify.app/",
     "google_avaliacao": "https://search.google.com/local/writereview?placeid=ChIJ2QkPkEuFu5QRECdCX7Wxgk8",
     "ifood": null,
     "food99": null
@@ -28,7 +32,7 @@
     "dia_fechado": "terça",
     "dia_fechado_numero": 2,
     "almoco_delivery": {
-      "dias_texto": "quarta a segunda",
+      "dias_texto": "segunda e quarta a domingo",
       "abre": "11h",
       "fecha": "15h",
       "abre_min": 660,
@@ -51,7 +55,9 @@
       }
     },
     "rodizio_todos_os_dias": false,
-    "observacao": "Terça fechado. Horário de jantar conforme Instagram (04/11/2026); a arte de 12/11 trazia 18h30 e meia-noite na sexta e no sábado, mantido o do Instagram até confirmação do responsável. Feriados: confirmar com a equipe."
+    "observacao": "Terça fechada o dia todo. Almoço (somente delivery) das 11h às 15h, segunda e quarta a domingo. Jantar completo (salão, rodízio e delivery) a partir das 17h: até 22h30 de segunda, quarta e quinta; até 23h de sexta a domingo. Horário de 17h confirmado pelo responsável em 27/11/2026. Feriados: confirmar com a equipe.",
+    "almoco_somente_delivery": true,
+    "jantar_completo_descricao": "salão, rodízio e delivery"
   },
   "rodizio": {
     "dias_texto": "quarta a segunda, no jantar",
@@ -115,7 +121,11 @@
     "inicio_apos_pedido_confirmado": true,
     "atraso_manychat_minutos": 120,
     "link_google_pendente": false,
-    "convite_imparcial": "Convide todos os clientes com experiência real a deixar uma avaliação sincera, sem filtrar apenas notas positivas."
+    "convite_imparcial": "Convide todos os clientes com experiência real a deixar uma avaliação sincera, sem filtrar apenas notas positivas.",
+    "link_oficial": "https://japasushi.netlify.app/",
+    "convite_somente_com_experiencia_real": true,
+    "intervalo_minimo_convite_dias": 30,
+    "observacao": "Link do Google fica apenas como reserva (links.google_avaliacao); não aparece em textos nem em botões padrão."
   },
   "atendimento": {
     "tom": "brasileiro, acolhedor, breve, conversacional, sem exagero publicitário",
@@ -131,13 +141,13 @@
   },
   "campanhas_ativas": [],
   "observacoes_revisao": [
-    "Link de avaliação Google fornecido pelo responsável em 22/09/2026; conferir abertura em teste real.",
     "Não anunciar combos promocionais nem inventar vigência: encaminhar para cardápio digital.",
     "Antes do lançamento, conferir preços e disponibilidade no SAIPOS atual.",
     "Categorias fritos/empanados, grelhados e sem arroz agrupadas separadamente para resposta no Direct; Joy Especial sem arroz pertence ao à la carte, não é declarado incluso no rodízio.",
     "iFood e 99Food confirmados pelo responsável como canais de entrega. URLs oficiais da loja pendentes: os botões específicos ficam desabilitados até validação; nunca vincular outra loja nem usar link inventado.",
     "Infantil: 5 a 11 anos R$ 49,90 (arte de 12/11/2026). Menores de 5 anos: não informado, o bot encaminha para a equipe.",
-    "Horário de jantar: Instagram diz 17h; arte de 12/11 diz 18h30. Confirmar qual vale e ajustar horarios.jantar_rodizio."
+    "Link de avaliação oficial: japasushi.netlify.app (27/11/2026); conferir abertura em teste real. O link do Google ficou só como reserva.",
+    "Site oficial www.japasushi.com.br divulgado no máximo 1 vez por conversa e só nos casos previstos (cardápio, conhecer a casa, fidelidade, cliente novo). O caminho /fidelidade do site não foi confirmado: o bot usa a página inicial."
   ],
   "aniversario": {
     "minimo_convidados": 10,
@@ -145,5 +155,7 @@
     "parceiro_instagram": "@palaciodas_delicias",
     "regra": "A promoção tem condições especiais; o bot não detalha regras, a equipe combina as condições.",
     "fonte": "Reel de 23/10/2026 do @japasushibarretos"
-  }
+  },
+  "sugestoes_validadas": [],
+  "sugestoes_validadas_regra": "Lista preenchida somente pelo Michel. Vazia = o bot nunca sugere prato nem diz que algo é 'mais pedido', 'favorito' ou 'campeão'."
 }

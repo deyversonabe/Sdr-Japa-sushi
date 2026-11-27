@@ -16,7 +16,9 @@ test('GET health check não mostra segredos',async()=>{
   assert.equal(r.body.business,'Japa Sushi Lounge');
   assert.equal(r.body.catalogo_ativo,180);
   assert.equal(r.body.rodizio_grupos_configurados,3);
-  assert.equal(r.body.app_version,'1.4.0');
+  assert.equal(r.body.app_version,'1.5.0');
+  assert.equal(r.body.review_link_configured,true);
+  assert.equal(r.body.site_link_configured,true);
   assert.equal(r.body.ifood_confirmed,true);
   assert.equal(r.body.food99_confirmed,true);
   assert.equal(r.body.ifood_button_configured,false);
@@ -60,7 +62,7 @@ test('payload inválido não vaza detalhes e queda inesperada usa saída segura'
   const malformed=await call('POST','{JSON RUIM',{'x-webhook-secret':SECRET});
   assert.equal(malformed.statusCode,200);
   assert.equal(malformed.body.intent,'erro_seguro');
-  assert.equal(malformed.body.cta_1_url,'https://wa.me/5517996064189');
+  assert.equal(malformed.body.cta_1_url,'https://wa.me/5517997086511');
   const invalid=await call('POST',[],{'x-webhook-secret':SECRET});
   assert.equal(invalid.statusCode,400);
 });

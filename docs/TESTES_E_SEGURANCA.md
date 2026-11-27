@@ -2,7 +2,7 @@
 
 ## Testes automatizados
 
-Com Node 20 ou superior, execute `npm run check`. O script confere sintaxe dos três módulos JS e executa os testes em `tests/engine.test.mjs` e `tests/http.test.mjs`. O projeto foi preparado com **40 testes automatizados** cobrindo contrato JSON, catálogo, roteamento, links, pagamentos, idade, reservas, RH, privacidade, fallback, estado, avaliação, deduplicação e chamada à OpenAI **simulada**.
+Com Node 20 ou superior, execute `npm run check`. O script confere sintaxe dos três módulos JS e executa os testes em `tests/engine.test.mjs` e `tests/http.test.mjs`. O projeto passou a ter **mais de 100 testes automatizados** (v1.5.0, incluindo `tests/v150.test.mjs`) cobrindo contrato JSON, catálogo, roteamento, links, pagamentos, idade, reservas, RH, privacidade, fallback, estado, avaliação, deduplicação e chamada à OpenAI **simulada**.
 
 A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativos na Vercel. Igualmente, o teste unitário de Dynamic Block **não substitui** a “Solicitação de Teste” no ManyChat real nem um teste em conta interna de Instagram. O deploy e a publicação nos serviços externos precisam ser confirmados separadamente.
 
@@ -31,18 +31,18 @@ A chamada simulada **não prova** que a chave ou o modelo da OpenAI estejam ativ
 | Resposta a Story com `qual rodízio?` | Trata a pergunta real; não devolve agradecimento genérico nem resposta para story diferente. |
 | Menção em Story sem mensagem | Agradece sem empurrar venda. |
 | Evento `pedido_confirmado` (simulado com contato interno) | Pergunta nota 1–5; `ai_state` fica pendente. |
-| Nota `5` na pesquisa pendente | Grava número 5; quando URL Google validada, CTA de avaliação. |
-| Nota `3` + relato | Grava nota, solicita relato, guarda feedback; CTA Google se URL confirmada e acesso humano. |
+| Nota `5` na pesquisa pendente | Grava número 5; botão "Avaliar o Japa". |
+| Nota `3` + relato | Grava nota, solicita relato, guarda feedback; sem botão de avaliação; equipe pelo WhatsApp. |
 | Mensagem apenas `5` fora de pesquisa | NÃO grava nota no contato. |
 | Mensagem repetida com mesmo `event_id` | Não processa novamente; evitar eventos duplicados da própria automação. |
 | Webhook sem segredo válido | HTTP 401; **fallback ManyChat** assume quando a requisição falhar. |
 
 ## Checklist de publicação — aceite formal
 
-1. **Dados comerciais:** idade de 9 anos e URL de avaliação já definidas; manter combos promocionais bloqueados, confirmar preços no SAIPOS, itens reais do rodízio e regra detalhada da reserva; reexecutar os testes após alterar.
+1. **Dados comerciais:** horários (terça fechado; almoço só delivery; jantar completo), site e link de avaliação definidos; manter combos promocionais bloqueados, confirmar preços no SAIPOS, itens reais do rodízio e regra detalhada da reserva; reexecutar os testes após alterar.
 2. **Ambiente:** segredo configurado e protegido; OpenAI API Key ativa; Deploy Vercel bem-sucedido; `GET /api/manychat` indica versões e flags esperadas; controle de acesso da conta correto.
-3. **ManyChat:** IA interna **totalmente desativada**; tags/campos com nomes idênticos; Dynamic Block testado e fallback configurado; não há gatilhos concorrentes; URL de review nunca substituída pela rota Maps.
-4. **Pesquisa:** evento vem de venda realmente confirmada, não de `interesse_pedido`; bloqueio operacional contra pesquisas duplicadas; acesso ao Google não restrito a notas 5.
+3. **ManyChat:** IA interna **totalmente desativada**; tags/campos com nomes idênticos; Dynamic Block testado e fallback configurado; não há gatilhos concorrentes; link de avaliação sempre `https://japasushi.netlify.app/`.
+4. **Pesquisa:** evento vem de venda realmente confirmada, não de `interesse_pedido`; bloqueio operacional contra pesquisas duplicadas; convite de avaliação só com experiência real ou nota 4–5, no máximo 1 a cada 30 dias.
 5. **Teste real:** rodar todos os cenários acima **somente com contato da equipe**, conferir botões no aparelho, visual do Instagram, regras de horário/políticas Meta e tags no ManyChat.
 
 ## Política de fatos e decisões
@@ -66,3 +66,8 @@ Referências: [ManyChat Dynamic Block](https://help.manychat.com/hc/pt-br/articl
 - Com URLs diretas de loja e domínios aceitos, a resposta padrão e o Dynamic Block mostram **até três botões**: SAIPOS, iFood e 99Food.
 - URLs de página inicial genérica ou domínios falsos são rejeitados.
 - As rotas e os botões devem ser testados em conta interna antes de ativação pública. Os URLs usados nos testes automatizados são **fictícios de teste**, não endereços da loja real.
+
+
+## Teste de pausa por atendimento humano (v1.5.0)
+
+Coberto em `tests/v150.test.mjs`: com `atendimento_humano=true` o bot responde `next_action: silencio_humano` e não envia mensagem, em qualquer canal. Com `atendimento_humano_desde` mais antigo que 24h, o bot volta a responder. No ManyChat real, teste assim: (1) ligue o campo no seu contato de teste, (2) mande "oi" e confirme o silêncio, (3) desligue o campo e confirme que o bot volta.

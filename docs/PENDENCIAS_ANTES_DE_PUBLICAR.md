@@ -7,7 +7,7 @@ Este arquivo registra **lacunas reais** dos documentos fornecidos. A solução n
 | Prioridade | Questão objetiva | Evidência / situação atual | Comportamento de segurança já implementado |
 |---|---|---|---|
 | **Alta** | **Idade infantil — confirmado** | A instrução diz tanto “até 9 anos não pagam” quanto “de 9 a 11 anos R$ 54,90”; o cardápio registra infantil de 9 a 11 anos. | Confirmado: **menores de 9 anos não pagam**; de **9 a 11 anos completos pagam R$ 54,90**. |
-| **Alta** | **Link de avaliação Google — fornecido** | Foi fornecida URL de rota para o Maps; não é comprovadamente URL de avaliação. | Link fornecido foi configurado em `knowledge.json`. Testar abertura em dispositivo real antes da publicação. |
+| **Alta** | **Link de avaliação — `https://japasushi.netlify.app/`** | Página de avaliação própria do Japa, configurada em `links.avaliacao`. | Testar a abertura em celular real antes da publicação. O botão se chama "Avaliar o Japa". |
 | **Alta** | **A tabela de preços e a disponibilidade do PDF de 16/09 continuam iguais ao SAIPOS de hoje?** | PDF é a última base documental disponível; o responsável confirmou pratos quentes ativos em 22/09. | Itens e valores são reproduzidos exatamente como na fonte, mas alterações posteriores no PDV não são conhecidas. Conferir antes de publicar. |
 | **Alta** | **Quais combos “promocionais” do PDF estão realmente vigentes?** | 6 Combos Salmão têm natureza promocional. O responsável proibiu referência à promoção antiga sem especificar qual. | O responsável determinou não anunciar promoções: consultas de combos promocionais encaminham para o **botão do cardápio SAIPOS**. Os seis registros continuam bloqueados na base local, sem oferta automática. |
 | **Alta** | **Existe um evento real de pedido confirmado que possa disparar avaliação?** | Não foi fornecido acesso ou webhook autorizado do SAIPOS para esse gatilho. | O código fornece `event_type=pedido_confirmado`; o ManyChat **não** deve agendar pesquisa a partir de intenção de compra. A integração desse evento requer ação operacional. |
@@ -29,9 +29,11 @@ A lista principal e o grupo separado por preferência já estão implementados n
 
 ## Informações que estão definidas e não devem ser reabertas sem motivo
 
-- Atendimento humano: **(17) 99606-4189**.
+- Atendimento humano: **(17) 99708-6511** (`https://wa.me/5517997086511`, só em botão).
 - Currículo, vaga, emprego, entrevista e contratação: **RH (17) 99602-2567**, exclusivamente.
-- Rodízio: todos os dias; individual **R$ 114,90**; casal **R$ 199,90**; infantil **R$ 54,90** conforme faixa aprovada; bebidas/sobremesas cobradas à parte.
+- Horários: terça fechado; almoço (somente delivery) 11h–15h; jantar completo seg/qua/qui 17h–22h30 e sex/sáb/dom 17h–23h.
+- Site: `https://www.japasushi.com.br/` (a rota `/fidelidade` não foi confirmada; o bot usa a página inicial).
+- Rodízio: jantar completo, exceto terça; individual **R$ 114,90**; casal **R$ 199,90**; infantil **R$ 54,90** conforme faixa aprovada; bebidas/sobremesas cobradas à parte.
 - Pagamento: Pix, débito, crédito, dinheiro e Ticket refeição.
 - Pedidos: SAIPOS com entrega e retirada; consulta de frete pelo endereço.
 - Localização: Avenida 13, 657, Centro, Barretos/SP; rota Maps recebida.

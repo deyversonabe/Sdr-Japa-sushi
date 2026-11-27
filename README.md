@@ -1,6 +1,6 @@
 # Japa Sushi Lounge · Atendimento Instagram + ManyChat + Vercel + OpenAI
 
-**Código de implantação — v1.4.0 · 12/11/2026** (atualização de atendimento humano: [`docs/ATUALIZACAO_V1_4_0.md`](docs/ATUALIZACAO_V1_4_0.md))
+**Código de implantação — v1.5.0 · 27/11/2026** (novo WhatsApp, horários, site, avaliação e humanização: veja o [`CHANGELOG.md`](CHANGELOG.md) e [`docs/ATUALIZACAO_V1_5_0.md`](docs/ATUALIZACAO_V1_5_0.md))
 
 Sistema exclusivo do **Japa Sushi Lounge (Barretos/SP)**, preparado com base no fluxo de atendimento, relatório técnico e cardápio-mestre fornecidos pelo responsável. O ManyChat recebe/envia mensagens; **não se ativa AI Step, IA nativa, reconhecimento por IA ou qualquer IA do ManyChat**. A Vercel executa as regras comerciais. A OpenAI, quando sua API Key está configurada, pode humanizar apenas respostas sociais simples, sem criar preço, descrição, oferta, horário ou disponibilidade.
 
@@ -44,7 +44,8 @@ O webhook também suporta `mode=standard` (ou ausência de `mode`) para automaç
 |---|---|
 | `api/manychat.js` | Única função serverless na Vercel. Health GET, autenticação, POST, fallback. |
 | `lib/engine.js` | Classificador determinístico, cardápio, regras comerciais, avaliação, segurança, botão, estado. |
-| `lib/persona.js` | Tom humano e limites da chamada opcional à OpenAI. |
+| `lib/persona.js` | Tom humano, exemplos e limites da chamada opcional à OpenAI. |
+| `lib/variations.js` | **NOVO v1.5.0:** bancos de variações (≥8 por situação), idioma, regra de emoji e saudação por horário. |
 | `data/knowledge.json` | Horários, rodízio, pagamento, reservas, contatos, URLs aprovadas e pendências. |
 | `data/catalogo_extraido.json` | **186 registros** do PDF, com categoria, nome, descrição fiel quando existe, preço, página de origem e status. **180 autorizados para consulta automática; 6 promocionais bloqueados e redirecionados ao cardápio digital** até validação. |
 | `data/catalogo_inativo_nao_ofertar.json` | **14 registros pausados/inativos**, só para auditoria; nunca exibidos ao cliente. |
@@ -69,13 +70,16 @@ Health check no projeto publicado: `GET https://SEU-PROJETO.vercel.app/api/manyc
 
 ## Condutas fixas do atendimento
 
-- Links de qualquer natureza **nunca** aparecem no texto final. Os destinos aprovados ficam em botões nativos: SAIPOS, WhatsApp de atendimento, WhatsApp do RH e rota do Maps. iFood e 99Food foram confirmados como canais de entrega; botões individuais só surgem quando as URLs de loja forem fornecidas e validadas. O botão de avaliação usa a URL fornecida pelo responsável.
-- Todas as vagas, currículos, entrevistas e contratações são exclusivamente direcionadas ao **RH: (17) 99602-2567**. Dúvidas sem dado confirmado, reclamações e reservas vão para **(17) 99606-4189**.
-- Rodízio **de quarta a segunda, no jantar** (terça fechado): segunda a quinta individual R$ 114,90 e casal R$ 199,90; sexta a domingo e feriados individual R$ 124,90 e casal R$ 229,90; crianças de 5 a 11 anos R$ 49,90; menores de 5 anos a equipe confirma. **Bebidas e sobremesas à parte.** (v1.4.0; os documentos antigos em `docs/` que citam 9 a 11 anos ou "todos os dias" estão superados.)
+- Links de qualquer natureza **nunca** aparecem no texto final. Os destinos aprovados ficam em botões nativos: SAIPOS, WhatsApp de atendimento, WhatsApp do RH e rota do Maps. iFood e 99Food foram confirmados como canais de entrega; botões individuais só surgem quando as URLs de loja forem fornecidas e validadas. O botão de avaliação usa `links.avaliacao`; o site usa `links.site`.
+- Todas as vagas, currículos, entrevistas e contratações são exclusivamente direcionadas ao **RH: (17) 99602-2567**. Dúvidas sem dado confirmado, reclamações e reservas vão para **(17) 99708-6511**.
+- **Horários (v1.5.0):** terça fechado o dia todo. Almoço (somente delivery) das 11h às 15h, de segunda e de quarta a domingo. Jantar completo (salão, rodízio e delivery): segunda, quarta e quinta das 17h às 22h30; sexta, sábado e domingo das 17h às 23h.
+- Rodízio **no jantar completo** (terça fechado): segunda a quinta individual R$ 114,90 e casal R$ 199,90; sexta a domingo e feriados individual R$ 124,90 e casal R$ 229,90; crianças de 5 a 11 anos R$ 49,90; menores de 5 anos a equipe confirma. **Bebidas e sobremesas à parte.**
+- **Site:** `https://www.japasushi.com.br/` em botão, no máximo uma vez por conversa e só em cardápio, como pedir, localização, horário, promoção, fidelidade e cliente novo.
+- **Avaliação:** botão **Avaliar o Japa** (`https://japasushi.netlify.app/`), só para quem relata experiência real ou dá nota 4 ou 5, no máximo 1 convite a cada 30 dias, sem citar Google e sem pedir nota.
 - **Combo Casal à la carte** (R$ 169,99) não deve ser confundido com **rodízio Casal** (R$ 199,90). Sem descrição no documento-mestre, o bot não inventa a composição.
 - Pratos quentes estão ativos por confirmação expressa do responsável. Combos identificados como promocionais e itens antigos/inativos não são anunciados automaticamente.
 - Reserva exige adiantamento de 50%, **mas o bot não confirma disponibilidade, faz cobrança nem marca a mesa automaticamente**. Apenas orienta e passa para a equipe.
-- Pesquisa 1–5 apenas após evento de pedido **realmente confirmado**, enviado pelo fluxo específico do ManyChat. Google Review já está configurado como botão com URL fornecida pelo responsável; não selecionamos convites por nota.
+- Pesquisa 1–5 apenas após evento de pedido **realmente confirmado**, enviado pelo fluxo específico do ManyChat. O convite de avaliação segue a regra acima (experiência real ou nota 4–5).
 
 ## Atualização v1.2.0 — rodízio organizado
 

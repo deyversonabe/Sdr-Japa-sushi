@@ -1,5 +1,21 @@
 # Registro de atualizações — Japa Sushi Lounge
 
+## v1.5.0 · 27/11/2026 · Novo WhatsApp, horários oficiais, site, avaliação e atendimento mais humano
+
+- **WhatsApp oficial trocado** para (17) 99708-6511 (`links.whatsapp`, novo `empresa.whatsapp_exibicao`). Aparece só em botão. O número anterior foi removido de todo o repositório e um teste confere isso. O RH (17) 99602-2567 não mudou e continua exclusivo para vagas.
+- **Horários oficiais.** Terça fechado o dia todo. Almoço (somente delivery) das 11h às 15h, segunda e quarta a domingo. Jantar completo (salão, rodízio e delivery): segunda, quarta e quinta das 17h às 22h30; sexta, sábado e domingo das 17h às 23h. Textos usam "almoço (somente delivery)" e "jantar completo". Removida a observação sobre o conflito 17h × 18h30.
+- **Site** `https://www.japasushi.com.br/` em botão "Conhecer o site": no máximo uma vez por conversa, só em cardápio, como pedir, localização, horário, promoção, fidelidade, cliente novo e "quero conhecer". Nunca em reclamação, vaga, preço isolado, pagamento ou reserva.
+- **Avaliação** `https://japasushi.netlify.app/`, botão "Avaliar o Japa", sem citar Google e sem pedir nota. Só com experiência real relatada ou nota 4–5; no máximo 1 convite a cada 30 dias. Notas 1–3 vão para feedback e equipe.
+- **Humanização.** Responde o que foi perguntado e oferece um próximo passo; bancos de variações (8 ou mais por situação) que não repetem a resposta anterior; nome em no máximo 1 de cada 2 respostas; no máximo 1 emoji por mensagem e cerca de 1 a cada 3; saudação por horário só na primeira mensagem; espelha o tom informal; responde em inglês ou espanhol quando a pessoa escreve assim. Novo `lib/variations.js`.
+- **Sem superlativos.** Removidos "sobremesa mais pedida" e similares. Sugestões só vêm de `sugestoes_validadas` (vazia por padrão).
+- **Comentários públicos.** Resposta pública curta, sem link, número, preço ou pergunta; detalhes por Direct com botão. Matriz: emoji, elogio, "quero", pergunta, marcação de amigo, "já fui/amo", reclamação, vaga, parceria/spam (sem resposta pública) e promoção/sorteio (só remete ao cardápio e ao site). Novos campos `public_reply`, `tem_resposta_publica`, `curtir_comentario`, `enviar_resposta_privada` e ação `resposta_publica`.
+- **Direct e mídia.** Menção em story: agradece sem descrever a imagem, pede repost uma vez e responde 1 vez por pessoa a cada 24h, sem pedir avaliação. Reação por emoji, figurinha, GIF e curtida: sem resposta. Compartilhamento: agradece e oferece o cardápio. Foto, áudio, vídeo e arquivo: resposta neutra e botão da equipe, sem confirmar pedido, pagamento ou reserva.
+- **Reclamação:** empatia curta, botão da equipe e tag `precisa_humano`, sem site nem avaliação.
+- **Atendimento humano:** a pausa vale em todos os canais e expira em 24h quando `atendimento_humano_desde` é enviado.
+- **OpenAI.** Ampliada apenas para os novos assuntos sociais. Preço, horário, rodízio, reserva, pagamento e promoção continuam 100% determinísticos. Contexto seguro (primeiro nome, canal, idioma, saudação, última resposta), exemplos no prompt e descarte de qualquer saída com URL, número, preço, horário, superlativo, pergunta em comentário público, repetição ou perda de conteúdo.
+- **Testes.** `tests/v150.test.mjs` novo; `engine`, `v140` e `http` atualizados.
+- **Decisões e desvios** (para Michel confirmar): a rota `/fidelidade` do site não foi confirmada, então o botão leva à página inicial; o link de avaliação saiu das respostas de nota 1–3 e pós-feedback (só WhatsApp); `google_avaliacao` ficou apenas como reserva em `links`; a frase "sobremesa mais pedida" vinha do fluxo do ManyChat, não deste código, e precisa ser removida lá.
+
 ## v1.4.0 · 12/11/2026 · Atendimento mais humano, horário e rodízio atuais
 
 Origem: varredura do Instagram, do WhatsApp Business e do site em 12/11/2026 (documento "Japa Sushi Lounge — Diagnóstico do atendimento e novo fluxo humanizado").
